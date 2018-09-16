@@ -11,6 +11,8 @@ tagline:          'Personal Site'
 description:      ''
 url:              https://mbarzegary.github.io/
 
+highlighter:      rouge
+
 author:
   name:           'Mark Otto'
   url:            https://twitter.com/mdo
