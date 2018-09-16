@@ -1,0 +1,21 @@
+# Dependencies
+markdown:         redcarpet
+pygments:         true
+
+# Permalinks
+permalink:        pretty
+
+# Setup
+title:            Mojtaba Barzegari
+tagline:          'Personal Site'
+description:      ''
+url:              https://mbarzegary.github.io/
+
+author:
+  name:           'Mark Otto'
+  url:            https://twitter.com/mdo
+
+paginate:         5
+
+github:
+  repo:           https://github.com/mbarzegary/mbarzegary.github.io
