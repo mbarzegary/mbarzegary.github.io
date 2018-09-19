@@ -11,8 +11,8 @@ Prior to my current role, I received my B.Sc. and M.Sc in Materials Science and 
 
 I have also been building software for more than 15 years (since 2003) and have been involved in a wide range of software development projects, from IoT to large-scale enterprise applications.
 
-To further review what I've done till now, you can have a look at my [CV](http://nbviewer.jupyter.org/github/mbarzegary/MyCV/blob/master/main.pdf). The source code of my CV is available on GitHub, and the corresponding repository uses Continuous Integration techniques to produce the final output. So have a look to the [repository](https://github.com/mbarzegary/MyCV) if you want to have your own.
+To further review what I've done till now, you can have a look at my [CV](http://nbviewer.jupyter.org/github/mbarzegary/MyCV/blob/master/main.pdf). The source code of my CV is available on GitHub, and the corresponding repository uses Continuous Integration techniques to produce the final output. So have a look on the [repository](https://github.com/mbarzegary/MyCV) if you want to have your own.
 
-##This Site
+## This Site
 
 This site runs on [Jekyll](https://github.com/jekyll/jekyll), a blog-aware, static site generator written in Ruby, and the source is available on [GitHub](https://github.com/mbarzegary/mbarzegary.github.io).

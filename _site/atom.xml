@@ -4,10 +4,10 @@
  <title>Mojtaba Barzegari</title>
  <link href="https://mbarzegary.github.io//atom.xml" rel="self"/>
  <link href="https://mbarzegary.github.io//"/>
- <updated>2018-09-17T00:19:55+02:00</updated>
+ <updated>2018-09-19T14:35:52+02:00</updated>
  <id>https://mbarzegary.github.io/</id>
  <author>
-   <name>Mark Otto</name>
+   <name></name>
    <email></email>
  </author>
 
@@ -17,13 +17,13 @@
    <link href="https://mbarzegary.github.io//2012/02/06/whats-jekyll/"/>
    <updated>2012-02-06T00:00:00+01:00</updated>
    <id>https://mbarzegary.github.io//2012/02/06/whats-jekyll</id>
-   <content type="html">&lt;p&gt;&lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll&lt;/a&gt; is a static site generator, an open-source tool for creating simple yet powerful websites of all shapes and sizes. From &lt;a href=&quot;https://github.com/mojombo/jekyll/blob/master/README.markdown&quot;&gt;the project&amp;#39;s readme&lt;/a&gt;:&lt;/p&gt;
+   <content type="html">&lt;p&gt;&lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll&lt;/a&gt; is a static site generator, an open-source tool for creating simple yet powerful websites of all shapes and sizes. From &lt;a href=&quot;https://github.com/mojombo/jekyll/blob/master/README.markdown&quot;&gt;the project’s readme&lt;/a&gt;:&lt;/p&gt;
 
 &lt;blockquote&gt;
-&lt;p&gt;Jekyll is a simple, blog aware, static site generator. It takes a template directory [...] and spits out a complete, static website suitable for serving with Apache or your favorite web server. This is also the engine behind GitHub Pages, which you can use to host your project’s page or blog right here from GitHub.&lt;/p&gt;
+  &lt;p&gt;Jekyll is a simple, blog aware, static site generator. It takes a template directory […] and spits out a complete, static website suitable for serving with Apache or your favorite web server. This is also the engine behind GitHub Pages, which you can use to host your project’s page or blog right here from GitHub.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;It&amp;#39;s an immensely useful tool and one we encourage you to use here with Hyde.&lt;/p&gt;
+&lt;p&gt;It’s an immensely useful tool and one we encourage you to use here with Hyde.&lt;/p&gt;
 
 &lt;p&gt;Find out more by &lt;a href=&quot;https://github.com/mojombo/jekyll&quot;&gt;visiting the project on GitHub&lt;/a&gt;.&lt;/p&gt;
 </content>
