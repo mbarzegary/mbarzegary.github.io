@@ -26,11 +26,11 @@ Here,  I will try to keep an up-to-date list of software programs that I heavily
 **Mind Managing** | XMind ZEN
 **Image Editing** | Pinta
 **Vector Graphics Design** | Inkscape
-**Multimedia** | VLC Player, mplayer
+**Multimedia** | VLC Player, SMplayer
 **Music Streaming** | Spotify for Linux
 **Download Manager** | uGet
 **Video Editing** | Shotcut, Kdenlive
 **Audio Editing** | Audacity
 **Screen Recording** | OBS
-**Interactive Whiteboard** | OpenBoard
+**Interactive Whiteboard** | OpenBoard, Gromit-MPX
 **Hardware Monitoring** | Psensor
