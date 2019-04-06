@@ -5,7 +5,7 @@ title: About
 
 My name is Mojtaba Barzegari. I’m an enthusiastic Computational Engineering researcher in the field of Bioengineering with a solid background in software development. In summary, I love to use computers to solve real-world problems. 
 
-I am working in the Biomechanics section of KU Leuven, mainly involved in conducting Scientific Computing projects. I'm interested in multidisciplinary projects mostly related to my research background including Mathematics, Physics, Computer Science, Engineering, Chemistry, Medical and Biological Sciences, and Materials Science.
+I am working in the Biomechanics section of KU Leuven, mainly involved in Scientific Computing projects. I'm interested in multidisciplinary projects mostly related to my research background including Mathematics, Physics, Computer Science, Engineering, Chemistry, Medical and Biological Sciences, and Materials Science.
 
 Prior to my current role, I received my B.Sc. and M.Sc in Materials Science and  Biomedical Engineering, respectively. Both my B.Sc. and M.Sc. theses were based on the combination of Numerical Analysis, Scientific Computing, and Computational Intelligence. I have also worked on some Machine Learning and Data Analysis projects in the field of medicine, biology, and industrial automation.
 

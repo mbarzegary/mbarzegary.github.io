@@ -3,7 +3,7 @@ layout: page
 title: Useful Books and Links
 ---
 
-A plethora of useful books, videos, and online contents are freely available all over the internet, and I list here the ones I found very awesome and essential-to-know for everyone interested in Scientific Computing and Computational Intelligence. I will try to keep this list up-to-date with the materials I face every day, most of which published by open source and open knowledge community.
+A plethora of useful books, videos, and online resources are freely available all over the internet, and I list here the ones I found very awesome and essential-to-know for everyone interested in Scientific Computing. I will try to keep this list up-to-date with the materials I face every day, most of which published by open source and open knowledge community.
 
 ## Numerical Methods
 
@@ -14,6 +14,8 @@ A plethora of useful books, videos, and online contents are freely available all
 * [Programming for Computations - A Gentle Introduction to Numerical Simulations with Python or MATLAB/Octave](https://hplgit.github.io/prog4comp/index.html): Two separate guides to implement numerical algorithms in Python and GNU Octave/MATLAB.
 
 * [Practical Numerical Methods with Python](https://github.com/numerical-mooc/numerical-mooc): A great Jupyter-based course to explore practical numerical methods with Python.
+
+* [Wolfgang Bangerth's Video Lectures](https://www.math.colostate.edu//~bangerth/videos.html): A set of useful videos in which an expert numerical scientist talks about different aspects of scientific computing in details but in a simple way.
 
 * [Introduction to Numerical Methods for Engineers](https://www.youtube.com/user/kvyi/playlists): A large number of introductory videos to learn the basics of numerical methods (linear algebra, curve fitting, numerical integration and differentiation, etc.).
 
