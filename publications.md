@@ -9,7 +9,7 @@ In this page, I will try to maintain a list of my publications in a presentive i
 
 ### Lattice Boltzmann Method
 
-* **M. Barzegari**, H. Bayani, S. M. H. Mirbagheri, H. Shetabivash, "[Multiphase Aluminum A356 Foam Formation Process Simulation Using Lattice Boltzmann Method](https://www.sciencedirect.com/science/article/pii/S2238785417303733?via%3Dihub)", *Journal of Materials Research and Technology* (2018), DOI:10.1016/j.jmrt.2018.03.010, ([complete version is available on arXiv](https://arxiv.org/abs/1708.01613))
+* **M. Barzegari**, H. Bayani, S. M. H. Mirbagheri, H. Shetabivash, "[Multiphase Aluminum A356 Foam Formation Process Simulation Using Lattice Boltzmann Method](https://www.sciencedirect.com/science/article/pii/S2238785417303733?via%3Dihub)", *Journal of Materials Research and Technology*, Vol. 8, No. 1, pp. 1258-1266, 2019 ([complete version is available on arXiv](https://arxiv.org/abs/1708.01613))
 
 * **M. Barzegari**, H. Bayani, S. M. H. Mirbagheri, "[A Criterion for Bubble Merging in Liquid Metal: Computational and Experimental Study](https://arxiv.org/abs/1708.01608)", arXiv Preprint
 
@@ -28,6 +28,8 @@ In this page, I will try to maintain a list of my publications in a presentive i
 
 * **M. Barzegari**, S. M. H. Mirbagheri, "[Assessment of the Slope and Cross-Section of In-Gate on the Pressure and Flow Pattern Using Finite Volume Method](http://jmme.um.ac.ir/index.php/metallurgical/article/view/10905)", *Journal of Metallurgical and Materials Engineering*, Vol. 22, No. 2, pp. 21-36, 2011 [Persian]
 
+***
+
 ## Computational Biomechanics
 
 ### Finite Element Method, Fluid-Structure Interaction
@@ -38,11 +40,15 @@ In this page, I will try to maintain a list of my publications in a presentive i
 
 * **M. Barzegari**, B. Vahidi, M. R. Safarinejad, "[Computational Simulation of Stress Urinary Incontinence using Fluid-Structure Interaction Analysis](https://www.civilica.com/Paper-ISME25-ISME25_342=\%D8\%B4\%D8\%A8\%DB\%8C\%D9\%87-\%D8\%B3\%D8\%A7\%D8\%B2\%DB\%8C-\%D9\%85\%D8\%AD\%D8\%A7\%D8\%B3\%D8\%A8\%D8\%A7\%D8\%AA\%DB\%8C-\%D8\%A8\%DB\%8C-\%D8\%A7\%D8\%AE\%D8\%AA\%DB\%8C\%D8\%A7\%D8\%B1\%DB\%8C-\%D8\%A7\%D8\%B3\%D8\%AA\%D8\%B1\%D8\%B3\%DB\%8C-\%D8\%A7\%D8\%AF\%D8\%B1\%D8\%A7\%D8\%B1-\%D8\%A8\%D8\%A7-\%D8\%A7\%D8\%B3\%D8\%AA\%D9\%81\%D8\%A7\%D8\%AF\%D9\%87-\%D8\%A7\%D8\%B2-\%D8\%B1\%D9\%88\%D8\%B4-\%D8\%AA\%D8\%AD\%D9\%84\%DB\%8C\%D9\%84-\%D8\%A8\%D8\%B1\%D9\%87\%D9\%85\%DA\%A9\%D9\%86\%D8\%B4-\%D8\%B3\%DB\%8C\%D8\%A7\%D9\%84-\%D9\%88-\%D8\%AC\%D8\%A7\%D9\%85\%D8\%AF.html)", *25th International Conference on Mechanical Engineering*, Tehran, Iran, 2017 [Persian]
 
+***
+
 ## Machine Learning and Internet of Things (IoT)
 
-### Artificial Neural Networks
+### Artificial Neural Networks, Support Vector Machines
 
-* **M. Barzegari**, B. Vahidi, M. R. Safarinejad, M. Hashemipour "[Pathological Analysis of Stress Urinary Incontinence in Females using Artificial Neural Networks](https://arxiv.org/abs/1803.01843)", arXiv Preprint
+* B. Farahani, **M. Barzegari**, F. Shams, "[Towards Collaborative Machine Learning Driven Healthcare Internet of Things](https://dl.acm.org/citation.cfm?id=3312644)", *Proceedings of the International Conference on Omni-Layer Intelligent Systems*, pp. 134-140, Crete, Greece, 2019 
+
+* **M. Barzegari**, B. Vahidi, M. R. Safarinejad, M. Hashemipour, "[Pathological Analysis of Stress Urinary Incontinence in Females using Artificial Neural Networks](https://arxiv.org/abs/1803.01843)", arXiv Preprint
 
 
 ### Image Processing, Raspberry Pi
