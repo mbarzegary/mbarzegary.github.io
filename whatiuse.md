@@ -15,10 +15,10 @@ Here,  I will try to keep an up-to-date list of software programs that I heavily
 **Office Suite** | WPS Office for Linux
 **Reference Management** | JabRef
 **Numerical Computing** | GNU Octave
-**Finite Element Solver** | FreeFem++, FEniCS
+**Finite Element Solver** | FreeFEM, FEniCS
 **Finite Volume Solver** | OpenFOAM
 **Post-processor** | ParaView
-**Pre-processor** | Salome, Gmsh
+**Pre-processor** | SALOME, Gmsh
 **Web Surfing** |  Firefox Quantum
 **Email Client and Calendar** | Thunderbird (with Lightning extension)
 **Document Viewing** | Foxit Reader, Okular
