@@ -7,9 +7,9 @@ Here, I keep a list of my presentations and posters, presented at various intern
 
 ## As the main author
 
-* **Mathematical modeling of biodegradation of metal implants in orthopedics**, will be presented in the 11th Symposium on Biodegradable Metals, Alicante, Spain, 2019 (abstract \| poster)
+* **Mathematical modeling of biodegradation of metal implants in orthopedics**, presented in the 11th Symposium on Biodegradable Metals, Alicante, Spain, 2019 ([abstract](/public/files/biometal2019-abstract.pdf) \| [poster](/public/files/biometal2019-poster.pdf) \| [presentation](/public/files/biometal2019-presetation.pdf))
 
-* **Numerical simulation of biodegradation and corrosion of magnesium-based orthopedics implants**, will be presented in the the 2nd International Conference on Simulation for Additive Manufacturing, Pavia, Italy, 2019 (abstract \| psoter)
+* **Numerical simulation of biodegradation and corrosion of magnesium-based orthopedics implants**, will be presented in the the 2nd International Conference on Simulation for Additive Manufacturing, Pavia, Italy, 2019 (abstract \| presentation)
 
 ## As a co-author
 
