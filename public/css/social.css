@@ -18,7 +18,7 @@ ul.icon-effect {
 }
 ul.icon-effect > li {
   display: inline;
-  margin-right: 5px;
+  margin-right: 0 auto;
 }
 /*
 * Icon styles
@@ -73,6 +73,7 @@ ul.icon-effect > li {
 }
 .icon-effect-1a .icon:hover {
   background-color: #f1f1f1;
+  z-index: 10;
   color: #094e6b;
 }
 .icon-effect-1a .icon:hover:after {
