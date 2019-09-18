@@ -3,15 +3,15 @@ layout: page
 title: Presentations & Posters
 ---
 
-Here, I keep a list of my presentations and posters, presented at various international conferences and symposiums, alongside their associated files:
+Here, I keep a list of my presentations and posters, presented at various international conferences and symposiums, alongside their associated content files:
 
-## As the main author
+## As the presenter
 
 * **Computational optimization and biodegradation of 3D-printed patient-specific acetabular implants**, will be presented in the 27th Conference of the European Orthopaedic Research Society (EORS), Maastricht, the Netherlands, 2019 ([abstract](/public/files/eors2019-abstract.pdf) \| presentation)
 
-* **High-performance simulation of biodegradation behavior of magnesium-based biomaterials**, will be presented in the Colloquium of Fluid and Solid Mechanics for Tissue Engineering, Oxford, UK, 2019 ([abstract](/public/files/euromech604-abstract.pdf) \| poster)
+* **High-performance simulation of biodegradation behavior of magnesium-based biomaterials**, will be presented in the Colloquium of Fluid and Solid Mechanics for Tissue Engineering, Oxford, UK, 2019 ([abstract](/public/files/euromech604-abstract.pdf) \| presentation)
 
-* **Numerical simulation of biodegradation and corrosion of magnesium-based orthopedics implants**, will be presented in the the 2nd International Conference on Simulation for Additive Manufacturing, Pavia, Italy, 2019 ([abstract](/public/files/simam2019-abstract.pdf) \| presentation)
+* **Numerical simulation of biodegradation and corrosion of magnesium-based orthopedics implants**, will be presented in the the 2nd International Conference on Simulation for Additive Manufacturing, Pavia, Italy, 2019 ([abstract](/public/files/simam2019-abstract.pdf) \| [presentation](/public/files/simam2019-presentation.pdf))
 
 * **Mathematical modeling of biodegradation of metal implants in orthopedics**, presented in the 11th Symposium on Biodegradable Metals, Alicante, Spain, 2019 ([abstract](/public/files/biometal2019-abstract.pdf) \| [poster](/public/files/biometal2019-poster.pdf) \| [presentation](/public/files/biometal2019-presetation.pdf))
 
