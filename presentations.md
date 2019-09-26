@@ -7,13 +7,15 @@ Here, I keep a list of my presentations and posters, presented at various intern
 
 ## As the presenter
 
-* **Computational optimization and biodegradation of 3D-printed patient-specific acetabular implants**, will be presented in the 27th Conference of the European Orthopaedic Research Society (EORS), Maastricht, the Netherlands, 2019 ([abstract](/public/files/eors2019-abstract.pdf) \| presentation)
+* **Developing a mathematical model of biodegradable metallic scaffolds for bone tissue engineering applications**, will be presented at the 7th Belgian Symposium on Tissue Engineering, Hasselt, Belgium, 2019 ([abstract](/public/files/bste2019-abstract.pdf) \| poster)
 
-* **High-performance simulation of biodegradation behavior of magnesium-based biomaterials**, will be presented in the Colloquium of Fluid and Solid Mechanics for Tissue Engineering, Oxford, UK, 2019 ([abstract](/public/files/euromech604-abstract.pdf) \| presentation)
+* **Computational optimization and biodegradation of 3D-printed patient-specific acetabular implants**, will be presented at the 27th Conference of the European Orthopaedic Research Society (EORS), Maastricht, the Netherlands, 2019 ([abstract](/public/files/eors2019-abstract.pdf) \| presentation)
 
-* **Numerical simulation of biodegradation and corrosion of magnesium-based orthopedics implants**, presented in the the 2nd International Conference on Simulation for Additive Manufacturing, Pavia, Italy, 2019 ([abstract](/public/files/simam2019-abstract.pdf) \| [presentation](/public/files/simam2019-presentation.pdf) \| [video](https://www.youtube.com/watch?v=yiwIKUacdtE))
+* **High-performance simulation of biodegradation behavior of magnesium-based biomaterials**, presented at the Colloquium of Fluid and Solid Mechanics for Tissue Engineering, Oxford, UK, 2019 ([abstract](/public/files/euromech604-abstract.pdf) \| [presentation](/public/files/euromech2019-presentation.pdf) \| [video](https://www.youtube.com/watch?v=fIsgVjEcVPo))
 
-* **Mathematical modeling of biodegradation of metal implants in orthopedics**, presented in the 11th Symposium on Biodegradable Metals, Alicante, Spain, 2019 ([abstract](/public/files/biometal2019-abstract.pdf) \| [poster](/public/files/biometal2019-poster.pdf) \| [presentation](/public/files/biometal2019-presetation.pdf) \| [video](https://www.youtube.com/watch?v=C9mPcr5sbbY))
+* **Numerical simulation of biodegradation and corrosion of magnesium-based orthopedics implants**, presented at the the 2nd International Conference on Simulation for Additive Manufacturing, Pavia, Italy, 2019 ([abstract](/public/files/simam2019-abstract.pdf) \| [presentation](/public/files/simam2019-presentation.pdf) \| [video](https://www.youtube.com/watch?v=yiwIKUacdtE))
+
+* **Mathematical modeling of biodegradation of metal implants in orthopedics**, presented at the 11th Symposium on Biodegradable Metals, Alicante, Spain, 2019 ([abstract](/public/files/biometal2019-abstract.pdf) \| [poster](/public/files/biometal2019-poster.pdf) \| [presentation](/public/files/biometal2019-presetation.pdf) \| [video](https://www.youtube.com/watch?v=C9mPcr5sbbY))
 
 ## As a co-author
 
