@@ -9,7 +9,7 @@ Here, I keep a list of my presentations and posters, presented at various intern
 
 * **Developing a mathematical model of biodegradable metallic scaffolds for bone tissue engineering applications**, will be presented at the 7th Belgian Symposium on Tissue Engineering, Hasselt, Belgium, 2019 ([abstract](/public/files/bste2019-abstract.pdf) \| poster)
 
-* **Computational optimization and biodegradation of 3D-printed patient-specific acetabular implants**, will be presented at the 27th Conference of the European Orthopaedic Research Society (EORS), Maastricht, the Netherlands, 2019 ([abstract](/public/files/eors2019-abstract.pdf) \| presentation)
+* **Computational optimization and biodegradation of 3D-printed patient-specific acetabular implants**,  presented at the 27th Conference of the European Orthopaedic Research Society (EORS), Maastricht, the Netherlands, 2019 ([abstract](/public/files/eors2019-abstract.pdf) \| [presentation](/public/files/eors2019-presentation.pdf) \| [video](https://www.youtube.com/watch?v=RK6_a5IH9fg))
 
 * **High-performance simulation of biodegradation behavior of magnesium-based biomaterials**, presented at the Colloquium of Fluid and Solid Mechanics for Tissue Engineering, Oxford, UK, 2019 ([abstract](/public/files/euromech604-abstract.pdf) \| [presentation](/public/files/euromech2019-presentation.pdf) \| [video](https://www.youtube.com/watch?v=fIsgVjEcVPo))
 
