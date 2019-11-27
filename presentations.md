@@ -7,7 +7,9 @@ Here, I keep a list of my presentations and posters, presented at various intern
 
 ## As the presenter
 
-* **Developing a mathematical model of biodegradable metallic scaffolds for bone tissue engineering applications**, will be presented at the 7th Belgian Symposium on Tissue Engineering, Hasselt, Belgium, 2019 ([abstract](/public/files/bste2019-abstract.pdf) \| [poster](/public/files/bste2019-poster.pdf))
+* **Computational Modeling of Biodegradation of Metallic Biomaterials**, presented at the 18th National Day on Biomedical Engineering, Brussels, Belgium, 2019 ([abstract](/public/files/national2019-abstract.pdf) \| [poster](/public/files/national2019-poster.pdf))
+
+* **Developing a mathematical model of biodegradable metallic scaffolds for bone tissue engineering applications**, presented at the 7th Belgian Symposium on Tissue Engineering, Hasselt, Belgium, 2019 ([abstract](/public/files/bste2019-abstract.pdf) \| [poster](/public/files/bste2019-poster.pdf))
 
 * **Computational optimization and biodegradation of 3D-printed patient-specific acetabular implants**,  presented at the 27th Conference of the European Orthopaedic Research Society (EORS), Maastricht, the Netherlands, 2019 ([abstract](/public/files/eors2019-abstract.pdf) \| [presentation](/public/files/eors2019-presentation.pdf) \| [video](https://www.youtube.com/watch?v=RK6_a5IH9fg))
 
@@ -19,4 +21,4 @@ Here, I keep a list of my presentations and posters, presented at various intern
 
 ## As a co-author
 
-* **Towards Collaborative Machine Learning Driven Healthcare Internet of Things**, presented in the International Conference on Omni-Layer Intelligent Systems, Crete, Greece, 2019 ([article in proceedings](https://dl.acm.org/citation.cfm?id=3312644))
+* **Towards Collaborative Machine Learning Driven Healthcare Internet of Things**, presented at the International Conference on Omni-Layer Intelligent Systems, Crete, Greece, 2019 ([article in proceedings](https://dl.acm.org/citation.cfm?id=3312644))

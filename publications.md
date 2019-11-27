@@ -46,6 +46,9 @@ In this page, I will try to maintain a list of my publications in a presentive i
 
 ### Artificial Neural Networks, Support Vector Machines
 
+* B. Farahani, **M. Barzegari**, F. Shams, K. A. Shaik, "[Towards collaborative intelligent IoT eHealth: From device to fog, and cloud](https://www.sciencedirect.com/science/article/pii/S0141933119303928)", *Microprocessors and Microsystems*, vol. 72, 102938, 2020
+*, pp. 134-140, Crete, Greece, 2019 
+
 * B. Farahani, **M. Barzegari**, F. Shams, "[Towards Collaborative Machine Learning Driven Healthcare Internet of Things](https://dl.acm.org/citation.cfm?id=3312644)", *Proceedings of the International Conference on Omni-Layer Intelligent Systems*, pp. 134-140, Crete, Greece, 2019 
 
 * **M. Barzegari**, B. Vahidi, M. R. Safarinejad, M. Hashemipour, "[Pathological Analysis of Stress Urinary Incontinence in Females using Artificial Neural Networks](https://arxiv.org/abs/1803.01843)", arXiv Preprint
