@@ -5,6 +5,13 @@ title: Videos
 
 I try to record my presentations in conferences that I'm allowed to do so. Then I combine the recorded audio with the presented slides and share the output here. For more details of this, you may have a look at [Presentations and Posters](/presentations).
 
+### High-performance numerical simulation of biodegradation process with moving boundaries
+
+FreeFEM Days, 11th Edition\
+Paris, France, 2019
+
+[![presentation](http://img.youtube.com/vi/Gar8C71sx9Y/0.jpg)](http://www.youtube.com/watch?v=Gar8C71sx9Y)
+
 ### Computational optimization and biodegradation of 3D-printed patient-specific acetabular implants
 
 27th Conference of the European Orthopaedic Research Society (EORS)\

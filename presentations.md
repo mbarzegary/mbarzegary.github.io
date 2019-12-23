@@ -7,7 +7,13 @@ Here, I keep a list of my presentations and posters, presented at various intern
 
 ## As the presenter
 
-* **Computational Modeling of Biodegradation of Metallic Biomaterials**, presented at the 18th National Day on Biomedical Engineering, Brussels, Belgium, 2019 ([abstract](/public/files/national2019-abstract.pdf) \| [poster](/public/files/national2019-poster.pdf))
+* **Computational modeling of in-vitro biodegradation of metallic scaffolds and bone implants**, will be presented at the 11th World Biomaterials Congress, Glasgow, Scotland, 2020 ([abstract](/public/files/wbc2020-abstract.pdf) \| presentation)
+
+* **Mathematical modeling of biodegradation of metallic biomaterials using reaction-diffusion equations and level set method**, will be presented at the SIAM Conference on Mathematical Aspects of Materials Science, Bilbao, Spain, 2020 ([abstract](/public/files/siam2020-abstract.pdf) \| presentation)
+
+* **High-performance numerical simulation of biodegradation process with moving boundaries**, presented at the FreeFEM Days, 11th Edition, Paris, France, 2019 ([abstract](/public/files/freefem2019-abstract.pdf) \| [presentation](/public/files/freefem2019-presentation.pdf) \| [video](https://www.youtube.com/watch?v=Gar8C71sx9Y) \| slides source code)
+
+* **Computational modeling of biodegradation of metallic biomaterials**, presented at the 18th National Day on Biomedical Engineering, Brussels, Belgium, 2019 ([abstract](/public/files/national2019-abstract.pdf) \| [poster](/public/files/national2019-poster.pdf))
 
 * **Developing a mathematical model of biodegradable metallic scaffolds for bone tissue engineering applications**, presented at the 7th Belgian Symposium on Tissue Engineering, Hasselt, Belgium, 2019 ([abstract](/public/files/bste2019-abstract.pdf) \| [poster](/public/files/bste2019-poster.pdf))
 
