@@ -44,6 +44,10 @@ In this page, I will try to maintain a list of my publications in a presentive i
 
 ## Machine Learning and Internet of Things (IoT)
 
+### Theory of Machine Learning
+
+* F. Firouzi, B. Farahani, F. Ye, **M. Barzegari**, "[Machine Learning for IoT](https://link.springer.com/chapter/10.1007%2F978-3-030-30367-9_5)", in *Intelligent Internet of Things*, Springer International Publishing, pp. 243–313, 2020
+
 ### Artificial Neural Networks, Support Vector Machines
 
 * B. Farahani, **M. Barzegari**, F. Shams, K. A. Shaik, "[Towards collaborative intelligent IoT eHealth: From device to fog, and cloud](https://www.sciencedirect.com/science/article/pii/S0141933119303928)", *Microprocessors and Microsystems*, vol. 72, 102938, 2020
