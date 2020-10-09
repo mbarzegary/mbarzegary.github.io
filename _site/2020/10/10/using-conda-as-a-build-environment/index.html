@@ -27,7 +27,7 @@
 
   <title>
     
-      Flexibility of having multiple parallel instances of Linux using WSL &middot; Mojtaba Barzegari
+      Using Conda as a build environment for Linux &middot; Mojtaba Barzegari
     
   </title>
 
@@ -183,25 +183,22 @@
 
     <div class="content container">
       <div class="post">
-  <h1 class="post-title">Flexibility of having multiple parallel instances of Linux using WSL</h1>
-  <span class="post-date">29 Sep 2020</span>
-  <p>Working with Windows can be truly a nightmare in scientific computing projects. The main reason behind this is that most of the scientific computing libraries have developed natively for Linux, and in the case of cross-platform ones, the building and installation process on Linux is more straightforward and easy to accomplish. In addition to this, the freedom you have while working with the command line interface can never be experienced in Windows with PowerShell or the traditional Command Prompt.</p>
+  <h1 class="post-title">Using Conda as a build environment for Linux</h1>
+  <span class="post-date">10 Oct 2020</span>
+  <p>When it comes to installing software programs and libraries on Linux, compiling from source code is a first-class citizen. I mean it’s the most preferred way and has been there to save lots of time from software developers to meet the different requirements of different hardware/software configurations on a wide variety of Linux distributions. This process has its own challenges, especially in case of installing and satisfying the required dependencies, a task that can be quite nightmarish (of course not as bad as as the nostalgic <a href="https://en.wikipedia.org/wiki/DLL_Hell">DLL hell</a> in Windows). It can get even worse when you don’t have root access to install the dependencies, which happens every now and then in daily life of a computational researcher when he/she wants to do this on a remote cluster or a university supercomputer.</p>
 
-<p>So why are we talking about this when Linux is there and we don’t need to stick to Windows? The problem arises when you work for a big organization that doesn’t allow Linux to be installed on your machine because all the operational workflow, communication systems, and things like that are going to take place in Windows (which is indeed my case at KU Leuven, although I have installed an ILLEGAL dual boot version of Linux by bypassing the organizational Bitlocker, but it’s not always feasible and convenient to reboot to Windows to join a meeting, sign something or print a document).</p>
+<p>A potential solution to this issue is taking advantage of container technologies like <a href="https://docs.docker.com/get-started/">Docker</a> or <a href="https://singularity.lbl.gov/quickstart">Singularity</a>, but what if we don’t have access to these packages as well? True, the most trivial solution would be compiling all the dependencies also from source code, but you should go for it only if you have super “enough time” as it can be an endless task. This is something I did once to build <a href="https://freefem.org/">FreeFEM</a> on an old cluster, and to be honest, it was something I will never go for that again because it required me to compile not only all the dependencies but the compilers as well (a process called “<a href="https://en.wikipedia.org/wiki/Bootstrapping_(compilers)">Bootstrapping</a>”). By the way, that was fun enough to be told later, and yes, I should write about it at some point.</p>
 
-<p>The solution to this problem was released by Microsoft several years ago, a feature of Windows called <a href="https://en.wikipedia.org/wiki/Windows_Subsystem_for_Linux">Windows Subsystem for Linux (WSL)</a>, providing you with an emulated Linux kernel on top of which you can install your favorite distribution. It gives you full terminal access as well as limited support for running graphical applications (with some tricks of course). Recently, they have also extended and upgraded this feature to a real Linux kernel in WSL 2 (which I haven’t tested yet), which has also some cool and long awaited features such as GPU support.</p>
+<p>So, is there any other option? Yes, there is. Although people know it as a virtual environment manager for Python, <a href="https://docs.conda.io/en/latest/">Conda</a> can be used in a more generalized manner, and it can be a lifesaver for the aforementioned issue as it provides a fully isolated environment (like containers but without living directly on the kernel) to install the required libraries and compilers. Above this all, it’s very easy to install Conda on a Linux system without the root privilege and any previous software dependency. Yes, what can be better than that?</p>
 
-<p>But, beside this, WSL can be tweaked to bring even more productivity especially if you want to test multiple libraries and different configurations without touching your previous working instances of configured Linux (which indeed happens every now and then in scientific computing). Doing this in a native installation of Linux (like with <code class="highlighter-rouge">chroot</code>) requires some effort. Having multiple instances of the same Linux distribution in WSL is not supported out-of-the-box but can be accomplished using a less-known, yet fantastic tool called <a href="https://github.com/DDoSolitary/">LxRunOffline</a>. The simplest way to install LxRunOffline is by downloading the compiled binaries from GitHub. Adding the executable path to the “Path” environment variable is highly recommended. After doing that, a new instance can be installed as simple as:</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; LxRunOffline i -n &lt;name_of_the_instance&gt; -d &lt;isntallation_location&gt; -f &lt;path_of_the_downloaded_image&gt; -s
-</code></pre></div></div>
-<p>in which the <code class="highlighter-rouge">i</code> argument indicates the installation action (to see all available operations, execute <code class="highlighter-rouge">LxRunOffline</code> without any action). Then, the installed instance can be run using:</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; LxRunOffline r -n &lt;name_of_the_instance&gt;
-</code></pre></div></div>
-<p>You can encapsulate this command in a batch file, which can be placed on Desktop (or even better somewhere in “Path”, so you can run it directly from Command Prompt in any directory) for an easier access.</p>
+<p>Technically speaking, compiling things on a Conda environment can be considered as “pseudo-cross-compiling”, a sub-category of “<a href="https://en.wikipedia.org/wiki/Cross_compiler">cross-compiling</a>” (a common term you may frequently hear about in the field of embedded systems in which you compile a program on a system but run it somewhere else on a different architecture). But, I cannot describe pseudo-cross-compiling better than how the Anaconda team has documented it in <a href="https://docs.conda.io/projects/conda-build/en/latest/resources/compiler-tools.html">Anaconda compiler tools</a>, so I just quote the relevant part here:</p>
+<blockquote>
+  <p>Anaconda’s compilers for Linux are built with something called crosstool-ng. They include not only GCC but also a “sysroot” with glibc, as well as the rest of the toolchain (binutils). Ordinarily, the sysroot is something that your system provides, and it is what establishes the libc compatibility bound for your compiled code. Any compilation that uses a sysroot other than the system sysroot is said to be “cross-compiling.” When the target OS and the build OS are the same, it is called a “pseudo-cross-compiler”. This is the case for normal builds with Anaconda’s compilers on Linux.</p>
+</blockquote>
 
-<p>And now, the great flexibility comes with the freedom of choosing whatever you want as the distribution. What I use most often for this purpose is <a href="https://ubuntu.com/core">Ubuntu Core</a>, a light-weight Linux distribution aimed for IoT devices, but with APT package manager installed, which enables me to start with a tiny Linux installation, and then configure it to fit my needs. By doing this, I can quickly have a fresh installation of Linux to test or run something without affecting the previous configurations I have. A wide variety of Ubuntu Core images can be downloaded <a href="https://partner-images.canonical.com/core/">here</a>. A typical command for such a purpose can be then something like this:</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; LxRunOffline i -n ubuntu-4.6 -d c:\wsl\ubuntu-test46 -f ubuntu-bionic-core-cloudimg-amd64-root.tar.gz -s
-</code></pre></div></div>
+<p>It’s very cool, isn’t it?</p>
+
+<p>A couple of weeks ago, a colleague of mine asked me for a solution to install <a href="https://openfoam.org/">OpenFOAM</a> on a cluster on which he didn’t have root privilege. OpenFOAM has a straightforward <a href="https://openfoam.org/download/source/">installation procedure from the source code</a> but the thing is it requires root privileges to install required dependencies, which is obviously not possible in this case. So, I tried Conda for the first time for this purpose, and indeed, it  worked like a charm for us. Yes, it was a bit challenging to make it work (which I should write about in a separate post), but it helped us to compile a complex software from scratch totally independent from the underlying OS and its configurations. In the next post, I will document the procedure in detail as an example of this approach.</p>
 
 </div>
 
@@ -211,9 +208,9 @@
     
       <li>
         <h3>
-          <a href="/2020/10/10/using-conda-as-a-build-environment/">
-            Using Conda as a build environment for Linux
-            <small>10 Oct 2020</small>
+          <a href="/2020/09/29/wsl-multi-instance/">
+            Flexibility of having multiple parallel instances of Linux using WSL
+            <small>29 Sep 2020</small>
           </a>
         </h3>
       </li>
