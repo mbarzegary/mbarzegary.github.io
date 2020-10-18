@@ -4,13 +4,167 @@
  <title>Mojtaba Barzegari</title>
  <link href="https://mbarzegary.github.io//atom.xml" rel="self"/>
  <link href="https://mbarzegary.github.io//"/>
- <updated>2020-10-17T21:49:34+02:00</updated>
+ <updated>2020-10-18T14:31:26+02:00</updated>
  <id>https://mbarzegary.github.io/</id>
  <author>
    <name></name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>Building OpenFOAM in a Conda virtual environment</title>
+   <link href="https://mbarzegary.github.io//2020/10/18/build-openfoam-in-conda-environment/"/>
+   <updated>2020-10-18T00:00:00+02:00</updated>
+   <id>https://mbarzegary.github.io//2020/10/18/build-openfoam-in-conda-environment</id>
+   <content type="html">&lt;p&gt;In &lt;a href=&quot;/2020/10/10/using-conda-as-a-build-environment/&quot;&gt;previous post&lt;/a&gt;, I explained why a Conda environment would be interesting for building software programs in an isolated box. In this post, as an example, I describe how it works if we want to build &lt;a href=&quot;https://openfoam.org/&quot;&gt;OpenFOAM&lt;/a&gt; in this manner. As I said, the main advantage of doing this is the possibility of building/installing software without the root privilege, a scenario that happens frequently while working with clusters and supercomputers. A root previlege is required for following the &lt;a href=&quot;https://openfoam.org/download/source/&quot;&gt;official build procedure for OpenFOAM&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;The following procedure is independent of the underlying Linux installation, and only a tool to download Miniconda and a text editor suffice (here I have used &lt;code class=&quot;highlighter-rouge&quot;&gt;wget&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;nano&lt;/code&gt; for these purposes). Also, it’s worth mentioning that all the paths are taken from my system, so throughout the tutorial, make sure to double-check all the paths/directories to make sure that they match your system configuration. The tutorial is prepared for &lt;code class=&quot;highlighter-rouge&quot;&gt;bash&lt;/code&gt;, but the approach should be more or less the same for other shells and can be modified accordingly&lt;/p&gt;
+
+&lt;p&gt;Okay, the first step is to download and install Conda. I personally prefer &lt;a href=&quot;https://docs.conda.io/en/latest/miniconda.html&quot;&gt;Miniconda&lt;/a&gt; over a full &lt;a href=&quot;https://www.anaconda.com/&quot;&gt;Anaconda&lt;/a&gt; installation, which usually leaves you with a bunch of unused packages and a tremendous amount of disk usage. Miniconda provides you with a minimal installation of Conda, and you can use it to download the necessary packages only. So, let’s download the installer and run it.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;bash Miniconda3-latest-Linux-x86_64.sh
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Follow the onscreen instruction. In the last step, you may choose to auto-initialize the base environment every time you open your BASH session. Doing this saves you from doing some extra steps to add the &lt;code class=&quot;highlighter-rouge&quot;&gt;conda&lt;/code&gt; executable path to the &lt;code class=&quot;highlighter-rouge&quot;&gt;PATH&lt;/code&gt; environment variable, so it’s better to let the installer add the appropriate statements to your profile’s &lt;code class=&quot;highlighter-rouge&quot;&gt;.bashrc&lt;/code&gt;. If not, execute this command after adding the bin folder to &lt;code class=&quot;highlighter-rouge&quot;&gt;PATH&lt;/code&gt; and restarting your session:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;conda init bash
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;So, now, Conda is fully under our control to follow our orders. Let’s create a virtual environment. We call it “gcc” just because we want to use &lt;a href=&quot;https://gcc.gnu.org/&quot;&gt;GNU Compiler Collection&lt;/a&gt; to build things.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;conda create &lt;span class=&quot;nt&quot;&gt;-n&lt;/span&gt; gcc
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;By activating the environment, we isolate ourselves from the rest of the system. Let’s do it.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;conda activate gcc
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Okay, it’s time to install all the prerequisites in the virtual environment. It will be as easy as calling &lt;code class=&quot;highlighter-rouge&quot;&gt;conda install&lt;/code&gt; command.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;conda activate gcc
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;conda &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;gcc_linux-64
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;conda &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;gxx_linux-64
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;conda &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;gfortran_linux-64
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;conda &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;cmake
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;conda &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;openmpi
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;conda &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;flex
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;conda &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;bison
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;conda &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;boost
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;conda &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;curl
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;conda &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;git
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Although this is something done automatically, let’s double-check that the gcc bundled scripts are run to change the build environment variables (like &lt;code class=&quot;highlighter-rouge&quot;&gt;$CC&lt;/code&gt;) to point to the compilers installed inside the virtual environment.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ $CONDA_PREFIX&lt;/span&gt;/etc/conda/activate.d/activate-gcc_linux-64.sh
+&lt;span class=&quot;nv&quot;&gt;$ $CONDA_PREFIX&lt;/span&gt;/etc/conda/activate.d/activate-gxx_linux-64.sh
+&lt;span class=&quot;nv&quot;&gt;$ $CONDA_PREFIX&lt;/span&gt;/etc/conda/activate.d/activate-gfortran_linux-64.sh
+&lt;span class=&quot;nv&quot;&gt;$ $CONDA_PREFIX&lt;/span&gt;/etc/conda/activate.d/activate-binutils_linux-64.sh
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;In a standard world, everything should be ready till now, and software build routines should look for the environment variables to find the appropriate compilers. For example, a standard build command in a makefile should be something like &lt;code class=&quot;highlighter-rouge&quot;&gt;$CC source.c&lt;/code&gt; and not &lt;code class=&quot;highlighter-rouge&quot;&gt;gcc source.c&lt;/code&gt;. But, we don’t live in such a world, and it means that not every single piece of software follows this principle. Unfortunately, OpenFOAM is not an exception in this regard, and its build routine calls the compilers’ executable directly. This creates an issue for our approach because it indeed calls the system compilers (if they are installed) and not the ones we have installed in our virtual environment. This is highly dangerous for our case, so let’s create some soft links to ask BASH to compensate.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$CONDA_PREFIX&lt;/span&gt;/bin/
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;ln&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-s&lt;/span&gt; x86_64-conda_cos6-linux-gnu-gcc gcc
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;ln&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-s&lt;/span&gt; x86_64-conda_cos6-linux-gnu-g++ g++
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;ln&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-s&lt;/span&gt; x86_64-conda_cos6-linux-gnu-c++ c++
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;ln&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-s&lt;/span&gt; x86_64-conda_cos6-linux-gnu-gfortran gfortran
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;ln&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-s&lt;/span&gt; x86_64-conda_cos6-linux-gnu-ld ld
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;ln&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-s&lt;/span&gt; x86_64-conda_cos6-linux-gnu-as as
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;ln&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-s&lt;/span&gt; x86_64-conda_cos6-linux-gnu-nm nm
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;ln&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-s&lt;/span&gt; x86_64-conda_cos6-linux-gnu-cpp cpp
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;ln&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-s&lt;/span&gt; x86_64-conda_cos6-linux-gnu-ld.bfd ld.bfd
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;ln&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-s&lt;/span&gt; x86_64-conda_cos6-linux-gnu-ld.gold ld.gold
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;ln&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-s&lt;/span&gt; x86_64-conda_cos6-linux-gnu-ar ar
+&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; -
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Now, if you run &lt;code class=&quot;highlighter-rouge&quot;&gt;which gcc&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;which g++&lt;/code&gt;, you should see it pointing to the virtual environment compilers. Yes? So, let’s go on by cloning the source codes and do the actual build.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;mkdir &lt;/span&gt;openfoam
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;openfoam/
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git clone https://github.com/OpenFOAM/OpenFOAM-8.git
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git clone https://github.com/OpenFOAM/ThirdParty-8.git
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;OpenFOAM comes with its own way of initializing things in BASH, and we need to follow its principle. No problem man, we will.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;source &lt;/span&gt;OpenFOAM-8/etc/bashrc
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;ThirdParty-8/
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Cool. It’s time to start the build by typing &lt;code class=&quot;highlighter-rouge&quot;&gt;./Allwmake&lt;/code&gt;, no? No, it’s not. If you proceed, you will face lots of compiling/linking errors. It’s because we have installed all the required libraries inside the Conda environment (and not the known system directories like &lt;code class=&quot;highlighter-rouge&quot;&gt;/usr/include&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;/usr/lib&lt;/code&gt;). We should tell the compiler where to seek them. This is also something that should be solved in a standard way, but (not surprisingly) going for conventional things doesn’t work for OpenFOAM. As a result, we edit the config files directly. A horrible idea, but something that usually works for such issues. Let’s edit the “Scotch” build config to tell it where to find the “zlib” library. Run this command:&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;nano etc/wmakeFiles/scotch/Makefile.inc.i686_pc_linux2.shlib-OpenFOAM
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;and append these lines to its end:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;CFLAGS  += -I /home/mojtaba/miniconda3/pkgs/zlib-1.2.11-h7b6447c_3/include 
+LDFLAGS += -L /home/mojtaba/miniconda3/pkgs/zlib-1.2.11-h7b6447c_3/lib
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Make sure to adapt the directories to something that matches your system paths. And now, we are ready to start building the third-party tools for OpenFOAM (which is literally just the Scotch library as we don’t intend to build ParaView).&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;./Allwmake
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Then, we refresh the OpenFOAM variables and go to the main source directory.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;wmRefresh
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; ../OpenFOAM-8/
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;We should perform some more modifications here (pay attention to the paths and adapt them before saving the files). Run:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;nano wmake/rules/linux64Gcc/c
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;and add this to the end:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;CFLAGS += -I /home/mojtaba/miniconda3/pkgs/zlib-1.2.11-h7b6447c_3/include -I /home/mojtaba/miniconda3/pkgs/flex-2.6.4-ha10e3a4_1/include/
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Do a similar thing for the C++ compiler flags:&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;nano wmake/rules/linux64Gcc/c++
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;and add:&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;c++FLAGS +&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-I&lt;/span&gt; /home/mojtaba/miniconda3/pkgs/zlib-1.2.11-h7b6447c_3/include &lt;span class=&quot;nt&quot;&gt;-I&lt;/span&gt; /home/mojtaba/miniconda3/pkgs/flex-2.6.4-ha10e3a4_1/include/
+c++FLAGS +&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-Wl&lt;/span&gt;,-rpath-link,/home/mojtaba/openfoam/ThirdParty-8/platforms/linux64Gcc/gperftools-svn/lib 
+c++FLAGS +&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-Wl&lt;/span&gt;,-rpath-link,/home/mojtaba/openfoam/OpenFOAM-8/platforms/linux64GccDPInt32Opt/lib/openmpi-system 
+c++FLAGS +&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-Wl&lt;/span&gt;,-rpath-link,/home/mojtaba/openfoam/ThirdParty-8/platforms/linux64GccDPInt32/lib/openmpi-system 
+c++FLAGS +&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-Wl&lt;/span&gt;,-rpath-link,/home/mojtaba/openfoam/site/8/platforms/linux64GccDPInt32Opt/lib 
+c++FLAGS +&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-Wl&lt;/span&gt;,-rpath-link,/home/mojtaba/openfoam/OpenFOAM-8/platforms/linux64GccDPInt32Opt/lib 
+c++FLAGS +&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-Wl&lt;/span&gt;,-rpath-link,/home/mojtaba/openfoam/ThirdParty-8/platforms/linux64GccDPInt32/lib 
+c++FLAGS +&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-Wl&lt;/span&gt;,-rpath-link,/home/mojtaba/openfoam/OpenFOAM-8/platforms/linux64GccDPInt32Opt/lib/dummy
+c++FLAGS +&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-Wl&lt;/span&gt;,-rpath-link,/home/mojtaba/miniconda3/pkgs/zlib-1.2.11-h7b6447c_3/lib
+c++FLAGS +&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-Wl&lt;/span&gt;,-rpath-link,/home/mojtaba/miniconda3/envs/gcc/lib
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;And the last one, which is a little bit tricky (because &lt;code class=&quot;highlighter-rouge&quot;&gt;make&lt;/code&gt; is sensitive to indentation and you should pay attention to not ruin the structure of the file), is to help the linker find “zlib” again. Run this:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;nano src/OpenFOAM/Make/options
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;and modify the &lt;code class=&quot;highlighter-rouge&quot;&gt;LIB_LIBS&lt;/code&gt; variable to look like this (it’s safer to gather them all in one line to avoid mistakes):&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;LIB_LIBS = $(FOAM_LIBBIN)/libOSspecific.o -L$(FOAM_LIBBIN)/dummy -lPstream -L /home/mojtaba/miniconda3/pkgs/zlib-1.2.11-h7b6447c_3/lib -lz
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Okay, so we are all set to continue. Let’s run the build command:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;./Allwmake &lt;span class=&quot;nt&quot;&gt;-j&lt;/span&gt; 8
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;You should adjust the number of CPU cores you want to employ (which implies the number of concurrent compile commands running at the same time). The more, the better. I had 8 free cores, so I have entered 8 here. It may take up to several hours if you run it without the &lt;code class=&quot;highlighter-rouge&quot;&gt;-j&lt;/code&gt; flag, but for example, with 8 parallel cores, it took less than one and a half hours to finish.&lt;/p&gt;
+
+&lt;p&gt;If it succeeds (which should be the case), we can go on to test if it really works by copying one of the OpenFOAM tutorials and running it.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; ..
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;mkdir &lt;/span&gt;tests
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;tests/
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cp&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$FOAM_TUTORIALS&lt;/span&gt;/incompressible/simpleFoam/pitzDaily &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-r&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;pitzDaily/
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;blockMesh
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;simpleFoam
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;You should see the OpenFOAM simulation running. And that’s it. Relatively straightforward, no? To use it next time you open a BASH session, you should activate the virtual environment again (&lt;code class=&quot;highlighter-rouge&quot;&gt;conda activate gcc&lt;/code&gt;) and run the initialization script (&lt;code class=&quot;highlighter-rouge&quot;&gt;source OpenFOAM-8/etc/bashrc&lt;/code&gt;), and there you go.&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Using Conda as a build environment for Linux</title>

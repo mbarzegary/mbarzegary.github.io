@@ -181,7 +181,7 @@
       <li class="sidebar-nav-item">Currently v</li> -->
     </ul>
 
-    <p>Copyleft 2020. No rights reserved.</p>
+    <p>Copyleft 2020. No right reserved.</p>
   </div>
 </div>
 
@@ -195,6 +195,164 @@
 
 
 <!-- <div class="posts">
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/2020/10/18/build-openfoam-in-conda-environment/">
+        Building OpenFOAM in a Conda virtual environment
+      </a>
+    </h1>
+
+    <span class="post-date">18 Oct 2020</span>
+
+    <p>In <a href="/2020/10/10/using-conda-as-a-build-environment/">previous post</a>, I explained why a Conda environment would be interesting for building software programs in an isolated box. In this post, as an example, I describe how it works if we want to build <a href="https://openfoam.org/">OpenFOAM</a> in this manner. As I said, the main advantage of doing this is the possibility of building/installing software without the root privilege, a scenario that happens frequently while working with clusters and supercomputers. A root previlege is required for following the <a href="https://openfoam.org/download/source/">official build procedure for OpenFOAM</a>.</p>
+
+<p>The following procedure is independent of the underlying Linux installation, and only a tool to download Miniconda and a text editor suffice (here I have used <code class="highlighter-rouge">wget</code> and <code class="highlighter-rouge">nano</code> for these purposes). Also, it’s worth mentioning that all the paths are taken from my system, so throughout the tutorial, make sure to double-check all the paths/directories to make sure that they match your system configuration. The tutorial is prepared for <code class="highlighter-rouge">bash</code>, but the approach should be more or less the same for other shells and can be modified accordingly</p>
+
+<p>Okay, the first step is to download and install Conda. I personally prefer <a href="https://docs.conda.io/en/latest/miniconda.html">Miniconda</a> over a full <a href="https://www.anaconda.com/">Anaconda</a> installation, which usually leaves you with a bunch of unused packages and a tremendous amount of disk usage. Miniconda provides you with a minimal installation of Conda, and you can use it to download the necessary packages only. So, let’s download the installer and run it.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">cd</span>
+<span class="nv">$ </span>wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+<span class="nv">$ </span>bash Miniconda3-latest-Linux-x86_64.sh
+</code></pre></div></div>
+
+<p>Follow the onscreen instruction. In the last step, you may choose to auto-initialize the base environment every time you open your BASH session. Doing this saves you from doing some extra steps to add the <code class="highlighter-rouge">conda</code> executable path to the <code class="highlighter-rouge">PATH</code> environment variable, so it’s better to let the installer add the appropriate statements to your profile’s <code class="highlighter-rouge">.bashrc</code>. If not, execute this command after adding the bin folder to <code class="highlighter-rouge">PATH</code> and restarting your session:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>conda init bash
+</code></pre></div></div>
+
+<p>So, now, Conda is fully under our control to follow our orders. Let’s create a virtual environment. We call it “gcc” just because we want to use <a href="https://gcc.gnu.org/">GNU Compiler Collection</a> to build things.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>conda create <span class="nt">-n</span> gcc
+</code></pre></div></div>
+
+<p>By activating the environment, we isolate ourselves from the rest of the system. Let’s do it.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>conda activate gcc
+</code></pre></div></div>
+
+<p>Okay, it’s time to install all the prerequisites in the virtual environment. It will be as easy as calling <code class="highlighter-rouge">conda install</code> command.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>conda activate gcc
+<span class="nv">$ </span>conda <span class="nb">install </span>gcc_linux-64
+<span class="nv">$ </span>conda <span class="nb">install </span>gxx_linux-64
+<span class="nv">$ </span>conda <span class="nb">install </span>gfortran_linux-64
+<span class="nv">$ </span>conda <span class="nb">install </span>cmake
+<span class="nv">$ </span>conda <span class="nb">install </span>openmpi
+<span class="nv">$ </span>conda <span class="nb">install </span>flex
+<span class="nv">$ </span>conda <span class="nb">install </span>bison
+<span class="nv">$ </span>conda <span class="nb">install </span>boost
+<span class="nv">$ </span>conda <span class="nb">install </span>curl
+<span class="nv">$ </span>conda <span class="nb">install </span>git
+</code></pre></div></div>
+
+<p>Although this is something done automatically, let’s double-check that the gcc bundled scripts are run to change the build environment variables (like <code class="highlighter-rouge">$CC</code>) to point to the compilers installed inside the virtual environment.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ $CONDA_PREFIX</span>/etc/conda/activate.d/activate-gcc_linux-64.sh
+<span class="nv">$ $CONDA_PREFIX</span>/etc/conda/activate.d/activate-gxx_linux-64.sh
+<span class="nv">$ $CONDA_PREFIX</span>/etc/conda/activate.d/activate-gfortran_linux-64.sh
+<span class="nv">$ $CONDA_PREFIX</span>/etc/conda/activate.d/activate-binutils_linux-64.sh
+</code></pre></div></div>
+
+<p>In a standard world, everything should be ready till now, and software build routines should look for the environment variables to find the appropriate compilers. For example, a standard build command in a makefile should be something like <code class="highlighter-rouge">$CC source.c</code> and not <code class="highlighter-rouge">gcc source.c</code>. But, we don’t live in such a world, and it means that not every single piece of software follows this principle. Unfortunately, OpenFOAM is not an exception in this regard, and its build routine calls the compilers’ executable directly. This creates an issue for our approach because it indeed calls the system compilers (if they are installed) and not the ones we have installed in our virtual environment. This is highly dangerous for our case, so let’s create some soft links to ask BASH to compensate.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">cd</span> <span class="nv">$CONDA_PREFIX</span>/bin/
+<span class="nv">$ </span><span class="nb">ln</span> <span class="nt">-s</span> x86_64-conda_cos6-linux-gnu-gcc gcc
+<span class="nv">$ </span><span class="nb">ln</span> <span class="nt">-s</span> x86_64-conda_cos6-linux-gnu-g++ g++
+<span class="nv">$ </span><span class="nb">ln</span> <span class="nt">-s</span> x86_64-conda_cos6-linux-gnu-c++ c++
+<span class="nv">$ </span><span class="nb">ln</span> <span class="nt">-s</span> x86_64-conda_cos6-linux-gnu-gfortran gfortran
+<span class="nv">$ </span><span class="nb">ln</span> <span class="nt">-s</span> x86_64-conda_cos6-linux-gnu-ld ld
+<span class="nv">$ </span><span class="nb">ln</span> <span class="nt">-s</span> x86_64-conda_cos6-linux-gnu-as as
+<span class="nv">$ </span><span class="nb">ln</span> <span class="nt">-s</span> x86_64-conda_cos6-linux-gnu-nm nm
+<span class="nv">$ </span><span class="nb">ln</span> <span class="nt">-s</span> x86_64-conda_cos6-linux-gnu-cpp cpp
+<span class="nv">$ </span><span class="nb">ln</span> <span class="nt">-s</span> x86_64-conda_cos6-linux-gnu-ld.bfd ld.bfd
+<span class="nv">$ </span><span class="nb">ln</span> <span class="nt">-s</span> x86_64-conda_cos6-linux-gnu-ld.gold ld.gold
+<span class="nv">$ </span><span class="nb">ln</span> <span class="nt">-s</span> x86_64-conda_cos6-linux-gnu-ar ar
+<span class="nb">cd</span> -
+</code></pre></div></div>
+
+<p>Now, if you run <code class="highlighter-rouge">which gcc</code> or <code class="highlighter-rouge">which g++</code>, you should see it pointing to the virtual environment compilers. Yes? So, let’s go on by cloning the source codes and do the actual build.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">mkdir </span>openfoam
+<span class="nv">$ </span><span class="nb">cd </span>openfoam/
+<span class="nv">$ </span>git clone https://github.com/OpenFOAM/OpenFOAM-8.git
+<span class="nv">$ </span>git clone https://github.com/OpenFOAM/ThirdParty-8.git
+</code></pre></div></div>
+<p>OpenFOAM comes with its own way of initializing things in BASH, and we need to follow its principle. No problem man, we will.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">source </span>OpenFOAM-8/etc/bashrc
+<span class="nv">$ </span><span class="nb">cd </span>ThirdParty-8/
+</code></pre></div></div>
+
+<p>Cool. It’s time to start the build by typing <code class="highlighter-rouge">./Allwmake</code>, no? No, it’s not. If you proceed, you will face lots of compiling/linking errors. It’s because we have installed all the required libraries inside the Conda environment (and not the known system directories like <code class="highlighter-rouge">/usr/include</code> and <code class="highlighter-rouge">/usr/lib</code>). We should tell the compiler where to seek them. This is also something that should be solved in a standard way, but (not surprisingly) going for conventional things doesn’t work for OpenFOAM. As a result, we edit the config files directly. A horrible idea, but something that usually works for such issues. Let’s edit the “Scotch” build config to tell it where to find the “zlib” library. Run this command:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>nano etc/wmakeFiles/scotch/Makefile.inc.i686_pc_linux2.shlib-OpenFOAM
+</code></pre></div></div>
+<p>and append these lines to its end:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CFLAGS  += -I /home/mojtaba/miniconda3/pkgs/zlib-1.2.11-h7b6447c_3/include 
+LDFLAGS += -L /home/mojtaba/miniconda3/pkgs/zlib-1.2.11-h7b6447c_3/lib
+</code></pre></div></div>
+<p>Make sure to adapt the directories to something that matches your system paths. And now, we are ready to start building the third-party tools for OpenFOAM (which is literally just the Scotch library as we don’t intend to build ParaView).</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>./Allwmake
+</code></pre></div></div>
+
+<p>Then, we refresh the OpenFOAM variables and go to the main source directory.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>wmRefresh
+<span class="nv">$ </span><span class="nb">cd</span> ../OpenFOAM-8/
+</code></pre></div></div>
+
+<p>We should perform some more modifications here (pay attention to the paths and adapt them before saving the files). Run:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>nano wmake/rules/linux64Gcc/c
+</code></pre></div></div>
+<p>and add this to the end:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CFLAGS += -I /home/mojtaba/miniconda3/pkgs/zlib-1.2.11-h7b6447c_3/include -I /home/mojtaba/miniconda3/pkgs/flex-2.6.4-ha10e3a4_1/include/
+</code></pre></div></div>
+<p>Do a similar thing for the C++ compiler flags:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>nano wmake/rules/linux64Gcc/c++
+</code></pre></div></div>
+<p>and add:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>c++FLAGS +<span class="o">=</span> <span class="nt">-I</span> /home/mojtaba/miniconda3/pkgs/zlib-1.2.11-h7b6447c_3/include <span class="nt">-I</span> /home/mojtaba/miniconda3/pkgs/flex-2.6.4-ha10e3a4_1/include/
+c++FLAGS +<span class="o">=</span> <span class="nt">-Wl</span>,-rpath-link,/home/mojtaba/openfoam/ThirdParty-8/platforms/linux64Gcc/gperftools-svn/lib 
+c++FLAGS +<span class="o">=</span> <span class="nt">-Wl</span>,-rpath-link,/home/mojtaba/openfoam/OpenFOAM-8/platforms/linux64GccDPInt32Opt/lib/openmpi-system 
+c++FLAGS +<span class="o">=</span> <span class="nt">-Wl</span>,-rpath-link,/home/mojtaba/openfoam/ThirdParty-8/platforms/linux64GccDPInt32/lib/openmpi-system 
+c++FLAGS +<span class="o">=</span> <span class="nt">-Wl</span>,-rpath-link,/home/mojtaba/openfoam/site/8/platforms/linux64GccDPInt32Opt/lib 
+c++FLAGS +<span class="o">=</span> <span class="nt">-Wl</span>,-rpath-link,/home/mojtaba/openfoam/OpenFOAM-8/platforms/linux64GccDPInt32Opt/lib 
+c++FLAGS +<span class="o">=</span> <span class="nt">-Wl</span>,-rpath-link,/home/mojtaba/openfoam/ThirdParty-8/platforms/linux64GccDPInt32/lib 
+c++FLAGS +<span class="o">=</span> <span class="nt">-Wl</span>,-rpath-link,/home/mojtaba/openfoam/OpenFOAM-8/platforms/linux64GccDPInt32Opt/lib/dummy
+c++FLAGS +<span class="o">=</span> <span class="nt">-Wl</span>,-rpath-link,/home/mojtaba/miniconda3/pkgs/zlib-1.2.11-h7b6447c_3/lib
+c++FLAGS +<span class="o">=</span> <span class="nt">-Wl</span>,-rpath-link,/home/mojtaba/miniconda3/envs/gcc/lib
+</code></pre></div></div>
+<p>And the last one, which is a little bit tricky (because <code class="highlighter-rouge">make</code> is sensitive to indentation and you should pay attention to not ruin the structure of the file), is to help the linker find “zlib” again. Run this:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>nano src/OpenFOAM/Make/options
+</code></pre></div></div>
+<p>and modify the <code class="highlighter-rouge">LIB_LIBS</code> variable to look like this (it’s safer to gather them all in one line to avoid mistakes):</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>LIB_LIBS = $(FOAM_LIBBIN)/libOSspecific.o -L$(FOAM_LIBBIN)/dummy -lPstream -L /home/mojtaba/miniconda3/pkgs/zlib-1.2.11-h7b6447c_3/lib -lz
+</code></pre></div></div>
+
+<p>Okay, so we are all set to continue. Let’s run the build command:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>./Allwmake <span class="nt">-j</span> 8
+</code></pre></div></div>
+
+<p>You should adjust the number of CPU cores you want to employ (which implies the number of concurrent compile commands running at the same time). The more, the better. I had 8 free cores, so I have entered 8 here. It may take up to several hours if you run it without the <code class="highlighter-rouge">-j</code> flag, but for example, with 8 parallel cores, it took less than one and a half hours to finish.</p>
+
+<p>If it succeeds (which should be the case), we can go on to test if it really works by copying one of the OpenFOAM tutorials and running it.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">cd</span> ..
+<span class="nv">$ </span><span class="nb">mkdir </span>tests
+<span class="nv">$ </span><span class="nb">cd </span>tests/
+<span class="nv">$ </span><span class="nb">cp</span> <span class="nv">$FOAM_TUTORIALS</span>/incompressible/simpleFoam/pitzDaily <span class="nb">.</span> <span class="nt">-r</span>
+<span class="nv">$ </span><span class="nb">cd </span>pitzDaily/
+<span class="nv">$ </span>blockMesh
+<span class="nv">$ </span>simpleFoam
+</code></pre></div></div>
+
+<p>You should see the OpenFOAM simulation running. And that’s it. Relatively straightforward, no? To use it next time you open a BASH session, you should activate the virtual environment again (<code class="highlighter-rouge">conda activate gcc</code>) and run the initialization script (<code class="highlighter-rouge">source OpenFOAM-8/etc/bashrc</code>), and there you go.</p>
+
+  </div>
   
   <div class="post">
     <h1 class="post-title">
