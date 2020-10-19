@@ -9,7 +9,9 @@ Here, I keep a list of my presentations and posters, presented at various intern
 
 * **Computational modeling of in-vitro biodegradation of metallic scaffolds and bone implants**, will be presented at the 11th World Biomaterials Congress, Glasgow, Scotland, 2020 ([abstract](/public/files/wbc2020-abstract.pdf) \| presentation)
 
-* **Mathematical modeling of biodegradation of metallic biomaterials using reaction-diffusion equations and level set method**, will be presented at the SIAM Conference on Mathematical Aspects of Materials Science, Bilbao, Spain, 2020 ([abstract](/public/files/siam2020-abstract.pdf) \| presentation)
+* **Jupyter for uncertainty quantification and parameter estimation of computational models**, presented at the JupyterCon 2020, 2020 ([abstract](/public/files/jupytercon2020-abstract.pdf) \| [poster](/public/files/jupytercon2020-poster.pdf) \| [video](https://www.youtube.com/watch?v=LGOBPWnhz04))
+
+* **Mathematical modeling of biodegradation of metallic biomaterials using reaction-diffusion equations and level set method**, supposed to be presented at the SIAM Conference on Mathematical Aspects of Materials Science, Bilbao, Spain, 2020 ([abstract](/public/files/siam2020-abstract.pdf))
 
 * **High-performance numerical simulation of biodegradation process with moving boundaries**, presented at the FreeFEM Days, 11th Edition, Paris, France, 2019 ([abstract](/public/files/freefem2019-abstract.pdf) \| [presentation](/public/files/freefem2019-presentation.pdf) \| [video](https://www.youtube.com/watch?v=Gar8C71sx9Y) \| [slides source code](https://github.com/mbarzegary/presentation_freefem2019))
 
