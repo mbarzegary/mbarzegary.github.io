@@ -195,6 +195,66 @@
   
   <div class="post">
     <h1 class="post-title">
+      <a href="/2020/11/06/derive-weak-form-pde/">
+        Deriving weak formulation of partial differential equations
+      </a>
+    </h1>
+
+    <span class="post-date">06 Nov 2020</span>
+
+    <!-- <p>The finite element method doesn’t need an introduction, but at the core of this magical method, in its mathematical nature, one challenging step makes it sometimes a bit difficult for newcomers to immediatley jump start and employ finite element to solve partial differential equations (PDEs) numerically. This challenging part is deriving the weak formulation of the PDE, which is indeed one of the very first steps a researcher should take to use the available PDE solvers (like <a href="https://freefem.org/">FreeFEM</a>, <a href="https://fenicsproject.org/">FEniCS</a>, and <a href="https://www.dealii.org/">deal.ii</a>) to simulate a mathematical model.</p>
+
+<p>Although deriving the weak form of a PDE is relatively simple, finding a good reference that demonstrates how to do it in action for the first time can be a bit difficult. This topic is well covered in most of the finite element books (the ones that discuss the mathematical aspects), but you need to go through a bunch of math to find the most essential steps. In this post, I try to explain this process by deriving the weak form of a reaction-diffusion PDE as an example. The equation we want to deal with is:</p>
+
+<script type="math/tex; mode=display">\frac{\partial u}{\partial t}=\nabla \cdot (D   \nabla u)- s u</script>
+
+<p>in which, <script type="math/tex">u=u(\mathbf{x},t)</script> is the state variable we want to find at each point of space and time. This is also called the strong form of the PDE. To obtain the finite element formulation, the weak form of the PDE is required. In order to get this, we define a space of test functions and then, multiply each term of the PDE by any arbitrary function as a member of this space. The test function space is</p>
+
+<script type="math/tex; mode=display">\mathcal{V}=\left\{v(\mathbf{x}) | \mathbf{x} \in {\Omega}, v(\mathbf{x}) \in \mathcal{H}^{1}(\Omega), \text { and } v(\mathbf{x})=0 \text { on } \Gamma\right\}</script>
+
+<p>in which the <script type="math/tex">\Omega</script> is the domain of interest, <script type="math/tex">\Gamma</script> is the boundary of <script type="math/tex">\Omega</script>, and <script type="math/tex">\mathcal{H}^{1}</script> denotes the <a href="https://en.wikipedia.org/wiki/Sobolev_space">Sobolev space</a> of the domain <script type="math/tex">\Omega</script>, which is a space of functions whose derivatives are square-integrable functions in <script type="math/tex">\Omega</script>. The solution of the PDE belongs to a trial function space, which is similarly defined as</p>
+
+<script type="math/tex; mode=display">\mathcal{S}_{t}=\left\{u(\mathbf{x}, t) | \mathbf{x} \in \Omega, t>0, u(\mathbf{x}, t) \in \mathcal{H}^{1}(\Omega), \text { and } \frac{\partial u}{\partial n}=0 \text { on } \Gamma\right\}.</script>
+
+<p>Then, we multiply each term of the PDE to an arbitrary function <script type="math/tex">v \in \mathcal{V}</script>:</p>
+
+<script type="math/tex; mode=display">\frac{\partial u}{\partial t} v=\nabla \cdot (D  \nabla u) v- s u v.</script>
+
+<p>Integrating over the whole domain yields:</p>
+
+<script type="math/tex; mode=display">\int_{\Omega} \frac{\partial u}{\partial t} v d \omega=\int_{\Omega} \nabla \cdot (D  \nabla u) v d \omega-\int_{\Omega} s u v d \omega.</script>
+
+<p>The diffusion term can be split using the <a href="https://en.wikipedia.org/wiki/Integration_by_parts">integration by parts</a> technique:</p>
+
+<script type="math/tex; mode=display">\int_{\Omega} \nabla \cdot (D  \nabla u) v d \omega = \int_{\Omega} \nabla \cdot[v(D  \nabla u)] d \omega-\int_{\Omega} (\nabla v) \cdot(D  \nabla u) d \omega</script>
+
+<p>in which the second term can be converted to a surface integral on the domain boundary by applying the <a href="https://en.wikipedia.org/wiki/Green%27s_theorem">Green’s divergence theory</a>:</p>
+
+<script type="math/tex; mode=display">\int_{\Omega} \nabla \cdot[v(D  \nabla u)] d \omega = \int_{\Gamma} D v \frac{\partial u}{\partial n} d \gamma.</script>
+
+<p>For the temporal term, we use the finite difference method and apply a first-order <a href="https://en.wikipedia.org/wiki/Backward_Euler_method">backward Euler scheme</a> for discretization, which makes it possible to solve the PDE implicitly:</p>
+
+<script type="math/tex; mode=display">\frac{\partial u}{\partial t} = \frac{u-u^{n}}{\Delta t}</script>
+
+<p>where <script type="math/tex">u^n</script> denotes the value of the state variable in the previous time step (or initial condition for the first time step). Inserting all these into the integral form yields:</p>
+
+<script type="math/tex; mode=display">\int_{\Omega} \frac{u-u^{n}}{\Delta t} v d \omega=\int_{\Gamma} D v  \frac{\partial u}{\partial n} d \gamma-\int_{\Omega} D  \nabla u \cdot \nabla v d \omega-\int_{\Omega} s u v d \omega.</script>
+
+<p>The surface integral is zero because there is a no-flux boundary condition on the boundary of the computational domain (defined in the trial function space). By reordering the equation, we get:</p>
+
+<script type="math/tex; mode=display">\int_{\Omega} \frac{u}{\Delta t} v d \omega+\int_{\Omega} D \cdot \nabla \cdot u \nabla v d \omega+\int_{\Omega} s u v d \omega=\int_{\Omega} \frac{u^{n}}{\Delta t} v d \omega</script>
+
+<p>which is the weak form of the PDE and can be written as (by multiplying to <script type="math/tex">\Delta t</script>):</p>
+
+<script type="math/tex; mode=display">\int_{\Omega} {u} v d \omega+\int_{\Omega} \Delta t D  \nabla u \cdot  \nabla v d \omega+\int_{\Omega} \Delta t s u v d \omega=\int_{\Omega} {u^{n}} v d \omega.</script>
+
+<p>So, the problem is finding a function <script type="math/tex">u(t) \in \mathcal{S}_{t}</script> such that for all <script type="math/tex">v \in \mathcal{V}</script> the above equation would be satisfied. Defining and solving this problem is simple and straightforward in a wide variety of available finite element PDE solvers such as FreeFEM.</p>
+
+ -->
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
       <a href="/2020/10/18/build-openfoam-in-conda-environment/">
         Building OpenFOAM in a Conda virtual environment
       </a>
