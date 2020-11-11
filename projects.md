@@ -6,7 +6,9 @@ title: GitHub Projects
 Here is the list of projects in my GitHub account and their corresponding descriptions:
  
 ## Projects
-
+ * [ECG Classification with Federated-Learning and Differential-Privacy in Keras, Convolutional Neural Network Implementation](https://github.com/mbarzegary/ecg-classification-keras-cnn)
+ * [ECG Classification with Federated-Learning in Keras, Shallow Implementation](https://github.com/mbarzegary/ecg-classification-keras-shallow)
+ * [ECG Signals Classification using scikit-learn](https://github.com/mbarzegary/ecg-classification)
  * [Bayesian Optimization for Finite Element Parameter Estimation](https://github.com/mbarzegary/BayesianFEM)
  * [Mastering Machine Learning with Python in Six Steps](https://github.com/mbarzegary/mastering-ml-w-python-in-six-steps)
  * [Auto-generated CV](https://github.com/mbarzegary/MyCV)
