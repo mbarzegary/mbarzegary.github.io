@@ -23,7 +23,7 @@ A plethora of useful books, videos, and online resources are freely available al
 
 * [CFD Python, 12 Steps to Navier-Stokes](https://github.com/barbagroup/CFDPython): A practical set of Jupyter notebooks and videos to understanding the foundations of Computational Fluid Dynamics (CFD).
 
-* [Introduction to Computational Science and Engineering](https://www.youtube.com/playlist?list=PLF706B428FB7BD52C): A comprehensive course to obtain a deep insight into Computational Engineering. Although it is relatively long and time-consuming to watch, but you might be interested in some special topics ([lecture list](https://ocw.mit.edu/courses/mathematics/18-085-computational-science-and-engineering-i-fall-2008/video-lectures/)).
+* [Introduction to Computational Science and Engineering](https://www.youtube.com/playlist?list=PLF706B428FB7BD52C): A comprehensive course to obtain a deep insight into Computational Engineering. Although it is relatively long and time-consuming to watch, but you might be interested in some specific topics ([lecture list](https://ocw.mit.edu/courses/mathematics/18-085-computational-science-and-engineering-i-fall-2008/video-lectures/)).
 
 ## Programming Languages
 
@@ -40,4 +40,6 @@ A plethora of useful books, videos, and online resources are freely available al
 ## Machine Learning
 
 * [Mastering Machine Learning with Python in Six Steps](https://github.com/mbarzegary/mastering-ml-w-python-in-six-steps): A collection of Jupyter notebooks to jump-start learning the basics of Machine Learning.
+
+* [Introduction to Linear Algebra for Applied Machine Learning with Python](https://pabloinsente.github.io/intro-linear-algebra): The best  applied introduction to the basics of linear algebra in Python I've ever seen.
 
