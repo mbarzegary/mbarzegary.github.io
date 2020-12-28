@@ -37,6 +37,8 @@ A plethora of useful books, videos, and online resources are freely available al
 
 * [Think OS, A Brief Introduction to Operating Systems](http://greenteapress.com/thinkos/): The simplest text I've ever found to describe how operating systems work.
 
+* [Learn Git Branching](https://learngitbranching.js.org/): An interactive and fun website to learn Git and it's features.
+
 ## Machine Learning
 
 * [Mastering Machine Learning with Python in Six Steps](https://github.com/mbarzegary/mastering-ml-w-python-in-six-steps): A collection of Jupyter notebooks to jump-start learning the basics of Machine Learning.
