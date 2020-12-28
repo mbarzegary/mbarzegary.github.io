@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
  <title>Mojtaba Barzegari</title>
- <link href="http://localhost:4000/atom.xml" rel="self"/>
- <link href="http://localhost:4000/"/>
- <updated>2020-12-28T13:15:28+01:00</updated>
- <id>http://localhost:4000</id>
+ <link href="https://mbarzegary.github.io//atom.xml" rel="self"/>
+ <link href="https://mbarzegary.github.io//"/>
+ <updated>2020-12-28T19:10:57+01:00</updated>
+ <id>https://mbarzegary.github.io/</id>
  <author>
    <name></name>
    <email></email>
@@ -13,10 +13,78 @@
 
  
  <entry>
+   <title>Solving Stefan (moving-boundary) formulation of a diffusion problem using numerical and symbolic computing - Part 1</title>
+   <link href="https://mbarzegary.github.io//2020/12/28/1d-stefan-formulation-part1/"/>
+   <updated>2020-12-28T00:00:00+01:00</updated>
+   <id>https://mbarzegary.github.io//2020/12/28/1d-stefan-formulation-part1</id>
+   <content type="html">&lt;p&gt;Moving-boundary problems are a subset of the general concept of boundary-value problems which not only require the solution of the underlying partial differential equation (PDE), but also the determination of the boundary of the domain (or sub-domains) as part of the solution.  Moving-boundary problems are usually referred to as Stefan problems and can be used to model a plethora of phenomena ranging from phase separation and multiphase flows in materials engineering to bone development and tumor growth in biology.&lt;/p&gt;
+
+&lt;p&gt;Diffusion systems are the mathematical models in which the change of state variables occurs via spreading of components. These systems are described by a set of parabolic PDEs and can model a large number of different systems in science and engineering. Combining the diffusion systems with moving-boundary problems provides a way to study the systems in which the diffusion leads to the change of domain geometry. Such systems have great importance in various real-world scenarios in chemistry and chemical engineering as well as environmental and life sciences.&lt;/p&gt;
+
+&lt;p&gt;In this post, I will describe the simplest possible formulation of such a system. The focus is on the Stefan problem, and the contribution of the diffusion part is simplified in a 1D formulation of a diffusion-controlled moving boundary test-case. In this example, we want to find the velocity of the moving interface in a solid-liquid diffusion system in which the solid particles diffuse in the liquid and the interface moves as a result of mass loss. Such a system resembles corrosion or degradation phenomena. For a 1D case, the position of the diffusion interface can be determined by:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;s(t)=s_{0}+2 \alpha \sqrt{t},&lt;/script&gt;
+
+&lt;p&gt;where &lt;script type=&quot;math/tex&quot;&gt;s(t)&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;s_0&lt;/script&gt; are the current and initial interface positions, respectively, and &lt;script type=&quot;math/tex&quot;&gt;\alpha&lt;/script&gt; is obtained through solving:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\alpha=\frac{c_{0}-c_{\text {sat }}}{c_{\text {sol }}-c_{\text {sat }}} \sqrt{\frac{D}{\pi}} \frac{\exp \left(\frac{-\alpha^{2}}{D}\right)}{\operatorname{erfc}\left(\frac{-\alpha}{\sqrt{D}}\right)}&lt;/script&gt;
+
+&lt;p&gt;where &lt;script type=&quot;math/tex&quot;&gt;c_{\text {sol}}&lt;/script&gt; is the concentration in the solid bulk (i.e. materials density), and &lt;script type=&quot;math/tex&quot;&gt;c_{\text {sat}}&lt;/script&gt; is the concentration at which the material is released to the medium. &lt;script type=&quot;math/tex&quot;&gt;c_{0}&lt;/script&gt; represents the initial concentration of the solid ions in the liquid, which is usually zero for most corrosion cases. Erfc is the &lt;a href=&quot;https://en.wikipedia.org/wiki/Error_function&quot;&gt;complementary error function&lt;/a&gt; and is defined as (it is usually available as a math function in most of the  numerical and symbolic computing libraries):&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\text { erfc } z=1-\operatorname{erf} z = 1 - \frac{2}{\sqrt{\pi}} \int_{0}^{z} e^{-t^{2}} d t&lt;/script&gt;
+
+&lt;p&gt;To simplify the notation, let’s encapsulate the concentration fraction:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;C=\frac{c_{0}-c_{\text {sat }}}{c_{\text {sol }}-c_{\text {sat }}}&lt;/script&gt;
+
+&lt;p&gt;So, the equation would be:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\alpha=C \sqrt{\frac{D}{\pi}} \frac{\exp \left(\frac{-\alpha^{2}}{D}\right)}{\operatorname{erfc}\left(\frac{-\alpha}{\sqrt{D}}\right)}&lt;/script&gt;
+
+&lt;p&gt;Obviously, this is not a simple equation to obtain &lt;script type=&quot;math/tex&quot;&gt;\alpha&lt;/script&gt; directly, but first, before going to use a numerical technique to solve it, we try to use a symbolic computation to see if it is capable of handling such an equation. For this purpose, we use &lt;a href=&quot;https://www.sympy.org/en/index.html&quot;&gt;SymPy&lt;/a&gt;, a powerful Python package for symbolic mathematics.&lt;/p&gt;
+
+&lt;p&gt;We should first import the package and initialize an interactive session:&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sympy&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;init_session&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;init_session&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;quiet&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Then, we define the symbols:&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;D&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;C&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;symbols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;alpha, D, C&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;It was pretty simple, wasn’t it. So, let’s go for defining the main equation and printing it to be sure that it’s defined as expected:&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;eq&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;C&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sqrt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;D&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;exp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;D&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;erfc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sqrt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;D&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;Eq&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;eq&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;which results to this output (which will be written in the LaTeX format thanks to what &lt;code class=&quot;highlighter-rouge&quot;&gt;init_session&lt;/code&gt; has already prepared for us):&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{C \sqrt{D} e^{- \frac{\alpha^{2}}{D}}}{\sqrt{\pi} \left(2 - \operatorname{erfc}{\left(\frac{\alpha}{\sqrt{D}} \right)}\right)} + \alpha = 0&lt;/script&gt;
+
+&lt;p&gt;Perfect, let’s call the solver to see what happens:&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;solve&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;eq&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;It produces the following error:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;NotImplementedError       Traceback (most recent call last)
+&amp;lt;ipython-input-3-644d539985dd&amp;gt; in &amp;lt;module&amp;gt;
+----&amp;gt; 1 solve(eq, a)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Oops, apparently, the equation was so complex for our symbolic solver to understand, and it means nothing but we should switch to a numerical implementation. This is what I will explain in the next post.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
    <title>Deriving weak formulation of partial differential equations</title>
-   <link href="http://localhost:4000/2020/11/06/derive-weak-form-pde/"/>
+   <link href="https://mbarzegary.github.io//2020/11/06/derive-weak-form-pde/"/>
    <updated>2020-11-06T00:00:00+01:00</updated>
-   <id>http://localhost:4000/2020/11/06/derive-weak-form-pde</id>
+   <id>https://mbarzegary.github.io//2020/11/06/derive-weak-form-pde</id>
    <content type="html">&lt;p&gt;The finite element method doesn’t need an introduction, but at the core of this magical method, in its mathematical nature, one challenging step makes it sometimes a bit difficult for newcomers to immediatley jump start and employ finite element to solve partial differential equations (PDEs) numerically. This challenging part is deriving the weak formulation of the PDE, which is indeed one of the very first steps a researcher should take to use the available PDE solvers (like &lt;a href=&quot;https://freefem.org/&quot;&gt;FreeFEM&lt;/a&gt;, &lt;a href=&quot;https://fenicsproject.org/&quot;&gt;FEniCS&lt;/a&gt;, and &lt;a href=&quot;https://www.dealii.org/&quot;&gt;deal.ii&lt;/a&gt;) to simulate a mathematical model.&lt;/p&gt;
 
 &lt;p&gt;Although deriving the weak form of a PDE is relatively simple, finding a good reference that demonstrates how to do it in action for the first time can be a bit difficult. This topic is well covered in most of the finite element books (the ones that discuss the mathematical aspects), but you need to go through a bunch of math to find the most essential steps. In this post, I try to explain this process by deriving the weak form of a reaction-diffusion PDE as an example. The equation we want to deal with is:&lt;/p&gt;
@@ -70,9 +138,9 @@
  
  <entry>
    <title>Building OpenFOAM in a Conda virtual environment</title>
-   <link href="http://localhost:4000/2020/10/18/build-openfoam-in-conda-environment/"/>
+   <link href="https://mbarzegary.github.io//2020/10/18/build-openfoam-in-conda-environment/"/>
    <updated>2020-10-18T00:00:00+02:00</updated>
-   <id>http://localhost:4000/2020/10/18/build-openfoam-in-conda-environment</id>
+   <id>https://mbarzegary.github.io//2020/10/18/build-openfoam-in-conda-environment</id>
    <content type="html">&lt;p&gt;In &lt;a href=&quot;/2020/10/10/using-conda-as-a-build-environment/&quot;&gt;previous post&lt;/a&gt;, I explained why a Conda environment would be interesting for building software programs in an isolated box. In this post, as an example, I describe how it works if we want to build &lt;a href=&quot;https://openfoam.org/&quot;&gt;OpenFOAM&lt;/a&gt; in this manner. As I said, the main advantage of doing this is the possibility of building/installing software without the root privilege, a scenario that happens frequently while working with clusters and supercomputers. A root previlege is required for following the &lt;a href=&quot;https://openfoam.org/download/source/&quot;&gt;official build procedure for OpenFOAM&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;The following procedure is independent of the underlying Linux installation, and only a tool to download Miniconda and a text editor suffice (here I have used &lt;code class=&quot;highlighter-rouge&quot;&gt;wget&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;nano&lt;/code&gt; for these purposes). Also, it’s worth mentioning that all the paths are taken from my system, so throughout the tutorial, make sure to double-check all the paths/directories to make sure that they match your system configuration. The tutorial is prepared for &lt;code class=&quot;highlighter-rouge&quot;&gt;bash&lt;/code&gt;, but the approach should be more or less the same for other shells and can be modified accordingly&lt;/p&gt;
@@ -224,9 +292,9 @@ c++FLAGS +&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nt
  
  <entry>
    <title>Using Conda as a build environment for Linux</title>
-   <link href="http://localhost:4000/2020/10/10/using-conda-as-a-build-environment/"/>
+   <link href="https://mbarzegary.github.io//2020/10/10/using-conda-as-a-build-environment/"/>
    <updated>2020-10-10T00:00:00+02:00</updated>
-   <id>http://localhost:4000/2020/10/10/using-conda-as-a-build-environment</id>
+   <id>https://mbarzegary.github.io//2020/10/10/using-conda-as-a-build-environment</id>
    <content type="html">&lt;p&gt;When it comes to installing software programs and libraries on Linux, compiling from source code is a first-class citizen. I mean it’s the most preferred way and has been there to save lots of time from software developers to meet the different requirements of different hardware/software configurations on a wide variety of Linux distributions. This process has its own challenges, especially in case of installing and satisfying the required dependencies, a task that can be quite nightmarish (of course not as bad as as the nostalgic &lt;a href=&quot;https://en.wikipedia.org/wiki/DLL_Hell&quot;&gt;DLL hell&lt;/a&gt; in Windows). It can get even worse when you don’t have root access to install the dependencies, which happens every now and then in daily life of a computational researcher when he/she wants to do this on a remote cluster or a university supercomputer.&lt;/p&gt;
 
 &lt;p&gt;A potential solution to this issue is taking advantage of container technologies like &lt;a href=&quot;https://docs.docker.com/get-started/&quot;&gt;Docker&lt;/a&gt; or &lt;a href=&quot;https://singularity.lbl.gov/quickstart&quot;&gt;Singularity&lt;/a&gt;, but what if we don’t have access to these packages as well? True, the most trivial solution would be compiling all the dependencies also from source code, but you should go for it only if you have super “enough time” as it can be an endless task. This is something I did once to build &lt;a href=&quot;https://freefem.org/&quot;&gt;FreeFEM&lt;/a&gt; on an old cluster, and to be honest, it was something I will never go for that again because it required me to compile not only all the dependencies but the compilers as well (a process called “&lt;a href=&quot;https://en.wikipedia.org/wiki/Bootstrapping_(compilers)&quot;&gt;Bootstrapping&lt;/a&gt;”). By the way, that was fun enough to be told later, and yes, I should write about it at some point.&lt;/p&gt;
@@ -246,9 +314,9 @@ c++FLAGS +&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nt
  
  <entry>
    <title>Flexibility of having multiple parallel instances of Linux using WSL</title>
-   <link href="http://localhost:4000/2020/09/29/wsl-multi-instance/"/>
+   <link href="https://mbarzegary.github.io//2020/09/29/wsl-multi-instance/"/>
    <updated>2020-09-29T00:00:00+02:00</updated>
-   <id>http://localhost:4000/2020/09/29/wsl-multi-instance</id>
+   <id>https://mbarzegary.github.io//2020/09/29/wsl-multi-instance</id>
    <content type="html">&lt;p&gt;Working with Windows can be truly a nightmare in scientific computing projects. The main reason behind this is that most of the scientific computing libraries have developed natively for Linux, and in the case of cross-platform ones, the building and installation process on Linux is more straightforward and easy to accomplish. In addition to this, the freedom you have while working with the command line interface can never be experienced in Windows with PowerShell or the traditional Command Prompt.&lt;/p&gt;
 
 &lt;p&gt;So why are we talking about this when Linux is there and we don’t need to stick to Windows? The problem arises when you work for a big organization that doesn’t allow Linux to be installed on your machine because all the operational workflow, communication systems, and things like that are going to take place in Windows (which is indeed my case at KU Leuven, although I have installed an ILLEGAL dual boot version of Linux by bypassing the organizational Bitlocker, but it’s not always feasible and convenient to reboot to Windows to join a meeting, sign something or print a document).&lt;/p&gt;
