@@ -7,6 +7,7 @@ Here is the list of projects in my GitHub account and their corresponding descri
  
 ## Scientific Computing
 
+ * [General Coupled Navier-Stokes-Diffusion Equations Solver using Finite Element Method](https://github.com/mbarzegary/navier-stokes-solver)
  * [Bayesian Optimization for Finite Element Parameter Estimation](https://github.com/mbarzegary/BayesianFEM)
 
 ## Machine Learning 
@@ -16,6 +17,8 @@ Here is the list of projects in my GitHub account and their corresponding descri
 
 ## Educational
 
+ * [An Easy Introduction to Finite Element Method and Variational Formulation](https://github.com/mbarzegary/finite-element-intro)
+ * [An Open Source Crash Course on Parameter Estimation of Computational Models using a Bayesian Optimization Approach](https://github.com/mbarzegary/educational-bayesian)
  * [Mastering Machine Learning with Python in Six Steps](https://github.com/mbarzegary/mastering-ml-w-python-in-six-steps)
 
 ## Misc.
