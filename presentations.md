@@ -9,7 +9,7 @@ Here, I keep a list of my presentations and posters, presented at various intern
 
 * **Investigating the biodegradation of metallic biomaterials using HPC-based simulation techniques**, presented at the 14th World Congress on Computational Mechanics, 2020 ([abstract](/public/files/wccm2020-abstract.pdf) \| [presentation](/public/files/wccm2020-presentation.pdf) \| [video](https://slideslive.com/38945379))
 
-* **Computational modeling of in-vitro biodegradation of metallic scaffolds and bone implants**, presented at the 11th World Biomaterials Congress, 2020 ([abstract](/public/files/wbc2020-abstract.pdf) \| [presentation](/public/files/wbc2020-presentation.pdf))
+* **Computational modeling of in-vitro biodegradation of metallic scaffolds and bone implants**, presented at the 11th World Biomaterials Congress, 2020 ([abstract](/public/files/wbc2020-abstract.pdf) \| [presentation](/public/files/wbc2020-presentation.pdf) \| [video](https://www.youtube.com/KVzBosw_lfA))
 
 * **Jupyter for uncertainty quantification and parameter estimation of computational models**, presented at the JupyterCon 2020, 2020 ([abstract](/public/files/jupytercon2020-abstract.pdf) \| [poster](/public/files/jupytercon2020-poster.pdf) \| [video](https://www.youtube.com/watch?v=LGOBPWnhz04))
 
