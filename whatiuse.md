@@ -36,10 +36,10 @@ Here,  I will try to keep an up-to-date list of software programs that I heavily
 ## Scienific Computing tools
 
 **Numerical Computing** | GNU Octave
-**Finite Element Solver** | FreeFEM, FEniCS, CaculiX
+**Finite Element Solver** | FreeFEM, FEniCS, Code Aster
 **Finite Volume Solver** | OpenFOAM
 **Post-processor** | ParaView
 **CAD** | SALOME, FreeCAD
-**Mesh Generation** | Gmsh Netgen, TetGen
+**Mesh Generation** | Gmsh, Netgen, TetGen, CGAL
 **Mesh Manipulaion/Partitioning** | Mmg, MeshLab, METIS, ParMETIS
 **HPC Preconditioner/Solver** | PETSc, HPDDM, Hypre, MUMPS
