@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+
+  <head>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-126127657-1"></script>
+<script>
+  var host = window.location.hostname;
+  if (host != "127.0.0.1" && host != "localhost")
+  {
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-126127657-1');
+  }
+</script>
+
+
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta charset="UTF-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    
+      Solving Stefan (moving-boundary) formulation of a diffusion problem using numerical and symbolic computing - Part 2 &middot; Mojtaba Barzegari
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/hyde.css">
+  <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface"> -->
+  <link rel="stylesheet" href="/public/css/font.css">
+  <link rel="stylesheet" href="/public/css/social.css">
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-144-precomposed.png">
+                                 <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
+  <!-- Mathjax Support -->
+  <script type="text/javascript" async
+    src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+</head>
+
+
+  <body class="theme-base-0d">
+
+    <div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <h1>Mojtaba Barzegari</h1>
+      <p class="lead"></p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+        <a href="/">Home</a>
+      </li>
+
+      
+
+      
+      
+        
+          
+        
+      
+        
+          
+            <li class="sidebar-nav-item">
+              <a href="/about/">About</a>
+            </li>
+          
+        
+      
+        
+      
+        
+          
+            <li class="sidebar-nav-item">
+              <a href="/blog/">Blog</a>
+            </li>
+          
+        
+      
+        
+          
+            <li class="sidebar-nav-item">
+              <a href="/contact/">Contact</a>
+            </li>
+          
+        
+      
+        
+          
+        
+      
+        
+          
+            <li class="sidebar-nav-item">
+              <a href="/presentations/">Presentations & Posters</a>
+            </li>
+          
+        
+      
+        
+          
+            <li class="sidebar-nav-item">
+              <a href="/projects/">Projects</a>
+            </li>
+          
+        
+      
+        
+          
+            <li class="sidebar-nav-item">
+              <a href="/publications/">Publications</a>
+            </li>
+          
+        
+      
+        
+          
+            <li class="sidebar-nav-item">
+              <a href="/research/">Research</a>
+            </li>
+          
+        
+      
+        
+          
+            <li class="sidebar-nav-item">
+              <a href="/usefulbooks/">Useful Books and Links</a>
+            </li>
+          
+        
+      
+        
+          
+            <li class="sidebar-nav-item">
+              <a href="/videos/">Videos</a>
+            </li>
+          
+        
+      
+        
+          
+            <li class="sidebar-nav-item">
+              <a href="/whatiuse/">What I Use</a>
+            </li>
+          
+        
+      
+
+      <li class="sidebar-nav-item"><a href="https://mbarzegary.github.io/research-tech-radar/">Research Technology Radar</a></li>
+      <li class="sidebar-nav-item"><a href="http://nbviewer.jupyter.org/github/mbarzegary/MyCV/blob/master/main.pdf">CV</a></li>
+      
+      <ul style="margin-left: -15px" class="icon-effect icon-effect-1a">
+        <li><a target="_blank" href="https://github.com/mbarzegary" class="icon"><i class="fab fa-github"></i></a></li>
+        <li><a target="_blank" href="https://www.linkedin.com/in/mbarzegary/" class="icon"><i class="fab fa-linkedin-in"></i></a></li>
+        <li><a target="_blank" href="https://twitter.com/MojBarz" class="icon"><i class="fab fa-twitter"></i></a></li>
+        <li><a target="_blank" href="https://www.instagram.com/mbarzegary/" class="icon"><i class="fab fa-instagram"></i></a></li>
+        <li><a target="_blank" href="https://www.facebook.com/mbarzegary" class="icon"><i class="fab fa-facebook-f"></i></a></li>
+      </ul>
+
+
+      <!-- <li class="sidebar-nav-item"><a href="https://github.com/mbarzegary/mbarzegary.github.io/archive/v.zip">Download</a></li>
+      <li class="sidebar-nav-item"><a href="https://github.com/mbarzegary/mbarzegary.github.io">GitHub project</a></li>
+      <li class="sidebar-nav-item">Currently v</li> -->
+    </ul>
+
+    <p>Copyleft 2021. No right reserved.</p>
+  </div>
+</div>
+
+
+    <div class="content container">
+      <div class="post">
+  <h1 class="post-title">Solving Stefan (moving-boundary) formulation of a diffusion problem using numerical and symbolic computing - Part 2</h1>
+  <span class="post-date">15 Feb 2021</span>
+  <p>In the <a href="/2020/12/28/1d-stefan-formulation-part1/">previous post</a>, I quickly demonstrated the formulation of a moving-boundary problem for a 1D case, but in the end, we reached a problem related to the complexity of the derived equation. The complexity led to <code class="highlighter-rouge">NotImplementedError</code>, which means that the symbolic solver is not capable of solving that. As an alternative solution, in this post, we switch to a numerical solver to obtain the value of <script type="math/tex">\alpha</script> through the following equation (see previous post for further explanation of this):</p>
+
+<script type="math/tex; mode=display">\alpha=\frac{c_{0}-c_{\text {sat }}}{c_{\text {sol }}-c_{\text {sat }}} \sqrt{\frac{D}{\pi}} \frac{\exp \left(\frac{-\alpha^{2}}{D}\right)}{\operatorname{erfc}\left(\frac{-\alpha}{\sqrt{D}}\right)}</script>
+
+<p>To this end, we use <a href="https://en.wikipedia.org/wiki/Newton%27s_method">Newton method</a>, an iterative method to find the root of an equation. We reformulate the above equation and use the Newton method to find the value of the root, which will be <script type="math/tex">\alpha</script> in this case.</p>
+
+<p>Newton method works based on evaulation of the following iterative equation:</p>
+
+<script type="math/tex; mode=display">x_{n+1}=x_{n}-\frac{f\left(x_{n}\right)}{f^{\prime}\left(x_{n}\right)}</script>
+
+<p>We start by guessing the initial value of <script type="math/tex">x_{n}</script>, and then successively find a new value of <script type="math/tex">x_{n+1}</script> and replace it with <script type="math/tex">x_{n}</script> again. The desired function in our case can be defined based on the above expression for <script type="math/tex">\alpha</script>:</p>
+
+<script type="math/tex; mode=display">f(\alpha) = \alpha - C \sqrt{\frac{D}{\pi}} \frac{\exp \left(\frac{-\alpha^{2}}{D}\right)}{\operatorname{erfc}\left(\frac{-\alpha}{\sqrt{D}}\right)}</script>
+
+<p>with <script type="math/tex">C</script> being:</p>
+
+<script type="math/tex; mode=display">C=\frac{c_{0}-c_{\text {sat }}}{c_{\text {sol }}-c_{\text {sat }}}</script>
+
+<p>Sympy can be used to easily calculate the derivative of <script type="math/tex">f(\alpha)</script>. Similar to the previous post, we define appropriate symbols in Sympy, but this time, we also assign some numerical values to them for facilitating further evaluations.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sympy</span> <span class="kn">import</span> <span class="n">init_session</span>
+<span class="n">init_session</span><span class="p">(</span><span class="n">quiet</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="n">D_value</span> <span class="o">=</span> <span class="mf">0.00075</span>
+<span class="n">c_0</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">c_sol</span> <span class="o">=</span> <span class="mi">1735</span>
+<span class="n">c_sat</span> <span class="o">=</span> <span class="mi">134</span>
+<span class="n">C_value</span> <span class="o">=</span> <span class="p">(</span><span class="n">c_0</span> <span class="o">-</span> <span class="n">c_sat</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">c_sol</span> <span class="o">-</span> <span class="n">c_sat</span><span class="p">)</span>
+
+<span class="n">a</span><span class="p">,</span> <span class="n">D</span><span class="p">,</span> <span class="n">C</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s">"alpha, D, C"</span><span class="p">,</span> <span class="n">positive</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">func</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">C</span> <span class="o">*</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">D</span><span class="o">/</span><span class="n">pi</span><span class="p">)</span> <span class="o">*</span> <span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">a</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="n">D</span><span class="p">)</span> <span class="o">/</span> <span class="n">erfc</span><span class="p">(</span><span class="o">-</span><span class="n">a</span><span class="o">/</span><span class="n">sqrt</span><span class="p">(</span><span class="n">D</span><span class="p">))</span>
+<span class="n">Eq</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</code></pre></div></div>
+<p>which produces the following output:</p>
+
+<script type="math/tex; mode=display">\frac{C \sqrt{D} e^{- \frac{\alpha^{2}}{D}}}{\sqrt{\pi} \left(2 - \operatorname{erfc}{\left(\frac{\alpha}{\sqrt{D}} \right)}\right)} + \alpha = 0</script>
+
+<p>Now, we can simply calculate the derivitive of <script type="math/tex">f(\alpha)</script>:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">dfunc</span> <span class="o">=</span> <span class="n">diff</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+<span class="n">dfunc</span>
+</code></pre></div></div>
+
+<p>which results to:</p>
+
+<script type="math/tex; mode=display">\frac{2 C e^{- \frac{2 \alpha^{2}}{D}}}{\pi \left(2 - \operatorname{erfc}{\left(\frac{\alpha}{\sqrt{D}} \right)}\right)^{2}} + \frac{2 C \alpha e^{- \frac{\alpha^{2}}{D}}}{\sqrt{\pi} \sqrt{D} \left(2 - \operatorname{erfc}{\left(\frac{\alpha}{\sqrt{D}} \right)}\right)} + 1</script>
+
+<p>Although this looks a bit complicated, we don’t care about the complexity as Sympy will take care of the evaluation of this expression for obtaining <script type="math/tex">f^{\prime}\left(\alpha\right)</script> in each iteration. Let’s define some functions for the corresponding terms in the Newton method equation:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">func</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="n">subs</span><span class="p">([(</span><span class="n">D</span><span class="p">,</span> <span class="n">D_value</span><span class="p">),</span> <span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">C_value</span><span class="p">)])</span>
+<span class="n">dfunc</span> <span class="o">=</span> <span class="n">dfunc</span><span class="o">.</span><span class="n">subs</span><span class="p">([(</span><span class="n">D</span><span class="p">,</span> <span class="n">D_value</span><span class="p">),</span> <span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">C_value</span><span class="p">)])</span>
+
+<span class="k">def</span> <span class="nf">F</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">func</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">evalf</span><span class="p">()</span>
+ 
+<span class="k">def</span> <span class="nf">dF</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">dfunc</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">evalf</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>And then, a pretyy simple declaration of the iterative Newton method:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">dx</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">abs</span><span class="p">(</span><span class="mi">0</span><span class="o">-</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">newtons_method</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+    <span class="n">delta</span> <span class="o">=</span> <span class="n">dx</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x0</span><span class="p">)</span>
+    <span class="k">while</span> <span class="n">delta</span> <span class="o">&gt;</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">x0</span> <span class="o">=</span> <span class="n">x0</span> <span class="o">-</span> <span class="n">f</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span><span class="o">/</span><span class="n">df</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span>
+        <span class="n">delta</span> <span class="o">=</span> <span class="n">dx</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x0</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+            <span class="k">print</span> <span class="p">(</span><span class="s">'Delta is '</span><span class="p">,</span> <span class="n">delta</span><span class="p">)</span>
+
+            
+    <span class="k">print</span> <span class="p">(</span><span class="s">'&gt;&gt;&gt;&gt;&gt; Root is at '</span><span class="p">,</span> <span class="n">x0</span><span class="p">)</span>
+    <span class="k">print</span> <span class="p">(</span><span class="s">'&gt;&gt;&gt;&gt;&gt; f(x) at root is '</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="n">x0</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">x0</span>
+</code></pre></div></div>
+
+<p>In this definition, the code stops iterating when the error drops below a certain threshold (passed by <code class="highlighter-rouge">e</code> to the function).</p>
+
+<p>Okay, everything is ready so far. We can start the iterations by calling <code class="highlighter-rouge">newtons_method(F, dF, x0, 1e-7, True)</code>, in which <code class="highlighter-rouge">x0</code> is the initial point to start with and the error threshold is <script type="math/tex">10^{-7}</script>. But, a better approach can be running the process for various start points and see if they all reach the same result or not:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x0s</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">x0</span> <span class="ow">in</span> <span class="n">x0s</span><span class="p">:</span>
+    <span class="n">newtons_method</span><span class="p">(</span><span class="n">F</span><span class="p">,</span> <span class="n">dF</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="mf">1e-7</span><span class="p">,</span> <span class="bp">True</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>which generates this output, indicating that the value of <script type="math/tex">\alpha</script> is <script type="math/tex">-0.001366</script> with the selected values for the chemical parameters:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Delta is  8.68237762054906e-7
+Delta is  3.82565589437956e-13
+&gt;&gt;&gt;&gt;&gt; Root is at  -0.00136691381199428
+&gt;&gt;&gt;&gt;&gt; f(x) at root is  3.82565589437956e-13
+Delta is  0.00129321032032748
+Delta is  8.68237762054906e-7
+Delta is  3.82565589437956e-13
+&gt;&gt;&gt;&gt;&gt; Root is at  -0.00136691381199428
+&gt;&gt;&gt;&gt;&gt; f(x) at root is  3.82565589437956e-13
+Delta is  0.00129321032032748
+Delta is  8.68237762054906e-7
+Delta is  3.82565589437956e-13
+&gt;&gt;&gt;&gt;&gt; Root is at  -0.00136691381199428
+&gt;&gt;&gt;&gt;&gt; f(x) at root is  3.82565589437956e-13
+</code></pre></div></div>
+
+<p>As you can see, the selected initial points all have converged to the same value, but of course the number of iterations is different to reach the root.</p>
+
+
+</div>
+
+<!-- <div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/2020/12/28/1d-stefan-formulation-part1/">
+            Solving Stefan (moving-boundary) formulation of a diffusion problem using numerical and symbolic computing - Part 1
+            <small>28 Dec 2020</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2020/11/06/derive-weak-form-pde/">
+            Deriving weak formulation of partial differential equations
+            <small>06 Nov 2020</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2020/10/18/build-openfoam-in-conda-environment/">
+            Building OpenFOAM in a Conda virtual environment
+            <small>18 Oct 2020</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</div> -->
+
+    </div>
+
+  </body>
+</html>
