@@ -209,6 +209,118 @@
   
   <div class="post">
     <h1 class="post-title">
+      <a href="/2021/04/10/1d-stefan-formulation-part3/">
+        Solving Stefan (moving-boundary) formulation of a diffusion problem - Part 3 - FreeFEM (C++) implementation
+      </a>
+    </h1>
+
+    <span class="post-date">10 Apr 2021</span>
+
+    <p>In the <a href="/2021/02/15/1d-stefan-formulation-part2/">previous post</a>, we finished working on the implementation of a Newton solver to obtain the value of <script type="math/tex">\alpha</script> in the following equation:</p>
+
+<script type="math/tex; mode=display">\alpha=\frac{c_{0}-c_{\text {sat }}}{c_{\text {sol }}-c_{\text {sat }}} \sqrt{\frac{D}{\pi}} \frac{\exp \left(\frac{-\alpha^{2}}{D}\right)}{\operatorname{erfc}\left(\frac{-\alpha}{\sqrt{D}}\right)}</script>
+
+<p>Now, we want to follow the same approach, but this time in <a href="https://freefem.org/">FreeFEM</a>, which enables us to embed the implementation inside relevant applications. As described before, in order to solve the above equation using Newton’s method, we need to know the derivative of the function as well. We used SymPy to calculate it, but then, the question is how to do that in a C-like language such as FreeFEM. The answer lies within one of the less-known features of SymPy: ability to print C functions. So, let’s ask SymPy to write the C code for us.</p>
+
+<p>For simplicity, I put the necessary part of the code again here:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sympy</span> <span class="kn">import</span> <span class="n">init_session</span>
+<span class="n">init_session</span><span class="p">(</span><span class="n">quiet</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="n">a</span><span class="p">,</span> <span class="n">D</span><span class="p">,</span> <span class="n">C</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s">"alpha, D, C"</span><span class="p">,</span> <span class="n">positive</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">func</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">C</span> <span class="o">*</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">D</span><span class="o">/</span><span class="n">pi</span><span class="p">)</span> <span class="o">*</span> <span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">a</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="n">D</span><span class="p">)</span> <span class="o">/</span> <span class="n">erfc</span><span class="p">(</span><span class="o">-</span><span class="n">a</span><span class="o">/</span><span class="n">sqrt</span><span class="p">(</span><span class="n">D</span><span class="p">))</span>
+<span class="n">dfunc</span> <span class="o">=</span> <span class="n">diff</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>So, we have the function and its derivitive in the <code class="highlighter-rouge">func</code> and <code class="highlighter-rouge">dfunc</code> variables. Time to magic, let’s take advantage of SymPy printing APIs:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sympy.printing</span> <span class="kn">import</span> <span class="n">print_ccode</span>
+<span class="n">print_ccode</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+<span class="n">print_ccode</span><span class="p">(</span><span class="n">dfunc</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>It prints the following output in C syntax, which can be directly copied into a C program.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-C*sqrt(D)*exp(-pow(alpha, 2)/D)/(sqrt(M_PI)*(2 - erfc(alpha/sqrt(D)))) + alpha
+
+2*C*exp(-2*pow(alpha, 2)/D)/(M_PI*pow(2 - erfc(alpha/sqrt(D)), 2)) + 2*C*alpha*exp(-pow(alpha, 2)/D)/(sqrt(M_PI)*sqrt(D)*(2 - erfc(alpha/sqrt(D)))) + 1
+</code></pre></div></div>
+
+<p>Now, similar to <a href="/2021/02/15/1d-stefan-formulation-part2/">the developed Python code</a>, we implement a simple FreeFEM code for the Newton’s method.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">func</span> <span class="n">real</span> <span class="nf">F</span><span class="p">(</span><span class="n">real</span> <span class="n">x</span><span class="p">,</span> <span class="n">real</span> <span class="n">C</span><span class="p">,</span> <span class="n">real</span> <span class="n">D</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">return</span> <span class="o">-</span><span class="n">C</span><span class="o">*</span><span class="n">sqrt</span><span class="p">(</span><span class="n">D</span><span class="p">)</span><span class="o">*</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">pow</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="n">D</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="n">pi</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mi">2</span> <span class="o">-</span> <span class="n">erfc</span><span class="p">(</span><span class="n">x</span><span class="o">/</span><span class="n">sqrt</span><span class="p">(</span><span class="n">D</span><span class="p">))))</span> <span class="o">+</span> <span class="n">x</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">func</span> <span class="n">real</span> <span class="nf">dF</span><span class="p">(</span><span class="n">real</span> <span class="n">x</span><span class="p">,</span> <span class="n">real</span> <span class="n">C</span><span class="p">,</span> <span class="n">real</span> <span class="n">D</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">return</span> <span class="mi">2</span><span class="o">*</span><span class="n">C</span><span class="o">*</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">pow</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="n">D</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">pi</span><span class="o">*</span><span class="n">pow</span><span class="p">(</span><span class="mi">2</span> <span class="o">-</span> <span class="n">erfc</span><span class="p">(</span><span class="n">x</span><span class="o">/</span><span class="n">sqrt</span><span class="p">(</span><span class="n">D</span><span class="p">)),</span> <span class="mi">2</span><span class="p">))</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">C</span><span class="o">*</span><span class="n">x</span><span class="o">*</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">pow</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="n">D</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="n">pi</span><span class="p">)</span><span class="o">*</span><span class="n">sqrt</span><span class="p">(</span><span class="n">D</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mi">2</span> <span class="o">-</span> <span class="n">erfc</span><span class="p">(</span><span class="n">x</span><span class="o">/</span><span class="n">sqrt</span><span class="p">(</span><span class="n">D</span><span class="p">))))</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">func</span> <span class="n">real</span> <span class="nf">dX</span><span class="p">(</span><span class="n">real</span> <span class="n">x</span><span class="p">,</span> <span class="n">real</span> <span class="n">C</span><span class="p">,</span> <span class="n">real</span> <span class="n">D</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">return</span> <span class="n">abs</span><span class="p">(</span><span class="mi">0</span> <span class="o">-</span> <span class="n">F</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">D</span><span class="p">));</span>
+<span class="p">}</span>
+
+<span class="n">func</span> <span class="n">real</span> <span class="nf">newtons</span><span class="p">(</span><span class="n">real</span> <span class="n">x0</span><span class="p">,</span> <span class="n">real</span> <span class="n">e</span><span class="p">,</span> <span class="n">real</span> <span class="n">C</span><span class="p">,</span> <span class="n">real</span> <span class="n">D</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">real</span> <span class="n">delta</span> <span class="o">=</span> <span class="n">dX</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">D</span><span class="p">);</span>
+  <span class="n">real</span> <span class="n">x</span> <span class="o">=</span> <span class="n">x0</span><span class="p">;</span>
+
+  <span class="k">while</span> <span class="p">(</span><span class="n">delta</span> <span class="o">&gt;</span> <span class="n">e</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="n">F</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">D</span><span class="p">)</span> <span class="o">/</span> <span class="n">dF</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">D</span><span class="p">);</span>
+    <span class="n">delta</span> <span class="o">=</span> <span class="n">dX</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">D</span><span class="p">);</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"Delta is "</span> <span class="o">&lt;&lt;</span> <span class="n">delta</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"&gt;&gt;&gt;&gt; Root is at "</span> <span class="o">&lt;&lt;</span> <span class="n">x</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"&gt;&gt;&gt;&gt; f(x) at root is "</span> <span class="o">&lt;&lt;</span> <span class="n">F</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">D</span><span class="p">);</span>
+  <span class="k">return</span> <span class="n">x</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>And then, we can check it with some numerical values for the constants and 3 different initial points:</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">real</span> <span class="n">c0</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="n">real</span> <span class="n">cSol</span> <span class="o">=</span> <span class="mi">1735</span><span class="p">;</span>
+<span class="n">real</span> <span class="n">cSat</span> <span class="o">=</span> <span class="mi">134</span><span class="p">;</span>
+<span class="n">real</span> <span class="n">C</span> <span class="o">=</span> <span class="p">(</span><span class="n">c0</span> <span class="o">-</span> <span class="n">cSat</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">cSol</span> <span class="o">-</span> <span class="n">cSat</span><span class="p">);</span>
+<span class="n">real</span> <span class="n">D</span> <span class="o">=</span> <span class="mf">0.0001366</span><span class="p">;</span>
+
+<span class="n">real</span> <span class="n">x0</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">newtons</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="mf">1e-7</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">D</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+
+<span class="n">x0</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">;</span>
+<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">newtons</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="mf">1e-7</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">D</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+
+<span class="n">x0</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">newtons</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="mf">1e-7</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">D</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>which produces this output (using FreeFEM v4.7):</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Delta is 3.70539e-07
+Delta is 1.63268e-13
+&gt;&gt;&gt;&gt; Root is at -0.000583359
+&gt;&gt;&gt;&gt; f(x) at root is 1.63268e-13-0.000583359
+Delta is 0.000551904
+Delta is 3.70539e-07
+Delta is 1.63268e-13
+&gt;&gt;&gt;&gt; Root is at -0.000583359
+&gt;&gt;&gt;&gt; f(x) at root is 1.63268e-13-0.000583359
+Delta is 0.000551904
+Delta is 3.70539e-07
+Delta is 1.63268e-13
+&gt;&gt;&gt;&gt; Root is at -0.000583359
+&gt;&gt;&gt;&gt; f(x) at root is 1.63268e-13-0.000583359
+</code></pre></div></div>
+
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
       <a href="/2021/02/15/1d-stefan-formulation-part2/">
         Solving Stefan (moving-boundary) formulation of a diffusion problem using numerical and symbolic computing - Part 2
       </a>
