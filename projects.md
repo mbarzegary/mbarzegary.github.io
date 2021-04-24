@@ -3,7 +3,7 @@ layout: page
 title: Projects
 ---
 
-Here is the list of projects in my GitHub account and their corresponding descriptions:
+Here is the list of projects I have in my GitHub account:
  
 ## Scientific Computing
 
@@ -20,6 +20,10 @@ Here is the list of projects in my GitHub account and their corresponding descri
  * [An Easy Introduction to Finite Element Method and Variational Formulation](https://github.com/mbarzegary/finite-element-intro)
  * [An Open Source Crash Course on Parameter Estimation of Computational Models using a Bayesian Optimization Approach](https://github.com/mbarzegary/educational-bayesian)
  * [Mastering Machine Learning with Python in Six Steps](https://github.com/mbarzegary/mastering-ml-w-python-in-six-steps)
+
+## Teaching Materials
+
+ * [Computer Methods for Mass Transport in Tissue Engineering, Spring 2021](https://github.com/mbarzegary/mass-transport-tissue-engineering-spring2021)
 
 ## Misc.
  * [Auto-generated CV](https://github.com/mbarzegary/MyCV)
