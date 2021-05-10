@@ -7,6 +7,13 @@ title: Videos
 
 I try to record my presentations in conferences that I'm allowed to do so. Then I combine the recorded audio with the presented slides and share the output here. For more details of this, you may have a look at [Presentations and Posters](/presentations).
 
+#### Reproducible research in computational sciences: A use case for uncertainty quantification using Jupyter notebooks
+
+KU Leuven Open Science Study Day\
+Leuven, Belgium, 2021
+
+[![presentation](http://img.youtube.com/vi/1Fx4gfMeL6E/0.jpg){: style="max-width: 300px; height: auto;"}](https://www.youtube.com/watch?v=1Fx4gfMeL6E)
+
 #### Computational modeling of in-vitro biodegradation of metallic scaffolds and bone implants
 
 11th World Biomaterials Congress, 2020
