@@ -11,11 +11,11 @@ Here, I keep a list of my presentations and posters, presented at various intern
 
 * **Mathematical modeling of biodegradation of metallic biomaterials using reaction-diffusion equations and level set method**, will be presented at the SIAM Conference on Mathematical Aspects of Materials Science, Bilbao, Spain, 2021 ([abstract](/public/files/siam2021-abstract.pdf))
 
-* **Reproducible research in computational sciences: A use case for uncertainty quantification using Jupyter notebooks**, will be presented at the KU Leuven Open Science Study Day, Leuven, Belgium, 2021
+* **Reproducible research in computational sciences: A use case for uncertainty quantification using Jupyter notebooks**, will be presented at the KU Leuven Open Science Study Day, Leuven, Belgium, 2021 ([abstract](/public/files/openscience2021-abstract.pdf) \| [presentation](/public/files/openscience2021-presentation.pdf) \| [video](https://www.youtube.com/watch?v=1Fx4gfMeL6E))
 
 * **Investigating the biodegradation of metallic biomaterials using HPC-based simulation techniques**, presented at the 14th World Congress on Computational Mechanics, 2020 ([abstract](/public/files/wccm2020-abstract.pdf) \| [presentation](/public/files/wccm2020-presentation.pdf) \| [video](https://slideslive.com/38945379))
 
-* **Computational modeling of in-vitro biodegradation of metallic scaffolds and bone implants**, presented at the 11th World Biomaterials Congress, 2020 ([abstract](/public/files/wbc2020-abstract.pdf) \| [presentation](/public/files/wbc2020-presentation.pdf) \| [video](https://www.youtube.com/KVzBosw_lfA))
+* **Computational modeling of in-vitro biodegradation of metallic scaffolds and bone implants**, presented at the 11th World Biomaterials Congress, 2020 ([abstract](/public/files/wbc2020-abstract.pdf) \| [presentation](/public/files/wbc2020-presentation.pdf) \| [video](https://www.youtube.com/watch?v=KVzBosw_lfA))
 
 * **Jupyter for uncertainty quantification and parameter estimation of computational models**, presented at the JupyterCon 2020, 2020 ([abstract](/public/files/jupytercon2020-abstract.pdf) \| [poster](/public/files/jupytercon2020-poster.pdf) \| [video](https://www.youtube.com/watch?v=LGOBPWnhz04))
 
