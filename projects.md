@@ -7,6 +7,7 @@ Here is the list of projects I have in my GitHub account:
  
 ## Scientific Computing
 
+ * [BioDeg, a biodegradation and corrosion simulation code for metallic materials](https://github.com/mbarzegary/BioDeg)
  * [General Coupled Navier-Stokes-Diffusion Equations Solver using Finite Element Method](https://github.com/mbarzegary/navier-stokes-solver)
  * [Bayesian Optimization for Finite Element Parameter Estimation](https://github.com/mbarzegary/BayesianFEM)
 
