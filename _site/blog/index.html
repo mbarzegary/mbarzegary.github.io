@@ -195,6 +195,44 @@
   
   <div class="post">
     <h1 class="post-title">
+      <a href="/2021/06/13/separate-different-mesh-blocks/">
+        Separating different volume mesh blocks (regions) using FreeFEM
+      </a>
+    </h1>
+
+    <span class="post-date">13 Jun 2021</span>
+
+    <!-- <p>Lots of mesh generation routines may result in a multi-region mesh, out of which you want to extract a certain region (block). These kinds of mesh files are commonly found in the output of code-based mesh generation processes, i.e you generate a mesh using a mesh manipulation or computational geometry library such as <a href="https://www.mmgtools.org/">Mmg</a> (used to generate the mesh below) or <a href="https://www.cgal.org/">CGAL</a>.</p>
+
+<p><img src="/public/blog/separate-both.jpg" alt="color photo ftl" width="100%" height="auto" /></p>
+
+<p>As can be seen in the figure (visualized using <a href="https://gmsh.info/">GMSH</a>), in addition to several surfaces and curves, there are 2 volume sets in the generated mesh. We are interested to extract different regions into separate mesh files while preserving the surface sets. One possible solution is to write a code using Mmg that does this, but this requires dealing with the Mmg data structures. A much simpler approach is taking advantage of easy-to-use meshing interface in <a href="https://freefem.org/">FreeFEM</a>.</p>
+
+<p>The mesh above belongs to a tissue engineering scaffold in a mixed gyroid shape. These scaffolds are widely used for culturing cells. It consists of a volume block for the scaffold itself and a block for the void space around it (in which the cells start to proliferate). The goal is to separate these two parts. The code for doing that will be as simple as this:</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">load</span> <span class="s">"msh3"</span>
+<span class="n">include</span> <span class="s">"getARGV.idp"</span>
+
+<span class="n">string</span> <span class="n">fileName</span> <span class="o">=</span> <span class="n">getARGV</span><span class="p">(</span><span class="s">"-mesh"</span><span class="p">,</span> <span class="s">"mesh_file_name"</span><span class="p">);</span> 
+
+<span class="n">mesh3</span> <span class="n">Mesh</span> <span class="o">=</span> <span class="n">readmesh3</span><span class="p">(</span><span class="n">fileName</span><span class="o">+</span><span class="s">".mesh"</span><span class="p">);</span>
+
+<span class="n">mesh3</span> <span class="n">MeshScaffold</span> <span class="o">=</span> <span class="n">trunc</span><span class="p">(</span><span class="n">Mesh</span><span class="p">,</span> <span class="n">region</span><span class="o">==</span><span class="mi">3</span><span class="p">);</span>
+<span class="n">mesh3</span> <span class="n">MeshVoid</span> <span class="o">=</span> <span class="n">trunc</span><span class="p">(</span><span class="n">Mesh</span><span class="p">,</span> <span class="n">region</span><span class="o">==</span><span class="mi">2</span><span class="p">);</span>
+
+<span class="n">savemesh</span><span class="p">(</span><span class="n">MeshScaffold</span><span class="p">,</span> <span class="n">fileName</span> <span class="o">+</span> <span class="s">"-scaffold.mesh"</span><span class="p">);</span>
+<span class="n">savemesh</span><span class="p">(</span><span class="n">MeshVoid</span><span class="p">,</span> <span class="n">fileName</span> <span class="o">+</span> <span class="s">"-void.mesh"</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>The code assumes that the mesh is in the medit format (.mesh extension). In other cases, you can use GMSH to convert it to medit. By running the code, the mesh is divided into the scaffold part (region number 3) and the void space (region number 2). The resulted mesh for region #3 will be this:</p>
+
+<p><img src="/public/blog/separate-scaffold.jpg" alt="color photo ftl" width="100%" height="auto" /></p>
+
+ -->
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
       <a href="/2021/04/10/1d-stefan-formulation-part3/">
         Solving Stefan (moving-boundary) formulation of a diffusion problem - Part 3 - FreeFEM (C++) implementation
       </a>

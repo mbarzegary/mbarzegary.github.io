@@ -27,7 +27,7 @@
 
   <title>
     
-      Flexibility of having multiple parallel instances of Linux using WSL &middot; Mojtaba Barzegari
+      Separating different volume mesh blocks (regions) using FreeFEM &middot; Mojtaba Barzegari
     
   </title>
 
@@ -188,40 +188,40 @@
 
     <div class="content container">
       <div class="post">
-  <h1 class="post-title">Flexibility of having multiple parallel instances of Linux using WSL</h1>
-  <span class="post-date">29 Sep 2020</span>
-  <p>Working with Windows can be truly a nightmare in scientific computing projects. The main reason behind this is that most of the scientific computing libraries have developed natively for Linux, and in the case of cross-platform ones, the building and installation process on Linux is more straightforward and easy to accomplish. In addition to this, the freedom you have while working with the command line interface can never be experienced in Windows with PowerShell or the traditional Command Prompt.</p>
+  <h1 class="post-title">Separating different volume mesh blocks (regions) using FreeFEM</h1>
+  <span class="post-date">13 Jun 2021</span>
+  <p>Lots of mesh generation routines may result in a multi-region mesh, out of which you want to extract a certain region (block). These kinds of mesh files are commonly found in the output of code-based mesh generation processes, i.e you generate a mesh using a mesh manipulation or computational geometry library such as <a href="https://www.mmgtools.org/">Mmg</a> (used to generate the mesh below) or <a href="https://www.cgal.org/">CGAL</a>.</p>
 
-<p>So why are we talking about this when Linux is there and we don’t need to stick to Windows? The problem arises when you work for a big organization that doesn’t allow Linux to be installed on your machine because all the operational workflow, communication systems, and things like that are going to take place in Windows (which is indeed my case at KU Leuven, although I have installed an ILLEGAL dual boot version of Linux by bypassing the organizational Bitlocker, but it’s not always feasible and convenient to reboot to Windows to join a meeting, sign something or print a document).</p>
+<p><img src="/public/blog/separate-both.jpg" alt="color photo ftl" width="100%" height="auto" /></p>
 
-<p>The solution to this problem was released by Microsoft several years ago, a feature of Windows called <a href="https://en.wikipedia.org/wiki/Windows_Subsystem_for_Linux">Windows Subsystem for Linux (WSL)</a>, providing you with an emulated Linux kernel on top of which you can install your favorite distribution. It gives you full terminal access as well as limited support for running graphical applications (with some tricks of course). Recently, they have also extended and upgraded this feature to a real Linux kernel in WSL 2 (which I haven’t tested yet), which has also some cool and long awaited features such as GPU support.</p>
+<p>As can be seen in the figure (visualized using <a href="https://gmsh.info/">GMSH</a>), in addition to several surfaces and curves, there are 2 volume sets in the generated mesh. We are interested to extract different regions into separate mesh files while preserving the surface sets. One possible solution is to write a code using Mmg that does this, but this requires dealing with the Mmg data structures. A much simpler approach is taking advantage of easy-to-use meshing interface in <a href="https://freefem.org/">FreeFEM</a>.</p>
 
-<p>But, beside this, WSL can be tweaked to bring even more productivity especially if you want to test multiple libraries and different configurations without touching your previous working instances of configured Linux (which indeed happens every now and then in scientific computing). Doing this in a native installation of Linux (like with <code class="highlighter-rouge">chroot</code>) requires some effort. Having multiple instances of the same Linux distribution in WSL is not supported out-of-the-box but can be accomplished using a less-known, yet fantastic tool called <a href="https://github.com/DDoSolitary/">LxRunOffline</a>. The simplest way to install LxRunOffline is by downloading the compiled binaries from GitHub. Adding the executable path to the “Path” environment variable is highly recommended. After doing that, a new instance can be installed as simple as:</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; LxRunOffline i -n &lt;name_of_the_instance&gt; -d &lt;isntallation_location&gt; -f &lt;path_of_the_downloaded_image&gt; -s
+<p>The mesh above belongs to a tissue engineering scaffold in a mixed gyroid shape. These scaffolds are widely used for culturing cells. It consists of a volume block for the scaffold itself and a block for the void space around it (in which the cells start to proliferate). The goal is to separate these two parts. The code for doing that will be as simple as this:</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">load</span> <span class="s">"msh3"</span>
+<span class="n">include</span> <span class="s">"getARGV.idp"</span>
+
+<span class="n">string</span> <span class="n">fileName</span> <span class="o">=</span> <span class="n">getARGV</span><span class="p">(</span><span class="s">"-mesh"</span><span class="p">,</span> <span class="s">"mesh_file_name"</span><span class="p">);</span> 
+
+<span class="n">mesh3</span> <span class="n">Mesh</span> <span class="o">=</span> <span class="n">readmesh3</span><span class="p">(</span><span class="n">fileName</span><span class="o">+</span><span class="s">".mesh"</span><span class="p">);</span>
+
+<span class="n">mesh3</span> <span class="n">MeshScaffold</span> <span class="o">=</span> <span class="n">trunc</span><span class="p">(</span><span class="n">Mesh</span><span class="p">,</span> <span class="n">region</span><span class="o">==</span><span class="mi">3</span><span class="p">);</span>
+<span class="n">mesh3</span> <span class="n">MeshVoid</span> <span class="o">=</span> <span class="n">trunc</span><span class="p">(</span><span class="n">Mesh</span><span class="p">,</span> <span class="n">region</span><span class="o">==</span><span class="mi">2</span><span class="p">);</span>
+
+<span class="n">savemesh</span><span class="p">(</span><span class="n">MeshScaffold</span><span class="p">,</span> <span class="n">fileName</span> <span class="o">+</span> <span class="s">"-scaffold.mesh"</span><span class="p">);</span>
+<span class="n">savemesh</span><span class="p">(</span><span class="n">MeshVoid</span><span class="p">,</span> <span class="n">fileName</span> <span class="o">+</span> <span class="s">"-void.mesh"</span><span class="p">);</span>
 </code></pre></div></div>
-<p>in which the <code class="highlighter-rouge">i</code> argument indicates the installation action (to see all available operations, execute <code class="highlighter-rouge">LxRunOffline</code> without any action). Then, the installed instance can be run using:</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; LxRunOffline r -n &lt;name_of_the_instance&gt;
-</code></pre></div></div>
-<p>You can encapsulate this command in a batch file, which can be placed on Desktop (or even better somewhere in “Path”, so you can run it directly from Command Prompt in any directory) for an easier access.</p>
 
-<p>And now, the great flexibility comes with the freedom of choosing whatever you want as the distribution. What I use most often for this purpose is <a href="https://ubuntu.com/core">Ubuntu Core</a>, a light-weight Linux distribution aimed for IoT devices, but with APT package manager installed, which enables me to start with a tiny Linux installation, and then configure it to fit my needs. By doing this, I can quickly have a fresh installation of Linux to test or run something without affecting the previous configurations I have. A wide variety of Ubuntu Core images can be downloaded <a href="https://partner-images.canonical.com/core/">here</a>. A typical command for such a purpose can be then something like this:</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; LxRunOffline i -n ubuntu-4.6 -d c:\wsl\ubuntu-test46 -f ubuntu-bionic-core-cloudimg-amd64-root.tar.gz -s
-</code></pre></div></div>
+<p>The code assumes that the mesh is in the medit format (.mesh extension). In other cases, you can use GMSH to convert it to medit. By running the code, the mesh is divided into the scaffold part (region number 3) and the void space (region number 2). The resulted mesh for region #3 will be this:</p>
+
+<p><img src="/public/blog/separate-scaffold.jpg" alt="color photo ftl" width="100%" height="auto" /></p>
+
 
 </div>
 
 <!-- <div class="related">
   <h2>Related Posts</h2>
   <ul class="related-posts">
-    
-      <li>
-        <h3>
-          <a href="/2021/06/13/separate-different-mesh-blocks/">
-            Separating different volume mesh blocks (regions) using FreeFEM
-            <small>13 Jun 2021</small>
-          </a>
-        </h3>
-      </li>
     
       <li>
         <h3>
@@ -237,6 +237,15 @@
           <a href="/2021/02/15/1d-stefan-formulation-part2/">
             Solving Stefan (moving-boundary) formulation of a diffusion problem using numerical and symbolic computing - Part 2
             <small>15 Feb 2021</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2020/12/28/1d-stefan-formulation-part1/">
+            Solving Stefan (moving-boundary) formulation of a diffusion problem using numerical and symbolic computing - Part 1
+            <small>28 Dec 2020</small>
           </a>
         </h3>
       </li>
