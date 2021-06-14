@@ -9,7 +9,9 @@ Here, I keep a list of my presentations and posters, presented at various intern
 
 * **Physics-informed neural network model for cell viability and oxygen consumption of pancreatic islets**, will be presented at the Mechanistic Machine Learning and Digital Twins for Computational Science, Engineering & Technology conference, San Diego, USA, 2021
 
-* **Mathematical modeling of biodegradation of metallic biomaterials using reaction-diffusion equations and level set method**, will be presented at the SIAM Conference on Mathematical Aspects of Materials Science, Bilbao, Spain, 2021 ([abstract](/public/files/siam2021-abstract.pdf))
+* **Mathematical modeling of degradation process of biodegradable metallic biomaterials in immersion and perfusion setups**, will be presented at the XXVIII Congress of the International Society of Biomechanics (ISB), 2021 ([abstract](/public/files/isb2021-abstract.pdf))
+
+* **Mathematical modeling of biodegradation of metallic biomaterials using reaction-diffusion equations and level set method**, presented at the SIAM Conference on Mathematical Aspects of Materials Science, Bilbao, Spain, 2021 ([abstract](/public/files/siam2021-abstract.pdf) \| [presentation](/public/files/siam2021-presentation.pdf) \| [video](https://www.youtube.com/watch?v=N7YqJy4EmI8))
 
 * **Reproducible research in computational sciences: A use case for uncertainty quantification using Jupyter notebooks**, will be presented at the KU Leuven Open Science Study Day, Leuven, Belgium, 2021 ([abstract](/public/files/openscience2021-abstract.pdf) \| [presentation](/public/files/openscience2021-presentation.pdf) \| [video](https://www.youtube.com/watch?v=1Fx4gfMeL6E))
 
