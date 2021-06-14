@@ -19,6 +19,13 @@ These are the recorded sessions of teaching activities I have had or the videos 
 
 I try to record my presentations in conferences that I'm allowed to do so. Then I combine the recorded audio with the presented slides and share the output here. For more details of this, you may have a look at [Presentations and Posters](/presentations).
 
+#### Mathematical modeling of biodegradation of metallic biomaterials using reaction-diffusion-convection equations and level set method
+
+SIAM Conference on Mathematical Aspects of Materials Science\
+Bilbao, Spain, 2021
+
+[![presentation](http://img.youtube.com/vi/N7YqJy4EmI8/0.jpg){: style="max-width: 300px; height: auto;"}](https://www.youtube.com/watch?v=N7YqJy4EmI8)
+
 #### Reproducible research in computational sciences: A use case for uncertainty quantification using Jupyter notebooks
 
 KU Leuven Open Science Study Day\
