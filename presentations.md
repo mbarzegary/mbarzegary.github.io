@@ -3,7 +3,7 @@ layout: page
 title: Presentations & Posters
 ---
 
-Here, I keep a list of my presentations and posters, presented at various international conferences and symposiums, alongside their associated content files:
+Here, I keep a list of my presentations and posters, presented at various international conferences and symposia, alongside their associated content files:
 
 ## As the presenter (main author)
 

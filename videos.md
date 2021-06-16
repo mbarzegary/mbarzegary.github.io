@@ -3,7 +3,11 @@ layout: page
 title: Videos
 ---
 
-## Educational content
+[Educational content](#educational)
+
+[Conference presentations](#conferences)
+
+## <a name="educational"></a> Educational content
 
 These are the recorded sessions of teaching activities I have had or the videos I created for educational purposes.
 
@@ -15,7 +19,7 @@ These are the recorded sessions of teaching activities I have had or the videos 
 
 [![presentation](http://img.youtube.com/vi/sm9GozNz3_w/0.jpg){: style="max-width: 300px; height: auto;"}](https://www.youtube.com/watch?v=sm9GozNz3_w)
 
-## Conference presentations
+## <a name="conferences"></a> Conference presentations
 
 I try to record my presentations in conferences that I'm allowed to do so. Then I combine the recorded audio with the presented slides and share the output here. For more details of this, you may have a look at [Presentations and Posters](/presentations).
 
