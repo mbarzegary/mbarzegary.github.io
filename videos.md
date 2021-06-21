@@ -7,6 +7,8 @@ title: Videos
 
 [Conference presentations](#conferences)
 
+[Workshop talks](#workshops)
+
 ## <a name="educational"></a> Educational content
 
 These are the recorded sessions of teaching activities I have had or the videos I created for educational purposes.
@@ -85,3 +87,12 @@ Alicante, Spain, August 2019
 [![presentation](http://img.youtube.com/vi/C9mPcr5sbbY/0.jpg){: style="max-width: 300px; height: auto;"}](http://www.youtube.com/watch?v=C9mPcr5sbbY)
 
 
+## <a name="workshops"></a> Workshop talks
+
+These are the recorded sessions of my talks at scientific workshops.
+
+#### Open Source in Multi-Scale Modeling
+
+1st SGABU Project Workshop, 2021
+
+[![presentation](http://img.youtube.com/vi/3nIExqK49n4/0.jpg){: style="max-width: 300px; height: auto;"}](https://www.youtube.com/watch?v=3nIExqK49n4)
