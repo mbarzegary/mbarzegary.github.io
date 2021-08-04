@@ -4,7 +4,7 @@
  <title>Mojtaba Barzegari</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2021-08-01T17:38:52+02:00</updated>
+ <updated>2021-08-04T18:13:30+02:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name></name>
@@ -17,17 +17,17 @@
    <link href="http://localhost:4000/2021/07/31/import-3d-mesh-into-freefem-part1/"/>
    <updated>2021-07-31T00:00:00+02:00</updated>
    <id>http://localhost:4000/2021/07/31/import-3d-mesh-into-freefem-part1</id>
-   <content type="html">&lt;p&gt;Akthough &lt;a href=&quot;https://freefem.org/&quot;&gt;FreeFEM&lt;/a&gt; has quite some rich features for 2D mesh generation and manipulation, there are not so great things avaailable for 3D meshes natively. So, importing 3D mesh files becomes a crucial task in finite element computation using FreeFEM. Some cool 3D mesh file formats are supported out-of-box in FreeFEM (using &lt;code class=&quot;highlighter-rouge&quot;&gt;readmesh3&lt;/code&gt; for MEDIT files and &lt;code class=&quot;highlighter-rouge&quot;&gt;gmshload&lt;/code&gt; for &lt;a href=&quot;https://gmsh.info/&quot;&gt;GMSH&lt;/a&gt; files). But, the problem will be labeling the entities in complex geometries in a way that can be read easily inside FreeFEM programs to be used for defining regions and boundary conditions.&lt;/p&gt;
+   <content type="html">&lt;p&gt;Although &lt;a href=&quot;https://freefem.org/&quot;&gt;FreeFEM&lt;/a&gt; has quite some rich features for 2D mesh generation and manipulation, there are not so great things available for 3D meshes natively. So, importing 3D mesh files for complex geometries becomes a challenging task in finite element computation using FreeFEM. Some cool 3D mesh file formats are supported out-of-box in FreeFEM (using &lt;code class=&quot;highlighter-rouge&quot;&gt;readmesh3&lt;/code&gt; for MEDIT files and &lt;code class=&quot;highlighter-rouge&quot;&gt;gmshload&lt;/code&gt; for &lt;a href=&quot;https://gmsh.info/&quot;&gt;GMSH&lt;/a&gt; files). But, the problem will be labeling the entities in complex geometries in a way that can be read easily inside FreeFEM programs to be used for defining regions and boundary conditions.&lt;/p&gt;
 
-&lt;p&gt;To do this, to the best of my knowledge, there are a couple of different techniques using various CAD programs. The goal of this series of blog posts is to demonstrate the techniques I have found while playing with these tools. To begin with, I use SALOME software to create a mesh and directly import it to FreeFEM. In lator posts, I will use mesh conversion tools and other CAD programs for alternative solutions.&lt;/p&gt;
+&lt;p&gt;To do this, to the best of my knowledge, there are a couple of different techniques using various CAD programs. The goal of this series of blog posts is to demonstrate the techniques I have found while playing with these tools. To begin with, I use SALOME software to create a mesh and directly import it to FreeFEM. In next posts, I will use mesh conversion tools and other CAD programs for alternative solutions.&lt;/p&gt;
 
-&lt;p&gt;SALOME has bunch of various modules for geometry construction. For complex parametric goemetries, the &lt;em&gt;Shaper&lt;/em&gt; module provide a SolidWorks-like interface, but for simpler ones, the &lt;em&gt;Geometry&lt;/em&gt; module suffices. In this post, we use the &lt;em&gt;Geometry&lt;/em&gt; module to create a simple cylinder and then the &lt;em&gt;Mesh&lt;/em&gt; module to generate a mesh out of it. We create a set of groups during the geometry construction and import them in the mesh generation process to label the surfaces. That’s actually as simple as that. Let’s go for it.&lt;/p&gt;
+&lt;p&gt;SALOME has a bunch of various modules for geometry construction. For complex parametric geometries, the &lt;em&gt;Shaper&lt;/em&gt; module provides a SolidWorks-like interface, but for simpler ones, the &lt;em&gt;Geometry&lt;/em&gt; module suffices. In this post, we use the &lt;em&gt;Geometry&lt;/em&gt; module to create a simple cylinder and then the &lt;em&gt;Mesh&lt;/em&gt; module to generate a mesh out of it. We create a set of groups during the geometry construction and import them into the mesh generation process to label the surfaces. That’s actually as simple as that. Let’s go for it.&lt;/p&gt;
 
-&lt;p&gt;Let’s say we are going to create a mesh for a fluid simulation inside a pipe. The pipe is a simple cylinder with inlet and outlet on the sides and wall on the outer surface. So, first, create a simple cylinder (New Entities -&amp;gt; Primitives -&amp;gt; Cylinder). The size doesn’t matter at this point but you should know it to define mesh size later.&lt;/p&gt;
+&lt;p&gt;Let’s say we are going to create a mesh for a fluid simulation inside a pipe. The pipe is a simple cylinder with inlet and outlet on the sides and wall on the outer surface. So, first, create a simple cylinder (New Entities -&amp;gt; Primitives -&amp;gt; Cylinder). The size doesn’t matter at this point but you should remember it to define mesh size later.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/public/blog/salome-ff-1.jpg&quot; alt=&quot;color photo ftl&quot; width=&quot;50%&quot; height=&quot;auto&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;As I said before, the next step is to create some groups on the constructed goemtry. We will use these groups later to create labels in the mesh generation process. Creating groups is easy but requires attention to select correct entities (like surfaces and volumes). Right click on the cylinder in the &lt;em&gt;Object Browser&lt;/em&gt; and select &lt;em&gt;Create Group&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;As I said before, the next step is to create some groups on the constructed geometry. We will use these groups later to create labels in the mesh generation process. Creating groups is easy but requires attention to select correct entities (like surfaces and volumes). Right click on the cylinder in the &lt;em&gt;Object Browser&lt;/em&gt; and select &lt;em&gt;Create Group&lt;/em&gt;.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/public/blog/salome-ff-2.jpg&quot; alt=&quot;color photo ftl&quot; width=&quot;70%&quot; height=&quot;auto&quot; /&gt;&lt;/p&gt;
 
@@ -39,7 +39,7 @@
 
 &lt;p&gt;&lt;img src=&quot;/public/blog/salome-ff-4.jpg&quot; alt=&quot;color photo ftl&quot; width=&quot;90%&quot; height=&quot;auto&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;After doing this we are ready to go to the mesh generation step. Switch to &lt;em&gt;Mesh&lt;/em&gt; module, select the geometry, and select &lt;em&gt;Create Mesh&lt;/em&gt; (Mesh -&amp;gt; Create Mesh). FreeFEM supports tetraherdal elements only, so select “Tetrahedral” for the &lt;em&gt;Mesh type&lt;/em&gt; and “NETGEN 1D-2D-3D” for the &lt;em&gt;Algorithm&lt;/em&gt;. Then click on the gear button next to &lt;em&gt;Hypothesis&lt;/em&gt; and select “NETGEN 3D Parameters”. Here is where you need to take into account the size of the original cylinder and specify the mesh settings according to it. After entering your desired values for the mesh size settings, click &lt;em&gt;Ok&lt;/em&gt; and &lt;em&gt;Apply&lt;/em&gt;. Then, right click on the created “Mesh_1” (in the &lt;em&gt;Object Browser&lt;/em&gt;) and select &lt;em&gt;Compute&lt;/em&gt;. This is an example of the output for the shown parameters.&lt;/p&gt;
+&lt;p&gt;After doing this we are ready to go to the mesh generation step. Switch to &lt;em&gt;Mesh&lt;/em&gt; module, select the geometry, and select &lt;em&gt;Create Mesh&lt;/em&gt; (Mesh -&amp;gt; Create Mesh). FreeFEM supports tetrahedral elements only, so select “Tetrahedral” for the &lt;em&gt;Mesh type&lt;/em&gt; and “NETGEN 1D-2D-3D” for the &lt;em&gt;Algorithm&lt;/em&gt;. Then click on the gear button next to &lt;em&gt;Hypothesis&lt;/em&gt; and select “NETGEN 3D Parameters”. Here is where you need to take into account the size of the original cylinder and specify the mesh settings according to it. After entering your desired values for the mesh size settings, click &lt;em&gt;Ok&lt;/em&gt; and &lt;em&gt;Apply&lt;/em&gt;. Then, right click on the created “Mesh_1” (in the &lt;em&gt;Object Browser&lt;/em&gt;) and select &lt;em&gt;Compute&lt;/em&gt;. This is an example of the output for the shown parameters.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/public/blog/salome-ff-5.jpg&quot; alt=&quot;color photo ftl&quot; width=&quot;100%&quot; height=&quot;auto&quot; /&gt;&lt;/p&gt;
 
@@ -55,7 +55,7 @@
 
 &lt;p&gt;&lt;img src=&quot;/public/blog/salome-ff-8.jpg&quot; alt=&quot;color photo ftl&quot; width=&quot;80%&quot; height=&quot;auto&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;Okay, so, we are done. That’s all we needed to do. Right click on the mesh, select &lt;em&gt;Export&lt;/em&gt; and then &lt;em&gt;GMF file&lt;/em&gt;. This creates a .mesh file which is natively supported by FreeFEM. Yes, that’s right, SALOME can output a mesh that can be directly imported to FreeFEM. What can be better than that?&lt;/p&gt;
+&lt;p&gt;Okay, so, we are done. That’s all we needed to do. Right click on the mesh, select &lt;em&gt;Export&lt;/em&gt; and then &lt;em&gt;GMF file&lt;/em&gt;. This creates a .mesh file, a format that is natively supported by FreeFEM. Yes, that’s right, SALOME can output a mesh that can be directly imported to FreeFEM. What can be better than that?&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/public/blog/salome-ff-9.jpg&quot; alt=&quot;color photo ftl&quot; width=&quot;70%&quot; height=&quot;auto&quot; /&gt;&lt;/p&gt;
 
@@ -63,7 +63,7 @@
 
 &lt;p&gt;&lt;img src=&quot;/public/blog/salome-ff-10.jpg&quot; alt=&quot;color photo ftl&quot; width=&quot;100%&quot; height=&quot;auto&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;You may use this technique to create multi-colume mesh files as well. The principle is exactly the same, but you create groups for 3D entities instead of 2D ones you saw in this post.&lt;/p&gt;
+&lt;p&gt;You may use this technique to create multi-volume mesh files as well. The principle is exactly the same, but you create groups for 3D entities instead of the 2D ones you saw in this post.&lt;/p&gt;
 </content>
  </entry>
  
