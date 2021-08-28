@@ -11,7 +11,7 @@ title: Videos
 
 ## <a name="educational"></a> Educational content
 
-These are the recorded sessions of teaching activities I have had or the videos I created for educational purposes.
+These are the recorded sessions of teaching activities I have had or the videos I created for educational purposes. Moreover, I regularly record and publish videos in [TuxRiders](https://www.youtube.com/channel/UC7tFIxB0O2Uhf9afEi_DISw) on topics related to open-source scientific computing.
 
 #### An Introduction to Reaction-Diffusion-Advection Equation
 
