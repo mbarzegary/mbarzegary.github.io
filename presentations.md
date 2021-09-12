@@ -7,13 +7,17 @@ Here, I keep a list of my presentations and posters, presented at various intern
 
 ## As the presenter (main author)
 
+* **Mathematical modeling of curvature-based cell/tissue growth on open porous scaffolds for bone tissue engineering**, will be presented at the 8th Belgian Symposium on Tissue Engineering, Louvain, Belgium, 2021
+
 * **Physics-informed neural network model for cell viability and oxygen consumption of pancreatic islets**, will be presented at the Mechanistic Machine Learning and Digital Twins for Computational Science, Engineering & Technology conference, San Diego, USA, 2021
 
-* **Mathematical modeling of degradation process of biodegradable metallic biomaterials in immersion and perfusion setups**, will be presented at the XXVIII Congress of the International Society of Biomechanics (ISB), 2021 ([abstract](/public/files/isb2021-abstract.pdf) \| [presentation](/public/files/isb2021-presentation.pdf) \| [video](https://www.youtube.com/watch?v=DxW2LUvjUII))
+* **High-performance computing in biomedical engineering; a use-case for biomaterials degradation modeling**, presented at the 17th International Symposium on Computer Methods in Biomechanics and Biomedical Engineering (CMBBE), Bonn, Germany, 2021 
+
+* **Mathematical modeling of degradation process of biodegradable metallic biomaterials in immersion and perfusion setups**, presented at the XXVIII Congress of the International Society of Biomechanics (ISB), Stockholm, Sweden, 2021 ([abstract](/public/files/isb2021-abstract.pdf) \| [presentation](/public/files/isb2021-presentation.pdf) \| [video](https://www.youtube.com/watch?v=DxW2LUvjUII))
 
 * **Mathematical modeling of biodegradation of metallic biomaterials using reaction-diffusion equations and level set method**, presented at the SIAM Conference on Mathematical Aspects of Materials Science, Bilbao, Spain, 2021 ([abstract](/public/files/siam2021-abstract.pdf) \| [presentation](/public/files/siam2021-presentation.pdf) \| [video](https://www.youtube.com/watch?v=N7YqJy4EmI8))
 
-* **Reproducible research in computational sciences: A use case for uncertainty quantification using Jupyter notebooks**, will be presented at the KU Leuven Open Science Study Day, Leuven, Belgium, 2021 ([abstract](/public/files/openscience2021-abstract.pdf) \| [presentation](/public/files/openscience2021-presentation.pdf) \| [video](https://www.youtube.com/watch?v=1Fx4gfMeL6E))
+* **Reproducible research in computational sciences: A use case for uncertainty quantification using Jupyter notebooks**, presented at the KU Leuven Open Science Study Day, Leuven, Belgium, 2021 ([abstract](/public/files/openscience2021-abstract.pdf) \| [presentation](/public/files/openscience2021-presentation.pdf) \| [video](https://www.youtube.com/watch?v=1Fx4gfMeL6E))
 
 * **Investigating the biodegradation of metallic biomaterials using HPC-based simulation techniques**, presented at the 14th World Congress on Computational Mechanics, 2020 ([abstract](/public/files/wccm2020-abstract.pdf) \| [presentation](/public/files/wccm2020-presentation.pdf) \| [video](https://slideslive.com/38945379))
 
@@ -36,5 +40,11 @@ Here, I keep a list of my presentations and posters, presented at various intern
 * **Mathematical modeling of biodegradation of metal implants in orthopedics**, presented at the 11th Symposium on Biodegradable Metals, Alicante, Spain, 2019 ([abstract](/public/files/biometal2019-abstract.pdf) \| [poster](/public/files/biometal2019-poster.pdf) \| [presentation](/public/files/biometal2019-presetation.pdf) \| [video](https://www.youtube.com/watch?v=C9mPcr5sbbY))
 
 ## As a co-author
+
+* **Upscaling of a Next Generation Microwell-Based Beta Cell Replacement Device**, will be presented at the 6th TERMIS World Congress on Tissue Engineering and Regenerative Medicine (TERMIS), Maastricht, the Netherlands, 2021
+
+* **Creating your own TPMS-based functionally graded scaffolds for 3D-printing**, presented at the 17th International Symposium on Computer Methods in Biomechanics and Biomedical Engineering (CMBBE), Bonn, Germany, 2021 
+
+* **Quantifying cellular forces in a 3D in vitro vascular model**, presented at the 17th International Symposium on Computer Methods in Biomechanics and Biomedical Engineering (CMBBE), Bonn, Germany, 2021 
 
 * **Towards Collaborative Machine Learning Driven Healthcare Internet of Things**, presented at the International Conference on Omni-Layer Intelligent Systems, Crete, Greece, 2019 ([article in proceedings](https://dl.acm.org/citation.cfm?id=3312644))
