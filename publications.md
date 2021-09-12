@@ -5,6 +5,32 @@ title: Publications
 
 In this page, I will try to maintain a list of my publications in a presentive index. The formal category-based list would be found in my [CV](http://nbviewer.jupyter.org/github/mbarzegary/MyCV/blob/master/main.pdf) (or even on [Google Scholar](https://scholar.google.co.uk/citations?user=UkgS0HMAAAAJ&hl=en)).
 
+## Computational Biomechanics and Tissue Engineering
+
+### Finite Element Method, Materials Modeling
+
+* **M. Barzegari**, D. Mei, S.V. Lamaka, L. Geris, "[Computational modeling of degradation process of biodegradable magnesium biomaterials](https://doi.org/10.1016/j.corsci.2021.109674)", *Corrosion Science*, Vol. 190, pp. 109674, 2021
+
+### Finite Element Method, Fluid-Structure Interaction
+
+* **M. Barzegari**, B. Vahidi, M. R. Safarinejad, M. Ebad, "[A computational analysis of the effect of supporting organs on predicted vesical pressure in stress urinary incontinence](https://doi.org/10.1007/s11517-020-02148-2)", *Medical & Biological Engineering & Computing*, Vol. 58, No. 5, pp. 1079-1089, 2020 
+
+* **M. Barzegari**, B. Vahidi, M. R. Safarinejad, "[A Clinical and Finite Elements Study of Stress Urinary Incontinence in Women Using Fluid-Structure Interactions](https://arxiv.org/abs/1708.01601)", arXiv Preprint
+
+* **M. Barzegari**, B. Vahidi, M. R. Safarinejad, "[Investigating Stress Urinary Incontinence in Women Using Computational Methods and Clinical Data](http://mme-old.modares.ac.ir/article_16771_en.html)", *Journal of Modares Mechanical Engineering*, Vol. 17, No. 5, pp. 417-427, 2017 [Persian]
+
+* **M. Barzegari**, B. Vahidi, M. R. Safarinejad, "[Computational Simulation of Stress Urinary Incontinence using Fluid-Structure Interaction Analysis](https://www.civilica.com/Paper-ISME25-ISME25_342=\%D8\%B4\%D8\%A8\%DB\%8C\%D9\%87-\%D8\%B3\%D8\%A7\%D8\%B2\%DB\%8C-\%D9\%85\%D8\%AD\%D8\%A7\%D8\%B3\%D8\%A8\%D8\%A7\%D8\%AA\%DB\%8C-\%D8\%A8\%DB\%8C-\%D8\%A7\%D8\%AE\%D8\%AA\%DB\%8C\%D8\%A7\%D8\%B1\%DB\%8C-\%D8\%A7\%D8\%B3\%D8\%AA\%D8\%B1\%D8\%B3\%DB\%8C-\%D8\%A7\%D8\%AF\%D8\%B1\%D8\%A7\%D8\%B1-\%D8\%A8\%D8\%A7-\%D8\%A7\%D8\%B3\%D8\%AA\%D9\%81\%D8\%A7\%D8\%AF\%D9\%87-\%D8\%A7\%D8\%B2-\%D8\%B1\%D9\%88\%D8\%B4-\%D8\%AA\%D8\%AD\%D9\%84\%DB\%8C\%D9\%84-\%D8\%A8\%D8\%B1\%D9\%87\%D9\%85\%DA\%A9\%D9\%86\%D8\%B4-\%D8\%B3\%DB\%8C\%D8\%A7\%D9\%84-\%D9\%88-\%D8\%AC\%D8\%A7\%D9\%85\%D8\%AF.html)", *25th International Conference on Mechanical Engineering*, Tehran, Iran, 2017 [Persian]
+
+### Finite Element Method, Traction Force Microscopy
+
+* J. Barrasa Fano, A. Shapeti, A. Jorge Peñas, **M. Barzegari**, J.A. Sanz-Herrera, H. Van Oosterwyck, "[TFMLAB: a MATLAB toolbox for 4D Traction Force Microscopy](https://doi.org/10.1016/j.softx.2021.100723)", *SoftwareX*, Vol. 15, pp. 100723, 2021 
+
+### Software and Education
+
+* **M. Barzegari**, L. Geris, "[An open source crash course on parameter estimation of computational models using a Bayesian optimization approach](https://doi.org/10.21105/jose.00089)", *Journal of Open Source Education*, Vol. 4, No. 40, 2021
+
+***
+
 ## Computational Fluid Dynamics
 
 ### Lattice Boltzmann Method
@@ -30,23 +56,15 @@ In this page, I will try to maintain a list of my publications in a presentive i
 
 ***
 
-## Computational Biomechanics
-
-### Finite Element Method, Fluid-Structure Interaction
-
-* **M. Barzegari**, B. Vahidi, M. R. Safarinejad, "[A Clinical and Finite Elements Study of Stress Urinary Incontinence in Women Using Fluid-Structure Interactions](https://arxiv.org/abs/1708.01601)", arXiv Preprint
-
-* **M. Barzegari**, B. Vahidi, M. R. Safarinejad, "[Investigating Stress Urinary Incontinence in Women Using Computational Methods and Clinical Data](http://mme-old.modares.ac.ir/article_16771_en.html)", *Journal of Modares Mechanical Engineering*, Vol. 17, No. 5, pp. 417-427, 2017 [Persian]
-
-* **M. Barzegari**, B. Vahidi, M. R. Safarinejad, "[Computational Simulation of Stress Urinary Incontinence using Fluid-Structure Interaction Analysis](https://www.civilica.com/Paper-ISME25-ISME25_342=\%D8\%B4\%D8\%A8\%DB\%8C\%D9\%87-\%D8\%B3\%D8\%A7\%D8\%B2\%DB\%8C-\%D9\%85\%D8\%AD\%D8\%A7\%D8\%B3\%D8\%A8\%D8\%A7\%D8\%AA\%DB\%8C-\%D8\%A8\%DB\%8C-\%D8\%A7\%D8\%AE\%D8\%AA\%DB\%8C\%D8\%A7\%D8\%B1\%DB\%8C-\%D8\%A7\%D8\%B3\%D8\%AA\%D8\%B1\%D8\%B3\%DB\%8C-\%D8\%A7\%D8\%AF\%D8\%B1\%D8\%A7\%D8\%B1-\%D8\%A8\%D8\%A7-\%D8\%A7\%D8\%B3\%D8\%AA\%D9\%81\%D8\%A7\%D8\%AF\%D9\%87-\%D8\%A7\%D8\%B2-\%D8\%B1\%D9\%88\%D8\%B4-\%D8\%AA\%D8\%AD\%D9\%84\%DB\%8C\%D9\%84-\%D8\%A8\%D8\%B1\%D9\%87\%D9\%85\%DA\%A9\%D9\%86\%D8\%B4-\%D8\%B3\%DB\%8C\%D8\%A7\%D9\%84-\%D9\%88-\%D8\%AC\%D8\%A7\%D9\%85\%D8\%AF.html)", *25th International Conference on Mechanical Engineering*, Tehran, Iran, 2017 [Persian]
-
-***
-
 ## Machine Learning and Internet of Things (IoT)
 
 ### Theory of Machine Learning
 
 * F. Firouzi, B. Farahani, F. Ye, **M. Barzegari**, "[Machine Learning for IoT](https://link.springer.com/chapter/10.1007%2F978-3-030-30367-9_5)", in *Intelligent Internet of Things*, Springer International Publishing, pp. 243–313, 2020
+
+### Deep Learning, Convolutional Neural Networks
+
+* F. Firouzi, B. Farahani, **M. Barzegari**, M. Daneshmand, "[AI-Driven Data Monetization: The other Face of Data in IoT-based Smart and Connected Health](https://doi.org/10.1109/JIOT.2020.3027971)", *IEEE Internet of Things Journal*, 2020
 
 ### Artificial Neural Networks, Support Vector Machines
 
@@ -60,7 +78,7 @@ In this page, I will try to maintain a list of my publications in a presentive i
 
 ### Image Processing, Raspberry Pi
 
-* S. Gholami, A. Danayi, A. Rezaee, **M. Barzegari**, "[Embedded Systems and the Challenge of Complex Computing in Internet of Things](https://www.civilica.com/Paper-IOTCONF01-IOTCONF01_014=\%D8\%B3\%DB\%8C\%D8\%B3\%D8\%AA\%D9\%85-\%D9\%86\%D9\%87\%D9\%81\%D8\%AA\%D9\%87-\%D9\%88-\%DA\%86\%D8\%A7\%D9\%84\%D8\%B4-\%D9\%85\%D8\%AD\%D8\%A7\%D8\%B3\%D8\%A8\%D8\%A7\%D8\%AA-\%D9\%BE\%DB\%8C\%DA\%86\%DB\%8C\%D8\%AF\%D9\%87-\%D8\%AF\%D8\%B1-\%D8\%A7\%DB\%8C\%D9\%86\%D8\%AA\%D8\%B1\%D9\%86\%D8\%AA-\%D8\%A7\%D8\%B4\%DB\%8C\%D8\%A7.html)", *1st International Conference on Internet of Things, Applications and Infrastructure*, Isfahan, Iran, 2017 [Persian]
+* S. Gholami, A. Danayi, A. Rezaee, **M. Barzegari**, "[Embedded Systems and the Challenge of Complex Computing in Internet of Things](https://civilica.com/doc/656407/)", *1st International Conference on Internet of Things, Applications and Infrastructure*, Isfahan, Iran, 2017 [Persian]
 
 
 
