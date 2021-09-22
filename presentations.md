@@ -11,7 +11,7 @@ Here, I keep a list of my presentations and posters, presented at various intern
 
 * **Physics-informed neural network model for cell viability and oxygen consumption of pancreatic islets**, will be presented at the Mechanistic Machine Learning and Digital Twins for Computational Science, Engineering & Technology conference, San Diego, USA, 2021
 
-* **High-performance computing in biomedical engineering; a use-case for biomaterials degradation modeling**, presented at the 17th International Symposium on Computer Methods in Biomechanics and Biomedical Engineering (CMBBE), Bonn, Germany, 2021 
+* **High-performance computing in biomedical engineering; a use-case for biomaterials degradation modeling**, presented at the 17th International Symposium on Computer Methods in Biomechanics and Biomedical Engineering (CMBBE), Bonn, Germany, 2021 ([abstract](/public/files/cmbbe2021-abstract.pdf) \| [presentation](/public/files/cmbbe2021-presentation.pdf) \| [video](https://www.youtube.com/watch?v=MkWRu3aq5Y8))
 
 * **Mathematical modeling of degradation process of biodegradable metallic biomaterials in immersion and perfusion setups**, presented at the XXVIII Congress of the International Society of Biomechanics (ISB), Stockholm, Sweden, 2021 ([abstract](/public/files/isb2021-abstract.pdf) \| [presentation](/public/files/isb2021-presentation.pdf) \| [video](https://www.youtube.com/watch?v=DxW2LUvjUII))
 
