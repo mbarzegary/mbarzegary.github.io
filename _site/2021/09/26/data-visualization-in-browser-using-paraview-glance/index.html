@@ -27,7 +27,7 @@
 
   <title>
     
-      Using Conda as a build environment for Linux &middot; Mojtaba Barzegari
+      Data visualizations inside a web browser using ParaView Glance &middot; Mojtaba Barzegari
     
   </title>
 
@@ -188,37 +188,47 @@
 
     <div class="content container">
       <div class="post">
-  <h1 class="post-title">Using Conda as a build environment for Linux</h1>
-  <span class="post-date">10 Oct 2020</span>
-  <p>When it comes to installing software programs and libraries on Linux, compiling from source code is a first-class citizen. I mean it’s the most preferred way and has been there to save lots of time from software developers to meet the different requirements of different hardware/software configurations on a wide variety of Linux distributions. This process has its own challenges, especially in case of installing and satisfying the required dependencies, a task that can be quite nightmarish (of course not as bad as as the nostalgic <a href="https://en.wikipedia.org/wiki/DLL_Hell">DLL hell</a> in Windows). It can get even worse when you don’t have root access to install the dependencies, which happens every now and then in daily life of a computational researcher when he/she wants to do this on a remote cluster or a university supercomputer.</p>
+  <h1 class="post-title">Data visualizations inside a web browser using ParaView Glance</h1>
+  <span class="post-date">26 Sep 2021</span>
+  <p>Have you ever been in demand for a solution to visualize (complex) data in a web browser (like Google Chrome or Mozilla Firefox) so that you can embed it in a website (web page)? We know that <a href="https://www.paraview.org/">ParaView</a> is a great tool for doing such a task offline in your local machine, but what if we can employ the power of ParaView to do the visualization online and inside a web browser?</p>
 
-<p>A potential solution to this issue is taking advantage of container technologies like <a href="https://docs.docker.com/get-started/">Docker</a> or <a href="https://singularity.lbl.gov/quickstart">Singularity</a>, but what if we don’t have access to these packages as well? True, the most trivial solution would be compiling all the dependencies also from source code, but you should go for it only if you have super “enough time” as it can be an endless task. This is something I did once to build <a href="https://freefem.org/">FreeFEM</a> on an old cluster, and to be honest, it was something I will never go for that again because it required me to compile not only all the dependencies but the compilers as well (a process called “<a href="https://en.wikipedia.org/wiki/Bootstrapping_(compilers)">Bootstrapping</a>”). By the way, that was fun enough to be told later, and yes, I should write about it at some point.</p>
+<p>Although it seems an impossible task at first, let me tell you that this is a super streightforward process by taking advantage of <a href="https://kitware.github.io/paraview-glance/index.html">ParaView Glance</a>, one of the tools provided by the <a href="https://www.paraview.org/web/">ParaView Web</a> project. ParaView Glance is lightweight version of ParaView developed as a web application to run inside a web browser. It can also be used as a tool to build custom viewers on web. It is very exciting, isn’t it? If you want to take a look at an example to see how it looks like, you may scroll down this page a little bit or refer to the <a href="/research/">Research page</a> and view the section in which I have provided a visualization of a degradation simulation as a glimpse into the kind of work I do during my PhD.</p>
 
-<p>So, is there any other option? Yes, there is. Although people know it as a virtual environment manager for Python, <a href="https://docs.conda.io/en/latest/">Conda</a> can be used in a more generalized manner, and it can be a lifesaver for the aforementioned issue as it provides a fully isolated environment (like containers but without living directly on the kernel) to install the required libraries and compilers. Above this all, it’s very easy to install Conda on a Linux system without the root privilege and any previous software dependency. Yes, what can be better than that?</p>
+<p>For this post, I assume that we are going to host such a visulization in an online website, like what I did in this website. I say this because running this locally on the web browser installed on your machine becomes easier since you don’t need to serve the visualizaion file using an online service (I have used GitHub for this).</p>
 
-<p>Technically speaking, compiling things on a Conda environment can be considered as “pseudo-cross-compiling”, a sub-category of “<a href="https://en.wikipedia.org/wiki/Cross_compiler">cross-compiling</a>” (a common term you may frequently hear about in the field of embedded systems in which you compile a program on a system but run it somewhere else on a different architecture). But, I cannot describe pseudo-cross-compiling better than how the Anaconda team has documented it in <a href="https://docs.conda.io/projects/conda-build/en/latest/resources/compiler-tools.html">Anaconda compiler tools</a>, so I just quote the relevant part here:</p>
-<blockquote>
-  <p>Anaconda’s compilers for Linux are built with something called crosstool-ng. They include not only GCC but also a “sysroot” with glibc, as well as the rest of the toolchain (binutils). Ordinarily, the sysroot is something that your system provides, and it is what establishes the libc compatibility bound for your compiled code. Any compilation that uses a sysroot other than the system sysroot is said to be “cross-compiling.” When the target OS and the build OS are the same, it is called a “pseudo-cross-compiler”. This is the case for normal builds with Anaconda’s compilers on Linux.</p>
-</blockquote>
+<p>In order to make it up and running, you need to do 3 steps: 1) creating a special file (a scene) using ParaView, 2) a service or a public location to upload this special file to, and 3) write a couple of lines into the source of any web page to embed ParaView Glance into it. Let’s go through this step by step.</p>
 
-<p>It’s very cool, isn’t it?</p>
+<p>The code you need to add to the source of the page is a couple of lines of HTML to load the corresponding JavaScript library and provide it with the scene file. The code looks like this:</p>
 
-<p>A couple of weeks ago, a colleague of mine asked me for a solution to install <a href="https://openfoam.org/">OpenFOAM</a> on a cluster on which he didn’t have root privilege. OpenFOAM has a straightforward <a href="https://openfoam.org/download/source/">installation procedure from the source code</a> but the thing is it requires root privileges to install required dependencies, which is obviously not possible in this case. So, I tried Conda for the first time for this purpose, and indeed, it  worked like a charm for us. Yes, it was a bit challenging to make it work (which I should write about in a separate post), but it helped us to compile a complex software from scratch totally independent from the underlying OS and its configurations. In the next post, I will document the procedure in detail as an example of this approach.</p>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script&gt;</span>
+    <span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">https://kitware.github.io/paraview-glance/app</span><span class="dl">"</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">datadir</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">https://raw.githubusercontent.com/mbarzegary/datasets-and-scenes/main/</span><span class="dl">"</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">file</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">degrading_screw.vtkjs</span><span class="dl">"</span><span class="p">;</span>
+
+    <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="dl">"</span><span class="s2">&lt;iframe src='</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">app</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">?name=</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">file</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">&amp;url=</span><span class="dl">"</span> <span class="o">+</span><span class="nx">datadir</span> <span class="o">+</span> <span class="nx">file</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">' id='iframe' width='1100' height='900'&gt;&lt;/iframe&gt;</span><span class="dl">"</span><span class="p">);</span>
+<span class="nt">&lt;/script&gt;</span>
+</code></pre></div></div>
+
+<p>What does it do? It first defines a variable to point to the web app location (can be online or offline) as well as 2 variables to keep the directory in which the scene file is located and the name of the file. The latter is stored in 2 variables instead of 1 to allow us to provide the web app with a unique (instance) name, which is actually the name of the file in this case. The URL pointing to the scene file is then created by appending these 2 variables. After this, a special HTML element (an iframe) is created and the app is generated inside it. You need to change the second and the third variables accordingly to point to the path and name of your own files.</p>
+
+<p>It’s worth noting that as an alternative solution, you can choose to download the latest version of ParaView Glance and link the downloaded files with this. Instead of doing this, I usually prefer to load the latest version of things from their website directly, which is in this case the Kitware GitHub pages site (kitware.github.io).</p>
+
+<p>The result will be something like this:</p>
+
+<script>
+    var app = "https://kitware.github.io/paraview-glance/app";
+    var datadir = "https://raw.githubusercontent.com/mbarzegary/datasets-and-scenes/main/";
+    var file = "degrading_screw.vtkjs";
+
+    document.write("<iframe src='" + app + "?name=" + file + "&url=" +datadir + file + "' id='iframe' width='1100' height='900'></iframe>");
+</script>
+
 
 </div>
 
 <!-- <div class="related">
   <h2>Related Posts</h2>
   <ul class="related-posts">
-    
-      <li>
-        <h3>
-          <a href="/2021/09/26/data-visualization-in-browser-using-paraview-glance/">
-            Data visualizations inside a web browser using ParaView Glance
-            <small>26 Sep 2021</small>
-          </a>
-        </h3>
-      </li>
     
       <li>
         <h3>
@@ -234,6 +244,15 @@
           <a href="/2021/06/13/separate-different-mesh-blocks/">
             Separating different volume mesh blocks (regions) using FreeFEM
             <small>13 Jun 2021</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2021/04/10/1d-stefan-formulation-part3/">
+            Solving Stefan (moving-boundary) formulation of a diffusion problem - Part 3 - FreeFEM (C++) implementation
+            <small>10 Apr 2021</small>
           </a>
         </h3>
       </li>

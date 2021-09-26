@@ -4,13 +4,54 @@
  <title>Mojtaba Barzegari</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2021-09-22T16:56:17+02:00</updated>
+ <updated>2021-09-26T22:00:33+02:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name></name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>Data visualizations inside a web browser using ParaView Glance</title>
+   <link href="http://localhost:4000/2021/09/26/data-visualization-in-browser-using-paraview-glance/"/>
+   <updated>2021-09-26T00:00:00+02:00</updated>
+   <id>http://localhost:4000/2021/09/26/data-visualization-in-browser-using-paraview-glance</id>
+   <content type="html">&lt;p&gt;Have you ever been in demand for a solution to visualize (complex) data in a web browser (like Google Chrome or Mozilla Firefox) so that you can embed it in a website (web page)? We know that &lt;a href=&quot;https://www.paraview.org/&quot;&gt;ParaView&lt;/a&gt; is a great tool for doing such a task offline in your local machine, but what if we can employ the power of ParaView to do the visualization online and inside a web browser?&lt;/p&gt;
+
+&lt;p&gt;Although it seems an impossible task at first, let me tell you that this is a super streightforward process by taking advantage of &lt;a href=&quot;https://kitware.github.io/paraview-glance/index.html&quot;&gt;ParaView Glance&lt;/a&gt;, one of the tools provided by the &lt;a href=&quot;https://www.paraview.org/web/&quot;&gt;ParaView Web&lt;/a&gt; project. ParaView Glance is lightweight version of ParaView developed as a web application to run inside a web browser. It can also be used as a tool to build custom viewers on web. It is very exciting, isn’t it? If you want to take a look at an example to see how it looks like, you may scroll down this page a little bit or refer to the &lt;a href=&quot;/research/&quot;&gt;Research page&lt;/a&gt; and view the section in which I have provided a visualization of a degradation simulation as a glimpse into the kind of work I do during my PhD.&lt;/p&gt;
+
+&lt;p&gt;For this post, I assume that we are going to host such a visulization in an online website, like what I did in this website. I say this because running this locally on the web browser installed on your machine becomes easier since you don’t need to serve the visualizaion file using an online service (I have used GitHub for this).&lt;/p&gt;
+
+&lt;p&gt;In order to make it up and running, you need to do 3 steps: 1) creating a special file (a scene) using ParaView, 2) a service or a public location to upload this special file to, and 3) write a couple of lines into the source of any web page to embed ParaView Glance into it. Let’s go through this step by step.&lt;/p&gt;
+
+&lt;p&gt;The code you need to add to the source of the page is a couple of lines of HTML to load the corresponding JavaScript library and provide it with the scene file. The code looks like this:&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;script&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;app&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;https://kitware.github.io/paraview-glance/app&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;datadir&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;https://raw.githubusercontent.com/mbarzegary/datasets-and-scenes/main/&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;file&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;degrading_screw.vtkjs&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;write&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;lt;iframe src='&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;app&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;?name=&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;file&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;amp;url=&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;datadir&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;file&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;' id='iframe' width='1100' height='900'&amp;gt;&amp;lt;/iframe&amp;gt;&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;What does it do? It first defines a variable to point to the web app location (can be online or offline) as well as 2 variables to keep the directory in which the scene file is located and the name of the file. The latter is stored in 2 variables instead of 1 to allow us to provide the web app with a unique (instance) name, which is actually the name of the file in this case. The URL pointing to the scene file is then created by appending these 2 variables. After this, a special HTML element (an iframe) is created and the app is generated inside it. You need to change the second and the third variables accordingly to point to the path and name of your own files.&lt;/p&gt;
+
+&lt;p&gt;It’s worth noting that as an alternative solution, you can choose to download the latest version of ParaView Glance and link the downloaded files with this. Instead of doing this, I usually prefer to load the latest version of things from their website directly, which is in this case the Kitware GitHub pages site (kitware.github.io).&lt;/p&gt;
+
+&lt;p&gt;The result will be something like this:&lt;/p&gt;
+
+&lt;script&gt;
+    var app = &quot;https://kitware.github.io/paraview-glance/app&quot;;
+    var datadir = &quot;https://raw.githubusercontent.com/mbarzegary/datasets-and-scenes/main/&quot;;
+    var file = &quot;degrading_screw.vtkjs&quot;;
+
+    document.write(&quot;&lt;iframe src='&quot; + app + &quot;?name=&quot; + file + &quot;&amp;url=&quot; +datadir + file + &quot;' id='iframe' width='1100' height='900'&gt;&lt;/iframe&gt;&quot;);
+&lt;/script&gt;
+
+</content>
+ </entry>
  
  <entry>
    <title>Import 3D mesh files into FreeFEM - Part 1</title>
