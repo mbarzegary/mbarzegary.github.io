@@ -11,6 +11,10 @@ In this page, I will try to maintain a list of my publications in a presentive i
 
 * **M. Barzegari**, D. Mei, S.V. Lamaka, L. Geris, "[Computational modeling of degradation process of biodegradable magnesium biomaterials](https://doi.org/10.1016/j.corsci.2021.109674)", *Corrosion Science*, Vol. 190, pp. 109674, 2021
 
+### High-Performance Computing
+
+* **M. Barzegari**, L. Geris, "[Highly scalable numerical simulation of coupled reaction–diffusion systems with moving interfaces](https://doi.org/10.1177/10943420211045939)", *The International Journal of High Performance Computing Applications*, 2021
+
 ### Finite Element Method, Fluid-Structure Interaction
 
 * **M. Barzegari**, B. Vahidi, M. R. Safarinejad, M. Ebad, "[A computational analysis of the effect of supporting organs on predicted vesical pressure in stress urinary incontinence](https://doi.org/10.1007/s11517-020-02148-2)", *Medical & Biological Engineering & Computing*, Vol. 58, No. 5, pp. 1079-1089, 2020 
