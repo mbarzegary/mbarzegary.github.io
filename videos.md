@@ -25,6 +25,13 @@ These are the recorded sessions of teaching activities I have had or the videos 
 
 I try to record my presentations in conferences that I'm allowed to do so. Then I combine the recorded audio with the presented slides and share the output here. For more details of this, you may have a look at [Presentations and Posters](/presentations).
 
+#### Physics-informed neural network model for cell viability and oxygen consumption of pancreatic islets
+
+Mechanistic Machine Learning and Digital Twins for Computational Science, Engineering & Technology (MMLDT) Conference\
+San Diego, USA, 2021
+
+[![presentation](http://img.youtube.com/vi/kDpAta0Ic4I/0.jpg){: style="max-width: 300px; height: auto;"}](https://www.youtube.com/watch?v=kDpAta0Ic4I)
+
 #### High-performance computing in biomedical engineering; a use-case for biomaterials degradation modeling
 
 17th International Symposium on Computer Methods in Biomechanics and Biomedical Engineering (CMBBE)\
