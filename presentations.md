@@ -9,7 +9,7 @@ Here, I keep a list of my presentations and posters, presented at various intern
 
 * **Mathematical modeling of curvature-based cell/tissue growth on open porous scaffolds for bone tissue engineering**, will be presented at the 8th Belgian Symposium on Tissue Engineering, Louvain, Belgium, 2021
 
-* **Physics-informed neural network model for cell viability and oxygen consumption of pancreatic islets**, will be presented at the Mechanistic Machine Learning and Digital Twins for Computational Science, Engineering & Technology conference, San Diego, USA, 2021
+* **Physics-informed neural network model for cell viability and oxygen consumption of pancreatic islets**, will be presented at the Mechanistic Machine Learning and Digital Twins for Computational Science, Engineering & Technology conference, San Diego, USA, 2021 ([abstract](/public/files/mmldt2021-abstract.pdf) \| [presentation](/public/files/mmldt2021-presentation.pdf) \| [video](https://www.youtube.com/watch?v=kDpAta0Ic4I))
 
 * **High-performance computing in biomedical engineering; a use-case for biomaterials degradation modeling**, presented at the 17th International Symposium on Computer Methods in Biomechanics and Biomedical Engineering (CMBBE), Bonn, Germany, 2021 ([abstract](/public/files/cmbbe2021-abstract.pdf) \| [presentation](/public/files/cmbbe2021-presentation.pdf) \| [video](https://www.youtube.com/watch?v=MkWRu3aq5Y8))
 
