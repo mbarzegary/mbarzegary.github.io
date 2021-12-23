@@ -15,6 +15,10 @@ In this page, I will try to maintain a list of my publications in a presentive i
 
 * **M. Barzegari**, L. Geris, "[Highly scalable numerical simulation of coupled reaction–diffusion systems with moving interfaces](https://doi.org/10.1177/10943420211045939)", *The International Journal of High Performance Computing Applications*, 2021
 
+### Finite Element Method, Tissue Growth Modeling
+
+* D. Van Hede, B. Liang, S. Anania, **M. Barzegari**, B. Verlee, G. Nolens, J. Pirson, L. Geris, F. Lambert, ["3D-Printed Synthetic Hydroxyapatite Scaffold With In Silico Optimized Macrostructure Enhances Bone Formation In Vivo"](https://doi.org/10.1002/adfm.202105002), *Advanced Functional Materials*, 2021
+
 ### Finite Element Method, Fluid-Structure Interaction
 
 * **M. Barzegari**, B. Vahidi, M. R. Safarinejad, M. Ebad, "[A computational analysis of the effect of supporting organs on predicted vesical pressure in stress urinary incontinence](https://doi.org/10.1007/s11517-020-02148-2)", *Medical & Biological Engineering & Computing*, Vol. 58, No. 5, pp. 1079-1089, 2020 
@@ -67,6 +71,8 @@ In this page, I will try to maintain a list of my publications in a presentive i
 * F. Firouzi, B. Farahani, F. Ye, **M. Barzegari**, "[Machine Learning for IoT](https://link.springer.com/chapter/10.1007%2F978-3-030-30367-9_5)", in *Intelligent Internet of Things*, Springer International Publishing, pp. 243–313, 2020
 
 ### Deep Learning, Convolutional Neural Networks
+
+* F. Firouzi, B. Farahani, E. Panahi, **M. Barzegari**, "[Task Offloading for Edge-Fog-Cloud Interplay in the Healthcare Internet of Things (IoT)](https://doi.org/10.1109/COINS51742.2021.9524098)", *Proceedings of the International Conference on Omni-Layer Intelligent Systems*, 2021
 
 * F. Firouzi, B. Farahani, **M. Barzegari**, M. Daneshmand, "[AI-Driven Data Monetization: The other Face of Data in IoT-based Smart and Connected Health](https://doi.org/10.1109/JIOT.2020.3027971)", *IEEE Internet of Things Journal*, 2020
 
