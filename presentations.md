@@ -7,13 +7,13 @@ Here, I keep a list of my presentations and posters, presented at various intern
 
 ## As the presenter (main author)
 
-* **Massively parallel finite element simulation of reaction-diffusion systems with moving boundaries: a use-case for biomaterials degradation modeling**, will be presented at the HPC Asia, 5th Edition, 2022
+* **Massively parallel finite element simulation of reaction-diffusion systems with moving boundaries: a use-case for biomaterials degradation modeling**, will be presented at the HPC Asia, 5th Edition, 2022 ([abstract](/public/files/hpc2022-abstract.pdf) \| [presentation](/public/files/hpc2022-presentation.pdf))
 
-* **BioDeg: corrosion/biodegradation simulation software for metallic biomaterials based on FreeFEM/PETSc/Qt**, presented at the FreeFEM Days, 13th Edition, Paris, France, 2021
+* **BioDeg: corrosion/biodegradation simulation software for metallic biomaterials based on FreeFEM/PETSc/Qt**, presented at the FreeFEM Days, 13th Edition, Paris, France, 2021 ([abstract](/public/files/freefem2021-abstract.pdf) \| [presentation](/public/files/freefem2021-presentation.pdf))
 
-* **Interactive Educational Materials for Computational Tissue Engineering Using Jupyter Notebooks**, presented at the 6th World Congress of Tissue Engineering and Regenerative Medicine International Society (TERMIS), Maastricht, the Netherlands, 2021
+* **Interactive Educational Materials for Computational Tissue Engineering Using Jupyter Notebooks**, presented at the 6th World Congress of Tissue Engineering and Regenerative Medicine International Society (TERMIS), Maastricht, the Netherlands, 2021 ([presentation](/public/files/termis2021-presentation.pdf))
 
-* **Mathematical modeling of curvature-based cell/tissue growth on open porous scaffolds for bone tissue engineering**, presented at the 8th Belgian Symposium on Tissue Engineering, Louvain, Belgium, 2021
+* **Mathematical modeling of curvature-based cell/tissue growth on open porous scaffolds for bone tissue engineering**, presented at the 8th Belgian Symposium on Tissue Engineering, Louvain, Belgium, 2021 ([abstract](/public/files/bste2021-abstract.pdf) \| [presentation](/public/files/bste2021-presentation.pdf))
 
 * **Physics-informed neural network model for cell viability and oxygen consumption of pancreatic islets**, presented at the Mechanistic Machine Learning and Digital Twins for Computational Science, Engineering & Technology conference, San Diego, USA, 2021 ([abstract](/public/files/mmldt2021-abstract.pdf) \| [presentation](/public/files/mmldt2021-presentation.pdf) \| [video](https://www.youtube.com/watch?v=kDpAta0Ic4I))
 
