@@ -7,9 +7,15 @@ Here, I keep a list of my presentations and posters, presented at various intern
 
 ## As the presenter (main author)
 
-* **Mathematical modeling of curvature-based cell/tissue growth on open porous scaffolds for bone tissue engineering**, will be presented at the 8th Belgian Symposium on Tissue Engineering, Louvain, Belgium, 2021
+* **Massively parallel finite element simulation of reaction-diffusion systems with moving boundaries: a use-case for biomaterials degradation modeling**, will be presented at the HPC Asia, 5th Edition, 2022
 
-* **Physics-informed neural network model for cell viability and oxygen consumption of pancreatic islets**, will be presented at the Mechanistic Machine Learning and Digital Twins for Computational Science, Engineering & Technology conference, San Diego, USA, 2021 ([abstract](/public/files/mmldt2021-abstract.pdf) \| [presentation](/public/files/mmldt2021-presentation.pdf) \| [video](https://www.youtube.com/watch?v=kDpAta0Ic4I))
+* **BioDeg: corrosion/biodegradation simulation software for metallic biomaterials based on FreeFEM/PETSc/Qt**, presented at the FreeFEM Days, 13th Edition, Paris, France, 2021
+
+* **Interactive Educational Materials for Computational Tissue Engineering Using Jupyter Notebooks**, presented at the 6th World Congress of Tissue Engineering and Regenerative Medicine International Society (TERMIS), Maastricht, the Netherlands, 2021
+
+* **Mathematical modeling of curvature-based cell/tissue growth on open porous scaffolds for bone tissue engineering**, presented at the 8th Belgian Symposium on Tissue Engineering, Louvain, Belgium, 2021
+
+* **Physics-informed neural network model for cell viability and oxygen consumption of pancreatic islets**, presented at the Mechanistic Machine Learning and Digital Twins for Computational Science, Engineering & Technology conference, San Diego, USA, 2021 ([abstract](/public/files/mmldt2021-abstract.pdf) \| [presentation](/public/files/mmldt2021-presentation.pdf) \| [video](https://www.youtube.com/watch?v=kDpAta0Ic4I))
 
 * **High-performance computing in biomedical engineering; a use-case for biomaterials degradation modeling**, presented at the 17th International Symposium on Computer Methods in Biomechanics and Biomedical Engineering (CMBBE), Bonn, Germany, 2021 ([abstract](/public/files/cmbbe2021-abstract.pdf) \| [presentation](/public/files/cmbbe2021-presentation.pdf) \| [video](https://www.youtube.com/watch?v=MkWRu3aq5Y8))
 
@@ -41,7 +47,9 @@ Here, I keep a list of my presentations and posters, presented at various intern
 
 ## As a co-author
 
-* **Upscaling of a Next Generation Microwell-Based Beta Cell Replacement Device**, will be presented at the 6th TERMIS World Congress on Tissue Engineering and Regenerative Medicine (TERMIS), Maastricht, the Netherlands, 2021
+* **The Optimal Cell Packing Density for Macroencapsulating Islet Delivery Devices**, presented at the The International Pancreas and Islet Transplantation Association (IPITA), 2021 ([abstract](https://doi.org/10.1097/01.tp.0000804560.86378.96))
+
+* **Upscaling of a Next Generation Microwell-Based Beta Cell Replacement Device**, presented at the 6th TERMIS World Congress on Tissue Engineering and Regenerative Medicine (TERMIS), Maastricht, the Netherlands, 2021
 
 * **Creating your own TPMS-based functionally graded scaffolds for 3D-printing**, presented at the 17th International Symposium on Computer Methods in Biomechanics and Biomedical Engineering (CMBBE), Bonn, Germany, 2021 
 
