@@ -19,6 +19,8 @@ A plethora of useful books, videos, and online resources are freely available al
 
 * [Introduction to Numerical Methods for Engineers](https://www.youtube.com/user/kvyi/playlists): A large number of introductory videos to learn the basics of numerical methods (linear algebra, curve fitting, numerical integration and differentiation, etc.).
 
+* [Introduction to Applied Numerical Computing](https://www.youtube.com/playlist?list=PL6fjYEpJFi7UMDXtNiaF3eLlOKAM8Lrkf): A collection of instructive videos on various aspects of numerical computing in Python, from the basics of programming (including high-performnace computing and version control) to details of finite difference and finite element methods.
+
 ## Computational Engineering
 
 * [CFD Python, 12 Steps to Navier-Stokes](https://github.com/barbagroup/CFDPython): A practical set of Jupyter notebooks and videos to understanding the foundations of Computational Fluid Dynamics (CFD).
