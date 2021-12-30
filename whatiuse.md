@@ -24,7 +24,7 @@ Here,  I will try to keep an up-to-date list of software programs that I heavily
 **Image Editing** | Pinta
 **Vector Graphics Design** | Inkscape
 **Multimedia** | VLC Player, SMplayer
-**Music Streaming** | Spotify for Linux
+**Music Streaming** | ~~Spotify for Linux~~ [#BoycottSpotify](https://twitter.com/search?q=%23boycottspotify)
 **Download Manager** | uGet
 **Video Editing** | Shotcut, Kdenlive
 **Audio Editing** | Audacity
@@ -34,6 +34,8 @@ Here,  I will try to keep an up-to-date list of software programs that I heavily
 
 
 ## Scienific Computing tools
+
+(detailed list can be found in [my research technology radar](https://mbarzegary.github.io/research-tech-radar/))
 
 **Numerical Computing** | GNU Octave
 **Finite Element Solver** | FreeFEM, FEniCS, Code Aster
