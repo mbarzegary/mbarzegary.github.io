@@ -3,7 +3,7 @@ layout: page
 title: Projects
 ---
 
-Here is the list of projects I have in my GitHub account:
+Here, you can find the list of most relevant projects I have in my GitHub account. For more details of the research projects I have contributed to, please take a look at [Research Portfolio](/research).
  
 ## Scientific Computing
 
