@@ -25,6 +25,13 @@ These are the recorded sessions of teaching activities I have had or the videos 
 
 I try to record my presentations in conferences that I'm allowed to do so. Then I combine the recorded audio with the presented slides and share the output here. For more details of this, you may have a look at [Presentations and Posters](/presentations).
 
+#### Computational modeling in tissue engineering; case studies for tissue growth & degradable scaffolds
+
+8th Belgian Symposium on Tissue Engineering (BSTE)\
+Louvain, Belgium, 2021
+
+[![presentation](http://img.youtube.com/vi/kw_hmYoaH5w/0.jpg){: style="max-width: 300px; height: auto;"}](https://www.youtube.com/watch?v=kw_hmYoaH5w)
+
 #### Physics-informed neural network model for cell viability and oxygen consumption of pancreatic islets
 
 Mechanistic Machine Learning and Digital Twins for Computational Science, Engineering & Technology (MMLDT) Conference\
