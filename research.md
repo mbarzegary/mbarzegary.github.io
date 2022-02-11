@@ -20,6 +20,8 @@ title: Research Portfolio
 
 ## <a name="projects"></a> Research Projects I've Been Involved In
 
+(will be updated soon with more demonstrations)
+
 #### Computational Tissue Engineering
 
 <!-- add atlas work -->
