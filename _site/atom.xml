@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
  <title>Mojtaba Barzegari</title>
- <link href="http://localhost:4000/atom.xml" rel="self"/>
- <link href="http://localhost:4000/"/>
- <updated>2022-02-11T14:49:22+01:00</updated>
- <id>http://localhost:4000</id>
+ <link href="https://mbarzegary.github.io//atom.xml" rel="self"/>
+ <link href="https://mbarzegary.github.io//"/>
+ <updated>2022-04-28T18:49:47+02:00</updated>
+ <id>https://mbarzegary.github.io/</id>
  <author>
    <name></name>
    <email></email>
@@ -14,9 +14,9 @@
  
  <entry>
    <title>Use and import Python packages and modules inside ParaView (PvPython)</title>
-   <link href="http://localhost:4000/2022/01/03/use-python-packages-modules-in-paraview/"/>
+   <link href="https://mbarzegary.github.io//2022/01/03/use-python-packages-modules-in-paraview/"/>
    <updated>2022-01-03T00:00:00+01:00</updated>
-   <id>http://localhost:4000/2022/01/03/use-python-packages-modules-in-paraview</id>
+   <id>https://mbarzegary.github.io//2022/01/03/use-python-packages-modules-in-paraview</id>
    <content type="html">&lt;p&gt;I came across a couple of scenarios in which I needed to call a couple of packages inside &lt;a href=&quot;https://www.paraview.org/Wiki/ParaView/Python_Scripting&quot;&gt;PvPython&lt;/a&gt;, the Python client of &lt;a href=&quot;https://www.paraview.org/&quot;&gt;ParaView&lt;/a&gt;, which allows us to automate ParaView tasks (you may take a look at &lt;a href=&quot;&quot;&gt;this automation example&lt;/a&gt; to see how PvPython works). After trying various techniques in Windows and Linux, my conclusion is that the best solution to this problem is the one suggested &lt;a href=&quot;https://discourse.paraview.org/t/how-can-i-install-and-import-other-modules-inside-pvpython/3067&quot;&gt;here&lt;/a&gt;. But, since this solution is not elaborated and may be difficult to follow, I implement it in this post the way I did it for myself.&lt;/p&gt;
 
 &lt;p&gt;Let’s first clarify the problem. ParaView comes with its own Python intrepreter, in which you can easily access ParaView Python package. To give it a try, open a terminal and type &lt;code class=&quot;highlighter-rouge&quot;&gt;pvpython&lt;/code&gt; and then &lt;code class=&quot;highlighter-rouge&quot;&gt;from paraview.simple import *&lt;/code&gt;. This doesn’t give you an error, but if you execute the statement in your local installation of Python, you will face the famous &lt;code class=&quot;highlighter-rouge&quot;&gt;ModuleNotFoundError&lt;/code&gt;. Now, the problem we want to discuss is the opposite of this one: we cannot use installed packages (like pandas or matplotlib) in PvPython, a scenario that can be very helpful in different applications.&lt;/p&gt;
@@ -82,9 +82,9 @@
  
  <entry>
    <title>Data visualizations inside a web browser using ParaView Glance</title>
-   <link href="http://localhost:4000/2021/09/26/data-visualization-in-browser-using-paraview-glance/"/>
+   <link href="https://mbarzegary.github.io//2021/09/26/data-visualization-in-browser-using-paraview-glance/"/>
    <updated>2021-09-26T00:00:00+02:00</updated>
-   <id>http://localhost:4000/2021/09/26/data-visualization-in-browser-using-paraview-glance</id>
+   <id>https://mbarzegary.github.io//2021/09/26/data-visualization-in-browser-using-paraview-glance</id>
    <content type="html">&lt;p&gt;Have you ever been in demand for a solution to visualize (complex) data in a web browser (like Google Chrome or Mozilla Firefox) so that you can embed it in a website (web page)? We know that &lt;a href=&quot;https://www.paraview.org/&quot;&gt;ParaView&lt;/a&gt; is a great tool for doing such a task offline in your local machine, but what if we can employ the power of ParaView to do the visualization online and inside a web browser?&lt;/p&gt;
 
 &lt;p&gt;Although it seems an impossible task at first, let me tell you that this is a super straightforward process by taking advantage of &lt;a href=&quot;https://kitware.github.io/paraview-glance/index.html&quot;&gt;ParaView Glance&lt;/a&gt;, one of the tools provided by the &lt;a href=&quot;https://www.paraview.org/web/&quot;&gt;ParaView Web&lt;/a&gt; project. ParaView Glance is lightweight version of ParaView developed using &lt;a href=&quot;https://kitware.github.io/vtk-js/index.html&quot;&gt;VTK.js&lt;/a&gt; as a web application to run inside a web browser. It can also be used as a tool to build custom viewers on the web. It seems to be very exciting, doesn’t it? If you want to take a look at an example to see how it looks like, you may scroll down this page a little bit or refer to the &lt;a href=&quot;/research/&quot;&gt;Research page&lt;/a&gt; and view the section in which I have provided a visualization of a degradation simulation as a glimpse into the kind of work I do during my PhD.&lt;/p&gt;
@@ -127,9 +127,9 @@
  
  <entry>
    <title>Import 3D mesh files into FreeFEM - Part 1</title>
-   <link href="http://localhost:4000/2021/07/31/import-3d-mesh-into-freefem-part1/"/>
+   <link href="https://mbarzegary.github.io//2021/07/31/import-3d-mesh-into-freefem-part1/"/>
    <updated>2021-07-31T00:00:00+02:00</updated>
-   <id>http://localhost:4000/2021/07/31/import-3d-mesh-into-freefem-part1</id>
+   <id>https://mbarzegary.github.io//2021/07/31/import-3d-mesh-into-freefem-part1</id>
    <content type="html">&lt;p&gt;Although &lt;a href=&quot;https://freefem.org/&quot;&gt;FreeFEM&lt;/a&gt; has quite some rich features for 2D mesh generation and manipulation, there are not so great things available for 3D meshes natively. So, importing 3D mesh files for complex geometries becomes a challenging task in finite element computation using FreeFEM. Some cool 3D mesh file formats are supported out-of-box in FreeFEM (using &lt;code class=&quot;highlighter-rouge&quot;&gt;readmesh3&lt;/code&gt; for MEDIT files and &lt;code class=&quot;highlighter-rouge&quot;&gt;gmshload&lt;/code&gt; for &lt;a href=&quot;https://gmsh.info/&quot;&gt;GMSH&lt;/a&gt; files). But, the problem will be labeling the entities in complex geometries in a way that can be read easily inside FreeFEM programs to be used for defining regions and boundary conditions.&lt;/p&gt;
 
 &lt;p&gt;To do this, to the best of my knowledge, there are a couple of different techniques using various CAD programs. The goal of this series of blog posts is to demonstrate the techniques I have found while playing with these tools. To begin with, I use SALOME software to create a mesh and directly import it to FreeFEM. In next posts, I will use mesh conversion tools and other CAD programs for alternative solutions.&lt;/p&gt;
@@ -182,9 +182,9 @@
  
  <entry>
    <title>Separating different volume mesh blocks (regions) using FreeFEM</title>
-   <link href="http://localhost:4000/2021/06/13/separate-different-mesh-blocks/"/>
+   <link href="https://mbarzegary.github.io//2021/06/13/separate-different-mesh-blocks/"/>
    <updated>2021-06-13T00:00:00+02:00</updated>
-   <id>http://localhost:4000/2021/06/13/separate-different-mesh-blocks</id>
+   <id>https://mbarzegary.github.io//2021/06/13/separate-different-mesh-blocks</id>
    <content type="html">&lt;p&gt;Lots of mesh generation routines may result in a multi-region mesh, out of which you want to extract a certain region (block). These kinds of mesh files are commonly found in the output of code-based mesh generation processes, i.e you generate a mesh using a mesh manipulation or computational geometry library such as &lt;a href=&quot;https://www.mmgtools.org/&quot;&gt;Mmg&lt;/a&gt; (used to generate the mesh below) or &lt;a href=&quot;https://www.cgal.org/&quot;&gt;CGAL&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/public/blog/separate-both.jpg&quot; alt=&quot;color photo ftl&quot; width=&quot;100%&quot; height=&quot;auto&quot; /&gt;&lt;/p&gt;
@@ -216,9 +216,9 @@
  
  <entry>
    <title>Solving Stefan (moving-boundary) formulation of a diffusion problem - Part 3 - FreeFEM (C++) implementation</title>
-   <link href="http://localhost:4000/2021/04/10/1d-stefan-formulation-part3/"/>
+   <link href="https://mbarzegary.github.io//2021/04/10/1d-stefan-formulation-part3/"/>
    <updated>2021-04-10T00:00:00+02:00</updated>
-   <id>http://localhost:4000/2021/04/10/1d-stefan-formulation-part3</id>
+   <id>https://mbarzegary.github.io//2021/04/10/1d-stefan-formulation-part3</id>
    <content type="html">&lt;p&gt;In the &lt;a href=&quot;/2021/02/15/1d-stefan-formulation-part2/&quot;&gt;previous post&lt;/a&gt;, we finished working on the implementation of a Newton solver to obtain the value of &lt;script type=&quot;math/tex&quot;&gt;\alpha&lt;/script&gt; in the following equation:&lt;/p&gt;
 
 &lt;script type=&quot;math/tex; mode=display&quot;&gt;\alpha=\frac{c_{0}-c_{\text {sat }}}{c_{\text {sol }}-c_{\text {sat }}} \sqrt{\frac{D}{\pi}} \frac{\exp \left(\frac{-\alpha^{2}}{D}\right)}{\operatorname{erfc}\left(\frac{-\alpha}{\sqrt{D}}\right)}&lt;/script&gt;
@@ -324,9 +324,9 @@ Delta is 1.63268e-13
  
  <entry>
    <title>Solving Stefan (moving-boundary) formulation of a diffusion problem using numerical and symbolic computing - Part 2</title>
-   <link href="http://localhost:4000/2021/02/15/1d-stefan-formulation-part2/"/>
+   <link href="https://mbarzegary.github.io//2021/02/15/1d-stefan-formulation-part2/"/>
    <updated>2021-02-15T00:00:00+01:00</updated>
-   <id>http://localhost:4000/2021/02/15/1d-stefan-formulation-part2</id>
+   <id>https://mbarzegary.github.io//2021/02/15/1d-stefan-formulation-part2</id>
    <content type="html">&lt;p&gt;In the &lt;a href=&quot;/2020/12/28/1d-stefan-formulation-part1/&quot;&gt;previous post&lt;/a&gt;, I quickly demonstrated the formulation of a moving-boundary problem for a 1D case, but in the end, we reached a problem related to the complexity of the derived equation. The complexity led to &lt;code class=&quot;highlighter-rouge&quot;&gt;NotImplementedError&lt;/code&gt;, which means that the symbolic solver is not capable of solving that. As an alternative solution, in this post, we switch to a numerical solver to obtain the value of &lt;script type=&quot;math/tex&quot;&gt;\alpha&lt;/script&gt; through the following equation (see previous post for further explanation of this):&lt;/p&gt;
 
 &lt;script type=&quot;math/tex; mode=display&quot;&gt;\alpha=\frac{c_{0}-c_{\text {sat }}}{c_{\text {sol }}-c_{\text {sat }}} \sqrt{\frac{D}{\pi}} \frac{\exp \left(\frac{-\alpha^{2}}{D}\right)}{\operatorname{erfc}\left(\frac{-\alpha}{\sqrt{D}}\right)}&lt;/script&gt;
@@ -439,9 +439,9 @@ Delta is  3.82565589437956e-13
  
  <entry>
    <title>Solving Stefan (moving-boundary) formulation of a diffusion problem using numerical and symbolic computing - Part 1</title>
-   <link href="http://localhost:4000/2020/12/28/1d-stefan-formulation-part1/"/>
+   <link href="https://mbarzegary.github.io//2020/12/28/1d-stefan-formulation-part1/"/>
    <updated>2020-12-28T00:00:00+01:00</updated>
-   <id>http://localhost:4000/2020/12/28/1d-stefan-formulation-part1</id>
+   <id>https://mbarzegary.github.io//2020/12/28/1d-stefan-formulation-part1</id>
    <content type="html">&lt;p&gt;Moving-boundary problems are a subset of the general concept of boundary-value problems which not only require the solution of the underlying partial differential equation (PDE), but also the determination of the boundary of the domain (or sub-domains) as part of the solution.  Moving-boundary problems are usually referred to as Stefan problems and can be used to model a plethora of phenomena ranging from phase separation and multiphase flows in materials engineering to bone development and tumor growth in biology.&lt;/p&gt;
 
 &lt;p&gt;Diffusion systems are the mathematical models in which the change of state variables occurs via spreading of components. These systems are described by a set of parabolic PDEs and can model a large number of different systems in science and engineering. Combining the diffusion systems with moving-boundary problems provides a way to study the systems in which the diffusion leads to the change of domain geometry. Such systems have great importance in various real-world scenarios in chemistry and chemical engineering as well as environmental and life sciences.&lt;/p&gt;
@@ -507,9 +507,9 @@ Delta is  3.82565589437956e-13
  
  <entry>
    <title>Deriving weak formulation of partial differential equations</title>
-   <link href="http://localhost:4000/2020/11/06/derive-weak-form-pde/"/>
+   <link href="https://mbarzegary.github.io//2020/11/06/derive-weak-form-pde/"/>
    <updated>2020-11-06T00:00:00+01:00</updated>
-   <id>http://localhost:4000/2020/11/06/derive-weak-form-pde</id>
+   <id>https://mbarzegary.github.io//2020/11/06/derive-weak-form-pde</id>
    <content type="html">&lt;p&gt;The finite element method doesn’t need an introduction, but at the core of this magical method, in its mathematical nature, one challenging step makes it sometimes a bit difficult for newcomers to immediatley jump start and employ finite element to solve partial differential equations (PDEs) numerically. This challenging part is deriving the weak formulation of the PDE, which is indeed one of the very first steps a researcher should take to use the available PDE solvers (like &lt;a href=&quot;https://freefem.org/&quot;&gt;FreeFEM&lt;/a&gt;, &lt;a href=&quot;https://fenicsproject.org/&quot;&gt;FEniCS&lt;/a&gt;, and &lt;a href=&quot;https://www.dealii.org/&quot;&gt;deal.ii&lt;/a&gt;) to simulate a mathematical model.&lt;/p&gt;
 
 &lt;p&gt;Although deriving the weak form of a PDE is relatively simple, finding a good reference that demonstrates how to do it in action for the first time can be a bit difficult. This topic is well covered in most of the finite element books (the ones that discuss the mathematical aspects), but you need to go through a bunch of math to find the most essential steps. In this post, I try to explain this process by deriving the weak form of a reaction-diffusion PDE as an example. The equation we want to deal with is:&lt;/p&gt;
@@ -563,9 +563,9 @@ Delta is  3.82565589437956e-13
  
  <entry>
    <title>Building OpenFOAM in a Conda virtual environment</title>
-   <link href="http://localhost:4000/2020/10/18/build-openfoam-in-conda-environment/"/>
+   <link href="https://mbarzegary.github.io//2020/10/18/build-openfoam-in-conda-environment/"/>
    <updated>2020-10-18T00:00:00+02:00</updated>
-   <id>http://localhost:4000/2020/10/18/build-openfoam-in-conda-environment</id>
+   <id>https://mbarzegary.github.io//2020/10/18/build-openfoam-in-conda-environment</id>
    <content type="html">&lt;p&gt;In &lt;a href=&quot;/2020/10/10/using-conda-as-a-build-environment/&quot;&gt;previous post&lt;/a&gt;, I explained why a Conda environment would be interesting for building software programs in an isolated box. In this post, as an example, I describe how it works if we want to build &lt;a href=&quot;https://openfoam.org/&quot;&gt;OpenFOAM&lt;/a&gt; in this manner. As I said, the main advantage of doing this is the possibility of building/installing software without the root privilege, a scenario that happens frequently while working with clusters and supercomputers. A root previlege is required for following the &lt;a href=&quot;https://openfoam.org/download/source/&quot;&gt;official build procedure for OpenFOAM&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;The following procedure is independent of the underlying Linux installation, and only a tool to download Miniconda and a text editor suffice (here I have used &lt;code class=&quot;highlighter-rouge&quot;&gt;wget&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;nano&lt;/code&gt; for these purposes). Also, it’s worth mentioning that all the paths are taken from my system, so throughout the tutorial, make sure to double-check all the paths/directories to make sure that they match your system configuration. The tutorial is prepared for &lt;code class=&quot;highlighter-rouge&quot;&gt;bash&lt;/code&gt;, but the approach should be more or less the same for other shells and can be modified accordingly&lt;/p&gt;
@@ -717,9 +717,9 @@ c++FLAGS +&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nt
  
  <entry>
    <title>Using Conda as a build environment for Linux</title>
-   <link href="http://localhost:4000/2020/10/10/using-conda-as-a-build-environment/"/>
+   <link href="https://mbarzegary.github.io//2020/10/10/using-conda-as-a-build-environment/"/>
    <updated>2020-10-10T00:00:00+02:00</updated>
-   <id>http://localhost:4000/2020/10/10/using-conda-as-a-build-environment</id>
+   <id>https://mbarzegary.github.io//2020/10/10/using-conda-as-a-build-environment</id>
    <content type="html">&lt;p&gt;When it comes to installing software programs and libraries on Linux, compiling from source code is a first-class citizen. I mean it’s the most preferred way and has been there to save lots of time from software developers to meet the different requirements of different hardware/software configurations on a wide variety of Linux distributions. This process has its own challenges, especially in case of installing and satisfying the required dependencies, a task that can be quite nightmarish (of course not as bad as as the nostalgic &lt;a href=&quot;https://en.wikipedia.org/wiki/DLL_Hell&quot;&gt;DLL hell&lt;/a&gt; in Windows). It can get even worse when you don’t have root access to install the dependencies, which happens every now and then in daily life of a computational researcher when he/she wants to do this on a remote cluster or a university supercomputer.&lt;/p&gt;
 
 &lt;p&gt;A potential solution to this issue is taking advantage of container technologies like &lt;a href=&quot;https://docs.docker.com/get-started/&quot;&gt;Docker&lt;/a&gt; or &lt;a href=&quot;https://singularity.lbl.gov/quickstart&quot;&gt;Singularity&lt;/a&gt;, but what if we don’t have access to these packages as well? True, the most trivial solution would be compiling all the dependencies also from source code, but you should go for it only if you have super “enough time” as it can be an endless task. This is something I did once to build &lt;a href=&quot;https://freefem.org/&quot;&gt;FreeFEM&lt;/a&gt; on an old cluster, and to be honest, it was something I will never go for that again because it required me to compile not only all the dependencies but the compilers as well (a process called “&lt;a href=&quot;https://en.wikipedia.org/wiki/Bootstrapping_(compilers)&quot;&gt;Bootstrapping&lt;/a&gt;”). By the way, that was fun enough to be told later, and yes, I should write about it at some point.&lt;/p&gt;
@@ -739,9 +739,9 @@ c++FLAGS +&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nt
  
  <entry>
    <title>Flexibility of having multiple parallel instances of Linux using WSL</title>
-   <link href="http://localhost:4000/2020/09/29/wsl-multi-instance/"/>
+   <link href="https://mbarzegary.github.io//2020/09/29/wsl-multi-instance/"/>
    <updated>2020-09-29T00:00:00+02:00</updated>
-   <id>http://localhost:4000/2020/09/29/wsl-multi-instance</id>
+   <id>https://mbarzegary.github.io//2020/09/29/wsl-multi-instance</id>
    <content type="html">&lt;p&gt;Working with Windows can be truly a nightmare in scientific computing projects. The main reason behind this is that most of the scientific computing libraries have developed natively for Linux, and in the case of cross-platform ones, the building and installation process on Linux is more straightforward and easy to accomplish. In addition to this, the freedom you have while working with the command line interface can never be experienced in Windows with PowerShell or the traditional Command Prompt.&lt;/p&gt;
 
 &lt;p&gt;So why are we talking about this when Linux is there and we don’t need to stick to Windows? The problem arises when you work for a big organization that doesn’t allow Linux to be installed on your machine because all the operational workflow, communication systems, and things like that are going to take place in Windows (which is indeed my case at KU Leuven, although I have installed an ILLEGAL dual boot version of Linux by bypassing the organizational Bitlocker, but it’s not always feasible and convenient to reboot to Windows to join a meeting, sign something or print a document).&lt;/p&gt;
