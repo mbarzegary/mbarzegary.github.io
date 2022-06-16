@@ -7,7 +7,12 @@ Here, I keep a list of my presentations and posters, presented at various intern
 
 ## As the presenter (main author)
 
-* **Massively parallel finite element simulation of reaction-diffusion systems with moving boundaries: a use-case for biomaterials degradation modeling**, will be presented at the HPC Asia, 5th Edition, 2022 ([abstract](/public/files/hpc2022-abstract.pdf) \| [presentation](/public/files/hpc2022-presentation.pdf))
+. Presented at the 8th European Congress on Computational Methods in Applied Sciences and Engineering (ECCOMAS) 2022, Oslo, Norway
+
+* **Mathematical investigation of corrosion behavior of bioabsorbable metals on the biodegradation interface**, presented at the 8th European Congress on Computational Methods in Applied Sciences and Engineering (ECCOMAS) Oslo, Norway, 2022 (abstract \| presentation)
+
+
+* **Massively parallel finite element simulation of reaction-diffusion systems with moving boundaries: a use-case for biomaterials degradation modeling**, presented at the HPC Asia, 5th Edition, 2022 ([abstract](/public/files/hpc2022-abstract.pdf) \| [presentation](/public/files/hpc2022-presentation.pdf))
 
 * **BioDeg: corrosion/biodegradation simulation software for metallic biomaterials based on FreeFEM/PETSc/Qt**, presented at the FreeFEM Days, 13th Edition, Paris, France, 2021 ([abstract](/public/files/freefem2021-abstract.pdf) \| [presentation](/public/files/freefem2021-presentation.pdf) \| [video](https://www.youtube.com/watch?v=SmLqsaEpwTM))
 
