@@ -209,6 +209,34 @@
   
   <div class="post">
     <h1 class="post-title">
+      <a href="/2022/06/27/surface-to-volume-mesh-using-gmsh/">
+        Generate volume mesh from a surface mesh using GMSH
+      </a>
+    </h1>
+
+    <span class="post-date">27 Jun 2022</span>
+
+    <p>Creating a volume mesh out of a surface mesh is a quite common task in computational sciences, especially when you deal with a sort of image segmentation resulting in a surface mesh (usually in STL format). The surface mesh is suitable for printing or demonstration purposes, but if one wants to go for a computational analysis, like a finite element analysis (FEA) for structural and heat transfer simulations or a computational fluid dynamics (CFD) simulation, then a volume mesh is required.</p>
+
+<p><a href="https://gmsh.info/">GMSH</a> is a powerful software to make such volume mesh. We can simply open a mesh in it (<code class="highlighter-rouge">File -&gt; Open</code>), define a volume (<code class="highlighter-rouge">Physical groups -&gt; Add -&gt; Volume</code>), and then generate a mesh on it (<code class="highlighter-rouge">Mesh -&gt; 3D</code>). We may also need to adjust the global mesh size before meshing the volume (<code class="highlighter-rouge">Tools -&gt; Options -&gt; Mesh -&gt; General -&gt; Element size factor</code>).</p>
+
+<p>But, there will be a big problem here if the surface mesh has a complex morphology, leading to a long waiting time for each of the above steps to complete on the GUI. The solution is to take advantage of the GMSH scripting language. Here is a very simple code to accomplish this:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Merge 'mesh_file.stl';
+Surface Loop(1) = {1};
+Volume(1) = {1};
+</code></pre></div></div>
+
+<p>We should save this in a <code class="highlighter-rouge">.geo</code> file (let’s say <code class="highlighter-rouge">meshing.geo</code>) and then run this command to generate the volume mesh (which will be saved as <code class="highlighter-rouge">output.mesh</code>):</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gmsh meshing.geo <span class="nt">-3</span> <span class="nt">-o</span> output.mesh
+</code></pre></div></div>
+<p>The <code class="highlighter-rouge">-3</code> flag denotes that it’s a 3D mesh.</p>
+
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
       <a href="/2022/01/03/use-python-packages-modules-in-paraview/">
         Use and import Python packages and modules inside ParaView (PvPython)
       </a>

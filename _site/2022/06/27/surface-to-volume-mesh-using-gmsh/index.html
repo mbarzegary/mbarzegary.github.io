@@ -27,7 +27,7 @@
 
   <title>
     
-      Flexibility of having multiple parallel instances of Linux using WSL &middot; Mojtaba Barzegari
+      Generate volume mesh from a surface mesh using GMSH &middot; Mojtaba Barzegari
     
   </title>
 
@@ -188,40 +188,30 @@
 
     <div class="content container">
       <div class="post">
-  <h1 class="post-title">Flexibility of having multiple parallel instances of Linux using WSL</h1>
-  <span class="post-date">29 Sep 2020</span>
-  <p>Working with Windows can be truly a nightmare in scientific computing projects. The main reason behind this is that most of the scientific computing libraries have developed natively for Linux, and in the case of cross-platform ones, the building and installation process on Linux is more straightforward and easy to accomplish. In addition to this, the freedom you have while working with the command line interface can never be experienced in Windows with PowerShell or the traditional Command Prompt.</p>
+  <h1 class="post-title">Generate volume mesh from a surface mesh using GMSH</h1>
+  <span class="post-date">27 Jun 2022</span>
+  <p>Creating a volume mesh out of a surface mesh is a quite common task in computational sciences, especially when you deal with a sort of image segmentation resulting in a surface mesh (usually in STL format). The surface mesh is suitable for printing or demonstration purposes, but if one wants to go for a computational analysis, like a finite element analysis (FEA) for structural and heat transfer simulations or a computational fluid dynamics (CFD) simulation, then a volume mesh is required.</p>
 
-<p>So why are we talking about this when Linux is there and we don’t need to stick to Windows? The problem arises when you work for a big organization that doesn’t allow Linux to be installed on your machine because all the operational workflow, communication systems, and things like that are going to take place in Windows (which is indeed my case at KU Leuven, although I have installed an ILLEGAL dual boot version of Linux by bypassing the organizational Bitlocker, but it’s not always feasible and convenient to reboot to Windows to join a meeting, sign something or print a document).</p>
+<p><a href="https://gmsh.info/">GMSH</a> is a powerful software to make such volume mesh. We can simply open a mesh in it (<code class="highlighter-rouge">File -&gt; Open</code>), define a volume (<code class="highlighter-rouge">Physical groups -&gt; Add -&gt; Volume</code>), and then generate a mesh on it (<code class="highlighter-rouge">Mesh -&gt; 3D</code>). We may also need to adjust the global mesh size before meshing the volume (<code class="highlighter-rouge">Tools -&gt; Options -&gt; Mesh -&gt; General -&gt; Element size factor</code>).</p>
 
-<p>The solution to this problem was released by Microsoft several years ago, a feature of Windows called <a href="https://en.wikipedia.org/wiki/Windows_Subsystem_for_Linux">Windows Subsystem for Linux (WSL)</a>, providing you with an emulated Linux kernel on top of which you can install your favorite distribution. It gives you full terminal access as well as limited support for running graphical applications (with some tricks of course). Recently, they have also extended and upgraded this feature to a real Linux kernel in WSL 2 (which I haven’t tested yet), which has also some cool and long awaited features such as GPU support.</p>
+<p>But, there will be a big problem here if the surface mesh has a complex morphology, leading to a long waiting time for each of the above steps to complete on the GUI. The solution is to take advantage of the GMSH scripting language. Here is a very simple code to accomplish this:</p>
 
-<p>But, beside this, WSL can be tweaked to bring even more productivity especially if you want to test multiple libraries and different configurations without touching your previous working instances of configured Linux (which indeed happens every now and then in scientific computing). Doing this in a native installation of Linux (like with <code class="highlighter-rouge">chroot</code>) requires some effort. Having multiple instances of the same Linux distribution in WSL is not supported out-of-the-box but can be accomplished using a less-known, yet fantastic tool called <a href="https://github.com/DDoSolitary/">LxRunOffline</a>. The simplest way to install LxRunOffline is by downloading the compiled binaries from GitHub. Adding the executable path to the “Path” environment variable is highly recommended. After doing that, a new instance can be installed as simple as:</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; LxRunOffline i -n &lt;name_of_the_instance&gt; -d &lt;isntallation_location&gt; -f &lt;path_of_the_downloaded_image&gt; -s
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Merge 'mesh_file.stl';
+Surface Loop(1) = {1};
+Volume(1) = {1};
 </code></pre></div></div>
-<p>in which the <code class="highlighter-rouge">i</code> argument indicates the installation action (to see all available operations, execute <code class="highlighter-rouge">LxRunOffline</code> without any action). Then, the installed instance can be run using:</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; LxRunOffline r -n &lt;name_of_the_instance&gt;
-</code></pre></div></div>
-<p>You can encapsulate this command in a batch file, which can be placed on Desktop (or even better somewhere in “Path”, so you can run it directly from Command Prompt in any directory) for an easier access.</p>
 
-<p>And now, the great flexibility comes with the freedom of choosing whatever you want as the distribution. What I use most often for this purpose is <a href="https://ubuntu.com/core">Ubuntu Core</a>, a light-weight Linux distribution aimed for IoT devices, but with APT package manager installed, which enables me to start with a tiny Linux installation, and then configure it to fit my needs. By doing this, I can quickly have a fresh installation of Linux to test or run something without affecting the previous configurations I have. A wide variety of Ubuntu Core images can be downloaded <a href="https://partner-images.canonical.com/core/">here</a>. A typical command for such a purpose can be then something like this:</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; LxRunOffline i -n ubuntu-4.6 -d c:\wsl\ubuntu-test46 -f ubuntu-bionic-core-cloudimg-amd64-root.tar.gz -s
+<p>We should save this in a <code class="highlighter-rouge">.geo</code> file (let’s say <code class="highlighter-rouge">meshing.geo</code>) and then run this command to generate the volume mesh (which will be saved as <code class="highlighter-rouge">output.mesh</code>):</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gmsh meshing.geo <span class="nt">-3</span> <span class="nt">-o</span> output.mesh
 </code></pre></div></div>
+<p>The <code class="highlighter-rouge">-3</code> flag denotes that it’s a 3D mesh.</p>
 
 </div>
 
 <!-- <div class="related">
   <h2>Related Posts</h2>
   <ul class="related-posts">
-    
-      <li>
-        <h3>
-          <a href="/2022/06/27/surface-to-volume-mesh-using-gmsh/">
-            Generate volume mesh from a surface mesh using GMSH
-            <small>27 Jun 2022</small>
-          </a>
-        </h3>
-      </li>
     
       <li>
         <h3>
@@ -237,6 +227,15 @@
           <a href="/2021/09/26/data-visualization-in-browser-using-paraview-glance/">
             Data visualizations inside a web browser using ParaView Glance
             <small>26 Sep 2021</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2021/07/31/import-3d-mesh-into-freefem-part1/">
+            Import 3D mesh files into FreeFEM - Part 1
+            <small>31 Jul 2021</small>
           </a>
         </h3>
       </li>
