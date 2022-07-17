@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Projects
+title: GitHub Projects
 ---
 
 Here, you can find the list of most relevant projects I have in my GitHub account. For more details of the research projects I have contributed to, please take a look at [Research Portfolio](/research).
@@ -11,6 +11,7 @@ Here, you can find the list of most relevant projects I have in my GitHub accoun
  * [BioDeg-UI, graphical user interface for BioDeg corrosion simulation code](https://github.com/mbarzegary/BioDeg-UI)
  * [General Coupled Navier-Stokes-Diffusion Equations Solver using Finite Element Method](https://github.com/mbarzegary/navier-stokes-solver)
  * [Bayesian Optimization for Finite Element Parameter Estimation](https://github.com/mbarzegary/BayesianFEM)
+ * [Skeletal Cell Atlas web app developed using Dash](https://github.com/mbarzegary/skeletal-cell-atlas)
 
 ## Machine Learning 
  * [ECG Classification with Federated-Learning and Differential-Privacy in Keras, Convolutional Neural Network Implementation](https://github.com/mbarzegary/ecg-classification-keras-cnn)
@@ -29,6 +30,7 @@ Here, you can find the list of most relevant projects I have in my GitHub accoun
  * [Computer Methods for Mass Transport in Tissue Engineering, Spring 2021](https://github.com/mbarzegary/mass-transport-tissue-engineering-spring2021)
 
 ## Misc.
+ * [Shorter version of my CV](https://github.com/mbarzegary/MyCV-shortened)
  * [Auto-generated CV](https://github.com/mbarzegary/MyCV)
  * [Jekyll Template for a Personal Website](https://github.com/mbarzegary/mbarzegary.github.io)
  
