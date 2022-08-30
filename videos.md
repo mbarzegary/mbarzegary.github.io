@@ -30,6 +30,13 @@ These are the recorded sessions of teaching activities I have had or the videos 
 
 I try to record my presentations in conferences that I'm allowed to do so. Then I combine the recorded audio with the presented slides and share the output here. For more details of this, you may have a look at [Presentations and Posters](/presentations).
 
+#### Massively parallel finite element simulation of reaction-diffusion systems with moving boundaries: a use-case for biomaterials degradation modeling
+
+HPC Asia, 5th Edition\
+Japan, 2022
+
+[![presentation](http://img.youtube.com/vi/yMqK9BjM_WE/0.jpg){: style="max-width: 300px; height: auto;"}](https://www.youtube.com/watch?v=yMqK9BjM_WE)
+
 #### BioDeg: corrosion/biodegradation simulation software for metallic biomaterials based on FreeFEM/PETSc/Qt
 
 FreeFEM Days, 13th Edition\
