@@ -222,6 +222,50 @@
   
   <div class="post">
     <h1 class="post-title">
+      <a href="/2022/10/27/high-performance-computing-scaling-challenge/">
+        High-performance computing&#58; challenges of performance tuning and scaling of finite element models
+      </a>
+    </h1>
+
+    <span class="post-date">27 Oct 2022</span>
+
+    <!-- <p>In my PhD project, focused on computational modeling of biodegradation process of metallic biomaterials, parallelization of the models was one of the main objectives. Parallelization was crucial to make the models run faster to get the predictions and output in less time in large-scale simulations in high-performance computing (HPC) environments. Achieving this goal got me involved in various challenges all over the project, which can be divided into two main categories: implementation and performance tuning issues. The main implementation strategy was based on high-performance mesh decomposition, partitioning and distributing the mesh among available computing resources, and then utilization of high-performance preconditioners and iterative solvers tailored for different systems and physics. This was done mostly using parallel computing features of PETSc toolkit.</p>
+
+<p>Although it doesn’t seem so, the performance tuning aspect can be as complicated as the implementation. Running the model using 10 CPU cores with an accepted performance and speedup does not mean that one can increase the number of cores to 100 and still get the same speedup. The same problem appears by moving from the order of hundreds to the order of thousands, and so on. Entering a new order of magnitude for the number of CPU cores requires dealing with new issues.</p>
+
+<p>This post briefly summarizes various issues one can face while tackling HPC and performance-tuning challenges. These experiences are obtained by working in HPC environments on VSC supercomputer in Belgium, Snellius supercomputer in the Netherlands, and ARCHER2 supercomputer in the UK.</p>
+
+<ul>
+  <li>
+    <p><strong>Building tools with different MPI implementations and toolchains</strong>: Running codes in an HPC environment is quite different from a local machine, where all the software and hardware configurations made by the system maintainers can affect the performance of the code. Among various software-related aspects, the chosen compiler toolchain (GNU, Intel, Cray, etc.) and MPI implementation (MPICH, OpenMPI, Intel MPI, etc.) used to build and run a code can play an important role. In most cases, the computational tools should be built with all the available toolchains and MPI implementations to check which one offers better performance on the specific HPC environment.</p>
+  </li>
+  <li>
+    <p><strong>Inter-node communication</strong>: Communications taking place among the computing nodes are the source of most of the problems happening in parallelization and performance tuning of codes. The first step toward a faster model can always be to check the code to remove unnecessary inter-node communications, especially for large-scale simulations. For example, there are usually redundant collective MPI calls in the model initialization that can be replaced by encapsulating more work in the main process and performing the collective operations at the end of it. These collective calls usually appear during the first round of parallelization of the code as a result of direct translation from sequential procedures.</p>
+  </li>
+  <li>
+    <p><strong>Running parallel version of tools and codes</strong>: This point is actually a combination of the two previous points from a practical point of view. When a computational tool is built in HPC environments, it may fail to run in more than one node due to an inappropriate configuration during the build process. For example, <a href="https://freefem.org/">FreeFEM</a> or <a href="https://fenicsproject.org/">FEniCS</a> may fail to execute when the job is supposed to run in more than a single node, implying that the inter-node communication does not work due to the used MPI or compiler toolchain. This scenario frequently occurs, showing the importance of employing correct toolchains and MPI implementations. The proper configuration differs from environment to environment, so the best recommendation would be to check the HPC documentation provided by vendors or system maintainers.</p>
+  </li>
+  <li>
+    <p><strong>Mesh generation for large-scale models</strong>: A typical large-scale mesh may contain 20-60M tetrahedral elements. Besides the technical aspects of the computational part, generating such a mesh can be quite challenging and time-consuming. Some of the common tools used for mesh generation have a parallel version aimed to work with a couple of CPU cores to reduce the time needed for mesh generation. For example, Mmg has a parallel version called ParMmg, and CGAL supports shared-memory parallelization for volumetric mesh generation. However, these tools are not very reliable and may cause further problems. In our tests on ParMmg, the tool showed major issues with inter-node communication on large-scale mesh generation, leading us to use sequential mesh generation principles for making the mesh in some cases.</p>
+  </li>
+  <li>
+    <p><strong>Mesh partitioning for large-scale models</strong>: Choosing a proper mesh partitioner plays an essential role in the initialization of the simulations and can be the source of some failure in this stage. The commonly-used partitioner in my PhD research was <a href="http://glaros.dtc.umn.edu/gkhome/metis/metis/overview">METIS</a> software. However, in particular cases and contrary to the previous point for mesh generators, it was observed that its parallel version, called <a href="http://glaros.dtc.umn.edu/gkhome/metis/parmetis/overview">ParMETIS</a>, has significantly better performance. Switching between the sequential and parallel version of this partitioner, as well as using other tools such as <a href="https://www.labri.fr/perso/pelegrin/scotch/">SCOTCH</a>, should be considered in the performance tuning of computational models.</p>
+  </li>
+  <li>
+    <p><strong>Memory issues in each node</strong>: Memory-related issues are one of the most common problems one can face while tuning computational models for better scaling behavior. Reviewing code for fixing memory-related issues can reduce memory usage, especially in the initialization stage, helping overcome part of these memory bottlenecks. The memory issues can be debugged in a single node execution first with the maximum memory available. In some cases, one needs to reduce the number of employed CPU cores in a node so that more memory is available to each core. Although this action can help remove memory-related errors, it reduces the efficiency of the whole computational task, leaving some CPU cores unused in each node due to memory problems.</p>
+  </li>
+  <li>
+    <p><strong>Storage and IO bottlenecks</strong>: There are usually different storage volumes available in HPC environments, which differ in various aspects such as the speed of access, space limitations, and backup policies. Choosing a proper location for file IO can particularly impact the performance of the codes. In more advanced HPC environments, the user does not have direct access to high-speed storage, so explicit file operations should be defined in the job batch file describing how the files should be copied to the high-speed volumes and moved back to the home directories. Another storage-related performance bottleneck is the known issue of slowed down reading speed of a large number of small files, which exists in some HPC environments. This problem usually impacts remote postprocessing and visualization tasks, in which a large number of files should be processed on an HPC node.</p>
+  </li>
+  <li>
+    <p><strong>Remote visualization</strong>: In large-scale simulations, where the model predictions result in tremendous output files, remote postprocessing and visualization can be a more efficient option compared to conventional local processing. Moreover, doing this can be beneficial for the debugging and performance tuning of computational models, where it saves a lot of time needed to transfer the files to a local machine for analysis. For example, the visualization can be done on a node featuring a GPU using the <a href="https://www.paraview.org/">ParaView</a> server on the remote node and the ParaView client on the local machine. Configuring such remote processing requires extra steps in HPC environments, such as making secure tunnels and setting up offscreen rendering, which are unnecessary to perform normal computational tasks.</p>
+  </li>
+</ul>
+ -->
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
       <a href="/2022/06/27/surface-to-volume-mesh-using-gmsh/">
         Generate volume mesh from a surface mesh using GMSH
       </a>
