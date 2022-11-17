@@ -222,6 +222,99 @@
   
   <div class="post">
     <h1 class="post-title">
+      <a href="/2022/11/14/derive-weak-form-pde-navier-stokes/">
+        Weak (variational) formulation of Navier-Stokes equation
+      </a>
+    </h1>
+
+    <span class="post-date">14 Nov 2022</span>
+
+    <!-- <p>Computational Fluid Dynamics (CFD) is the field of studying the dynamics of fluid flow using mathematical and computational methods. The fluid flow is usually expressed in the form of Navier-Stokes or Stokes equations, on which appropriate numerical schemes are applied, and the derived system of equations is solved using computers, resulting in the prediction of flow patterns and secondary entities like the shear stress.</p>
+
+<p>The concept of the weak formulation needed for solving partial differential equations (PDEs) numerically using the finite element method was already discussed <a href="/2020/11/06/derive-weak-form-pde/">here</a>. In this post, we have a look at how to derive the weak form of the Navier-Stokes equations, which can be used in available open-source PDE solvers (like <a href="https://freefem.org/">FreeFEM</a>, <a href="https://fenicsproject.org/">FEniCS</a>, and <a href="https://www.dealii.org/">deal.ii</a>) to simulate fluid flow in any desired domain.</p>
+
+<p>In its general form, the Navier-Stokes equations describing the flow of an incompressible fluid with constant density <script type="math/tex">\rho</script> in the domain <script type="math/tex">\Omega \subset \mathbb{R}^{d}</script> (with <script type="math/tex">d</script> being the dimension, so 2 or 3) can be written as :</p>
+
+<script type="math/tex; mode=display">\left\{ {\begin{array}{*{20}{l}}
+\displaystyle  {\frac{\partial \mathbf{u}}{\partial t} - {\nabla\cdot}[\nu(\nabla {\mathbf{u}} + \nabla {\mathbf{u}^T})] + ({\mathbf{u}}.\nabla ){\mathbf{u}} + \nabla {\mathbf{p}} = {\mathbf{f}},\quad x \in \Omega ,t > 0,} \\
+\displaystyle  {\nabla\cdot{\mathbf{u}} = 0,\quad \quad \quad \quad \quad \quad \quad \quad \quad \quad \quad \quad \quad \quad x \in \Omega ,t > 0,}
+\end{array}} \right.</script>
+
+<p>in which <script type="math/tex">\mathbf{u}</script> is the fluid velocity, <script type="math/tex">\mathbf{p}</script> is the pressure (which is actually pressure divided by the density), <script type="math/tex">\nu = \frac{\mu}{\rho}</script> is the kinematic viscosity (with <script type="math/tex">\mu</script> being the dynamic viscosity), and
+<script type="math/tex">\mathbf{f}</script> is a force term. The equations are conservation of linear momentum and conservation of mass (also called continuity equation), respectively. When <script type="math/tex">\nu</script> is constant, the diffusion term can be simplified as:</p>
+
+<script type="math/tex; mode=display">\text{div} [\nu(\nabla {\bf u}+\nabla {\bf u}^{T})] =\nu (\Delta {\bf u} + \nabla \text{div} {\bf u})=\nu \Delta {\bf u},</script>
+
+<p>which turns the general form into the following:</p>
+
+<script type="math/tex; mode=display">\left\{ {\begin{array}{*{20}{l}}
+\displaystyle  {\frac{\partial \mathbf{u}}{\partial t} - \nu\Delta{\mathbf{u}} + \left( {\mathbf{u} \cdot \nabla } \right) {\mathbf{u}} + \nabla p = {\mathbf{f}},\quad x \in \Omega ,t > 0,} \\
+ \displaystyle {\nabla\cdot{\mathbf{u}} = 0,\quad \quad \quad \quad \quad \quad \quad \quad \quad \quad \quad \quad \quad \quad x \in \Omega ,t > 0,}
+\end{array}} \right.</script>
+
+<p>This equation satisfies the incompressibility condition <script type="math/tex">\nabla\cdot\mathbf{u}=0</script> and needs proper initial and boundary conditions to be well-posed. The initial condition can be defined as:</p>
+
+<script type="math/tex; mode=display">{\bf u}({\bf x},0)={\bf u}_{0}({\bf x})\qquad \forall{\bf x}\ \epsilon\ {\bf \Omega,}</script>
+
+<p>where <script type="math/tex">{\bf u}_{0}</script> is a divergence-free velocity field. Various types of boundary conditions can be applied. For example, if <script type="math/tex">\partial \Omega</script> is the boundary of <script type="math/tex">\Omega</script>, it can be split into 3 distinct boundaries <script type="math/tex">\partial \Omega=\Gamma_{1} \cup \Gamma_{2} \cup \Gamma_{3}</script> each of which with a different type. On <script type="math/tex">\Gamma_{1}</script>, the inlet can be defined as a Dirichlet boundary condition for the velocity for a given velocity profile <script type="math/tex">{\bf g}</script>:</p>
+
+<script type="math/tex; mode=display">{\bf u} = {\bf g} \quad \text{on } \Gamma_1</script>
+
+<p>On <script type="math/tex">\Gamma_2</script>, a wall boundary no-slip condition can be considered:</p>
+
+<script type="math/tex; mode=display">{\bf u} = 0 \quad \text{on } \Gamma_2</script>
+
+<p>On <script type="math/tex">\Gamma_3</script>, for the outlet condition, a homogeneous Neumann condition on velocity and a zero pressure condition can be defined like:</p>
+
+<script type="math/tex; mode=display">\frac{\partial {\bf u}}{\partial n} = 0, \quad \mathbf{p} = 0, \quad \text{on } \Gamma_3</script>
+
+<p>with <script type="math/tex">n</script> being the normal direction on the boundary <script type="math/tex">\partial \Omega</script>. Broadly speaking, these boundaries can be grouped into 2 sets:   <script type="math/tex">\Gamma_{D} = \Gamma_{1} \cup \Gamma_{2}</script> and <script type="math/tex">\Gamma_{N} = \Gamma_{3}</script> for boundaries with Dirichlet and Neumann conditions, respectively.</p>
+
+<p>The Navier-Stokes equations can be written componentwise for individual components of the flow vector field in the Cartesian coordinates. Denoting <script type="math/tex">u_i, i=1,\ldots,d</script> (with <script type="math/tex">d=2</script> in 2D and <script type="math/tex">d=3</script> in 3D), the equation can be presented as:</p>
+
+<script type="math/tex; mode=display">\left\{ {\begin{array}{*{20}{l}}
+\displaystyle  {\frac{\partial {u_i}}{\partial t} - \nu \Delta {u_i} + \mathop \sum \limits_{j = 1}^d {u_j}\frac{\partial {u_i}}{\partial {x_j}} + \frac{\partial p}{\partial {x_i}} = {f_i},\qquad i = 1, \ldots ,d,} \\
+\displaystyle  {\mathop \sum \limits_{j = 1}^d \frac{\partial {u_j}}{\partial {x_j}} = 0.}
+\end{array}} \right.</script>
+
+<p>For deriving the weak formulation, the first equation of the Navier-Stokes is multiplied by a test function <script type="math/tex">v</script> defined on a proper function space V in which the test functions vanish on the Dirichlet boundary:</p>
+
+<script type="math/tex; mode=display">V = [{\bf H}^{1}_{\Gamma_{D}}(\Omega)]^{d} = \lbrace{\bf V} \in [{\bf H}^{1}(\Omega)]^{d} : {\bf v}|\Gamma_{D} = {\bf 0}\rbrace.</script>
+
+<p>yielding to:</p>
+
+<script type="math/tex; mode=display">{\mathop{\int}_{\Omega}} {\partial {\bf u} \over \partial t}.{\bf v}\ d\omega- {\mathop{\int}_{\Omega}}\nu\triangle{\bf u.v}d\omega+ {\mathop{\int}_{\Omega}}[({\bf u.\nabla){\bf u].{\bf v}}}d\omega+ {\mathop{\int}_{\Omega}}\nabla p.{\bf v}d\omega= {\mathop{\int}_{\Omega}}{\bf f. v}d\omega.</script>
+
+<p>Applying Green’s divergence theory results in:</p>
+
+<script type="math/tex; mode=display">-\int_{\Omega} \nu \Delta \mathbf{u} \cdot \mathbf{v} d \omega=\int_{\Omega} \nu \nabla \mathbf{u} \cdot \nabla \mathbf{v} d \omega-\int_{\partial \Omega} \nu \frac{\partial \mathbf{u}}{\partial \mathbf{n}} \cdot \mathbf{v} d \gamma</script>
+
+<p>and</p>
+
+<script type="math/tex; mode=display">\int_{\Omega} \nabla p \cdot \mathbf{v} d \omega=-\int_{\Omega} p \nabla\cdot \mathbf{v} d \omega+\int_{\partial \Omega} p \mathbf{v} \cdot \mathbf{n} d \gamma</script>
+
+<p>Substituting these two equation into the first equation yields to:
+<script type="math/tex">\begin{array}{r}
+\displaystyle\int_{\Omega} \frac{\partial \mathbf{u}}{\partial t} \cdot \mathbf{v} d \omega+\int_{\Omega} \nu \nabla \mathbf{u} \cdot \nabla \mathbf{v} d \omega+\int_{\Omega}[(\mathbf{u} \cdot \nabla) \mathbf{u}] \cdot \mathbf{v} d \omega-\int_{\Omega} p \nabla\cdot \mathbf{v} d \omega \\
+\displaystyle=\int_{\Omega} \mathbf{f} \cdot \mathbf{v} d \omega+\int_{\partial \Omega}\left(\nu \frac{\partial \mathbf{u}}{\partial \mathbf{n}}-p \mathbf{n}\right) \cdot \mathbf{v} d \gamma \quad \forall \mathbf{v} \in V .
+\end{array}</script></p>
+
+<p>The last term of this equation is expressed in accordance to the defined Neumann boundary condition, which vanishes on <script type="math/tex">\Gamma_3</script> due to the defined condition. Moreover, this term vanishes on the Dirichlet boundaries due to the properties of the function space <script type="math/tex">V</script>.</p>
+
+<p>Similarly, the second equation of the Navier-Stokes is multiplied by a test function <script type="math/tex">q</script> belonging to the function space <script type="math/tex">Q</script>, called the pressure space:</p>
+
+<script type="math/tex; mode=display">Q = {\bf L}^2_0(\Omega) = \lbrace p \in L^2(\Omega) : {\mathop{\int}_{\Omega}} p \ d\omega = 0\rbrace,</script>
+
+<p>resulting in:</p>
+
+<script type="math/tex; mode=display">{\mathop{\int}_{\Omega}} q \nabla\cdot{\bf u}\ d\omega = 0 \qquad \forall q \in Q.</script>
+
+<p>The last 2 equations are so called weak (variational) forms of the Navier-Stokes equations.</p>
+ -->
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
       <a href="/2022/10/27/high-performance-computing-scaling-challenge/">
         High-performance computing&#58; challenges of performance tuning and scaling of finite element models
       </a>
