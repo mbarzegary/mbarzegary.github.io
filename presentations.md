@@ -9,8 +9,7 @@ Here, I keep a list of my presentations and posters, presented at various intern
 
 * **High-performance computer simulation of biodegradation of optimized personalized implants; a case study of a patient-specific porous acetabular implant**, presented at the Virtual Physiological Human (VPH) conference, Porto, Portugal, 2022 ([abstract](/public/files/vph2022-abstract.pdf) \| [presentation](/public/files/vph2022-presentation.pdf))
 
-* **Mathematical investigation of corrosion behavior of bioabsorbable metals on the biodegradation interface**, presented at the 8th European Congress on Computational Methods in Applied Sciences and Engineering (ECCOMAS), Oslo, Norway, 2022 ([abstract](/public/files/eccomas2022-abstract.pdf) \| [presentation](/public/files/eccomas2022-presentation.pdf))
-
+* **Mathematical investigation of corrosion behavior of bioabsorbable metals on the biodegradation interface**, presented at the 8th European Congress on Computational Methods in Applied Sciences and Engineering (ECCOMAS), Oslo, Norway, 2022 ([abstract](/public/files/eccomas2022-abstract.pdf) \| [presentation](/public/files/eccomas2022-presentation.pdf) \| [video](https://www.youtube.com/watch?v=8pjaXbsOuRk))
 
 * **Massively parallel finite element simulation of reaction-diffusion systems with moving boundaries: a use-case for biomaterials degradation modeling**, presented at the HPC Asia, 5th Edition, 2022 ([abstract](/public/files/hpc2022-abstract.pdf) \| [presentation](/public/files/hpc2022-presentation.pdf))
 
