@@ -9,14 +9,14 @@ Here,  I will try to keep an up-to-date list of software programs that I heavily
 
 ## General tools
 
-**Operating System** |  Ubuntu 16.04, Ubuntu 18.04
-**Desktop Environment** | Unity, GNOME
+**Operating System** |  Ubuntu 18.04, Ubuntu 22.04
+**Desktop Environment** | GNOME
 **IDE** | Visual Studio Code, Eclipse, Spyder 
 **Advanced Editor** | Atom
 **Typesetting** | TeX Live, Texmaker
 **Office Suite** | WPS Office for Linux
 **Reference Management** | JabRef
-**Web Surfing** |  Firefox Quantum
+**Web Surfing** |  Firefox
 **Email Client and Calendar** | Thunderbird (with Lightning extension)
 **Document Viewing** | Foxit Reader, Okular
 **Telecommunication**  | Skype for Linux
