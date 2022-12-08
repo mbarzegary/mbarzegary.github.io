@@ -7,7 +7,7 @@ title: Videos
 
 [Conference presentations](#conferences)
 
-[Workshop talks](#workshops)
+[Invited talks](#talks)
 
 ## <a name="educational"></a> Educational content
 
@@ -148,9 +148,16 @@ Alicante, Spain, August 2019
 [![presentation](http://img.youtube.com/vi/C9mPcr5sbbY/0.jpg){: style="max-width: 300px; height: auto;"}](http://www.youtube.com/watch?v=C9mPcr5sbbY)
 
 
-## <a name="workshops"></a> Workshop talks
+## <a name="talks"></a> Invited talks
 
-These are the recorded sessions of my talks at scientific workshops.
+These are the recorded sessions of my invited talks at scientific workshops or events.
+
+#### Computational modeling of biodegradation behavior of personalized printed implants
+
+Simulation-based Science (SbS) community\
+University of Amsterdam, the Netherlands, 2022
+
+[![presentation](http://img.youtube.com/vi/19iz0VEIvWU/0.jpg){: style="max-width: 300px; height: auto;"}](https://www.youtube.com/watch?v=19iz0VEIvWU)
 
 #### Open Source in Multi-Scale Modeling
 
