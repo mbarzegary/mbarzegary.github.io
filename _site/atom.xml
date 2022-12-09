@@ -4,13 +4,113 @@
  <title>Mojtaba Barzegari</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2022-12-08T20:59:08+01:00</updated>
+ <updated>2022-12-09T20:07:44+01:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name></name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>Build Qt inside a Docker container for GitHub Actions</title>
+   <link href="http://localhost:4000/2022/12/09/build-qt-in-docker-for-github-actions/"/>
+   <updated>2022-12-09T00:00:00+01:00</updated>
+   <id>http://localhost:4000/2022/12/09/build-qt-in-docker-for-github-actions</id>
+   <content type="html">&lt;p&gt;Recently, I needed to setup a GitHub Action for a repository contatining a Qt-based program, in which I can check if the C++ code compiles correctly and tests pass successfully. The repository belongs to &lt;a href=&quot;https://github.com/mbarzegary/BioDeg-UI&quot;&gt;BioDeg&lt;/a&gt;, a software &lt;a href=&quot;https://joss.theoj.org/papers/10.21105/joss.04281&quot;&gt;we have published&lt;/a&gt; for biodegradation simulations.&lt;/p&gt;
+
+&lt;p&gt;One of the best solutions for tackilng this issue was a Docker container with Qt SDK inside, which can be tricky to make due to the licensing things of Qt. In order to make such a container image, I used the following Dockerfile code, which downloads and builds the Qt SDK with an Ubuntu image as the base.&lt;/p&gt;
+
+&lt;div class=&quot;language-docker highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; ubuntu:20.04 AS builder&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;ENV&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; DEBIAN_FRONTEND noninteractive&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;ENV&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; QT_VERSION_MAJOR 5.15&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;ENV&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; QT_VERSION 5.15.2&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;ENV&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; QT_DEST /usr/local/Qt-&quot;$QT_VERSION&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;ENV&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; QT5BINDIR /usr/local/Qt-&quot;$QT_VERSION&quot;/bin&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;ENV&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; LD_LIBRARY_PATH /usr/local/Qt-$QT_VERSION/lib&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;ENV&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; QT_QPA_PLATFORM_PLUGIN_PATH /usr/lib/x86_64-linux-gnu/qt5/plugins/platforms&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;ENV&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; QT_QPA_FONTDIR /usr/lib/x86_64-linux-gnu/qt5/lib/fonts&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;ENV&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; XDG_DATA_HOME /root/.local/share&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;ENV&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; PATH $QT_DEST/bin:$PATH&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;RUN &lt;/span&gt;apt-get update &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; apt autoremove &lt;span class=&quot;nt&quot;&gt;-y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; apt &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-y&lt;/span&gt; wget xz-utils
+
+&lt;span class=&quot;k&quot;&gt;RUN &lt;/span&gt;wget &lt;span class=&quot;nt&quot;&gt;-N&lt;/span&gt; https://download.qt.io/official_releases/qt/&lt;span class=&quot;nv&quot;&gt;$QT_VERSION_MAJOR&lt;/span&gt;/&lt;span class=&quot;nv&quot;&gt;$QT_VERSION&lt;/span&gt;/single/qt-everywhere-src-&lt;span class=&quot;nv&quot;&gt;$QT_VERSION&lt;/span&gt;.tar.xz &lt;span class=&quot;nt&quot;&gt;-P&lt;/span&gt; /root/Downloads/qt &lt;span class=&quot;se&quot;&gt;\
+&lt;/span&gt;    &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;tar&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-xf&lt;/span&gt; /root/Downloads/qt/qt-everywhere-src-&lt;span class=&quot;nv&quot;&gt;$QT_VERSION&lt;/span&gt;.tar.xz &lt;span class=&quot;nt&quot;&gt;-C&lt;/span&gt; /root/Downloads/qt
+
+&lt;span class=&quot;k&quot;&gt;RUN &lt;/span&gt;apt &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-y&lt;/span&gt;   libfontconfig1-dev libfreetype6-dev libx11-dev &lt;span class=&quot;se&quot;&gt;\
+&lt;/span&gt;            libx11-xcb-dev libxext-dev libxfixes-dev libxi-dev &lt;span class=&quot;se&quot;&gt;\
+&lt;/span&gt;            libxrender-dev libxcb1-dev libxcb-glx0-dev &lt;span class=&quot;se&quot;&gt;\
+&lt;/span&gt;            libxcb-keysyms1-dev libxcb-image0-dev libxcb-shm0-dev &lt;span class=&quot;se&quot;&gt;\
+&lt;/span&gt;            libxcb-icccm4-dev libxcb-sync0-dev libxcb-xfixes0-dev &lt;span class=&quot;se&quot;&gt;\
+&lt;/span&gt;            libxcb-shape0-dev libxcb-randr0-dev &lt;span class=&quot;se&quot;&gt;\
+&lt;/span&gt;            libxcb-render-util0-dev libxcb-xinerama0-dev &lt;span class=&quot;se&quot;&gt;\
+&lt;/span&gt;            libxkbcommon-dev libxkbcommon-x11-dev libclang-dev &lt;span class=&quot;se&quot;&gt;\
+&lt;/span&gt;            freeglut3-dev mesa-utils libdrm-dev libgles2-mesa-dev &lt;span class=&quot;se&quot;&gt;\
+&lt;/span&gt;            binutils g++ cmake g++ mesa-common-dev build-essential &lt;span class=&quot;se&quot;&gt;\
+&lt;/span&gt;            libglew-dev libglm-dev make gcc pkg-config &lt;span class=&quot;se&quot;&gt;\
+&lt;/span&gt;            libgl1-mesa-dev libxcb1-dev libfontconfig1-dev &lt;span class=&quot;se&quot;&gt;\
+&lt;/span&gt;            libxkbcommon-x11-dev python libgtk-3-dev build-essential &lt;span class=&quot;se&quot;&gt;\
+&lt;/span&gt;            default-jre openjdk-8-jdk-headless android-sdk &lt;span class=&quot;se&quot;&gt;\
+&lt;/span&gt;            android-sdk-platform-23 libc6-i386 libdrm-dev &lt;span class=&quot;se&quot;&gt;\
+&lt;/span&gt;            libgles2-mesa-dev libzc-dev libxcb-sync-dev &lt;span class=&quot;se&quot;&gt;\
+&lt;/span&gt;            libsmartcols-dev libicecc-dev libpthread-workqueue-dev &lt;span class=&quot;se&quot;&gt;\
+&lt;/span&gt;	        libgstreamer1.0-dev libgcrypt20-dev libqt5gui5-gles &lt;span class=&quot;se&quot;&gt;\
+&lt;/span&gt;            qca-qt5-2-utils xorg xorg-dev
+
+&lt;span class=&quot;k&quot;&gt;RUN &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; /root/Downloads/qt/qt-everywhere-src-&lt;span class=&quot;nv&quot;&gt;$QT_VERSION&lt;/span&gt;/ &lt;span class=&quot;se&quot;&gt;\
+&lt;/span&gt;    &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; ./configure &lt;span class=&quot;nt&quot;&gt;-release&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-no-opengl&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-opensource&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-confirm-license&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\
+&lt;/span&gt;    &lt;span class=&quot;nt&quot;&gt;-make&lt;/span&gt; libs &lt;span class=&quot;nt&quot;&gt;-nomake&lt;/span&gt; tools &lt;span class=&quot;nt&quot;&gt;-nomake&lt;/span&gt; examples &lt;span class=&quot;nt&quot;&gt;-nomake&lt;/span&gt; tests &lt;span class=&quot;se&quot;&gt;\
+&lt;/span&gt;    &lt;span class=&quot;nt&quot;&gt;-skip&lt;/span&gt; qt3d &lt;span class=&quot;nt&quot;&gt;-skip&lt;/span&gt; qtandroidextras &lt;span class=&quot;nt&quot;&gt;-skip&lt;/span&gt; qtcanvas3d &lt;span class=&quot;se&quot;&gt;\
+&lt;/span&gt;    &lt;span class=&quot;nt&quot;&gt;-skip&lt;/span&gt; qtconnectivity &lt;span class=&quot;nt&quot;&gt;-skip&lt;/span&gt; qtdatavis3d &lt;span class=&quot;nt&quot;&gt;-skip&lt;/span&gt; qtdeclarative &lt;span class=&quot;se&quot;&gt;\
+&lt;/span&gt;    &lt;span class=&quot;nt&quot;&gt;-skip&lt;/span&gt; qtdoc &lt;span class=&quot;nt&quot;&gt;-skip&lt;/span&gt; qtgamepad &lt;span class=&quot;nt&quot;&gt;-skip&lt;/span&gt; qtgraphicaleffects &lt;span class=&quot;se&quot;&gt;\
+&lt;/span&gt;    &lt;span class=&quot;nt&quot;&gt;-skip&lt;/span&gt; qtimageformats &lt;span class=&quot;nt&quot;&gt;-skip&lt;/span&gt; qtlocation &lt;span class=&quot;nt&quot;&gt;-skip&lt;/span&gt; qtlottie &lt;span class=&quot;se&quot;&gt;\
+&lt;/span&gt;    &lt;span class=&quot;nt&quot;&gt;-skip&lt;/span&gt; qtmacextras &lt;span class=&quot;nt&quot;&gt;-skip&lt;/span&gt; qtmultimedia &lt;span class=&quot;nt&quot;&gt;-skip&lt;/span&gt; qtnetworkauth &lt;span class=&quot;se&quot;&gt;\
+&lt;/span&gt;    &lt;span class=&quot;nt&quot;&gt;-skip&lt;/span&gt; qtpurchasing &lt;span class=&quot;nt&quot;&gt;-skip&lt;/span&gt; qtquick3d &lt;span class=&quot;nt&quot;&gt;-skip&lt;/span&gt; qtquickcontrols &lt;span class=&quot;se&quot;&gt;\
+&lt;/span&gt;    &lt;span class=&quot;nt&quot;&gt;-skip&lt;/span&gt; qtquickcontrols2 &lt;span class=&quot;nt&quot;&gt;-skip&lt;/span&gt; qtquicktimeline &lt;span class=&quot;se&quot;&gt;\
+&lt;/span&gt;    &lt;span class=&quot;nt&quot;&gt;-skip&lt;/span&gt; qtremoteobjects &lt;span class=&quot;nt&quot;&gt;-skip&lt;/span&gt; qtscript &lt;span class=&quot;nt&quot;&gt;-skip&lt;/span&gt; qtscxml &lt;span class=&quot;se&quot;&gt;\
+&lt;/span&gt;    &lt;span class=&quot;nt&quot;&gt;-skip&lt;/span&gt; qtsensors &lt;span class=&quot;nt&quot;&gt;-skip&lt;/span&gt; qtserialbus &lt;span class=&quot;nt&quot;&gt;-skip&lt;/span&gt; qtserialport &lt;span class=&quot;se&quot;&gt;\
+&lt;/span&gt;    &lt;span class=&quot;nt&quot;&gt;-skip&lt;/span&gt; qtspeech &lt;span class=&quot;nt&quot;&gt;-skip&lt;/span&gt; qtsvg &lt;span class=&quot;nt&quot;&gt;-skip&lt;/span&gt; qttools &lt;span class=&quot;nt&quot;&gt;-skip&lt;/span&gt; qttranslations &lt;span class=&quot;se&quot;&gt;\
+&lt;/span&gt;    &lt;span class=&quot;nt&quot;&gt;-skip&lt;/span&gt; qtvirtualkeyboard &lt;span class=&quot;nt&quot;&gt;-skip&lt;/span&gt; qtwebchannel &lt;span class=&quot;nt&quot;&gt;-skip&lt;/span&gt; qtwebengine &lt;span class=&quot;se&quot;&gt;\
+&lt;/span&gt;    &lt;span class=&quot;nt&quot;&gt;-skip&lt;/span&gt; qtwebglplugin &lt;span class=&quot;nt&quot;&gt;-skip&lt;/span&gt; qtwebsockets &lt;span class=&quot;nt&quot;&gt;-skip&lt;/span&gt; qtwebview &lt;span class=&quot;se&quot;&gt;\
+&lt;/span&gt;    &lt;span class=&quot;nt&quot;&gt;-skip&lt;/span&gt; qtwinextras &lt;span class=&quot;nt&quot;&gt;-skip&lt;/span&gt; qtxmlpatterns &lt;span class=&quot;nt&quot;&gt;-sysconfdir&lt;/span&gt; /etc/xdg &lt;span class=&quot;se&quot;&gt;\
+&lt;/span&gt;    &lt;span class=&quot;nt&quot;&gt;-system-harfbuzz&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-no-rpath&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\
+&lt;/span&gt;    &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; make &lt;span class=&quot;nt&quot;&gt;-j4&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\
+&lt;/span&gt;    &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; make &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;RUN &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;rm&lt;/span&gt; /root/Downloads/qt/qt-everywhere-src-&lt;span class=&quot;nv&quot;&gt;$QT_VERSION&lt;/span&gt;.tar.xz &lt;span class=&quot;se&quot;&gt;\
+&lt;/span&gt;    &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;rm&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-r&lt;/span&gt; /root/Downloads/qt/qt-everywhere-src-&lt;span class=&quot;nv&quot;&gt;$QT_VERSION&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; ubuntu:20.04&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;ENV&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; QT_VERSION_MAJOR 5.15&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;ENV&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; QT_VERSION 5.15.2&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;ENV&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; QT_DEST /usr/local/Qt-&quot;$QT_VERSION&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;ENV&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; QT5BINDIR /usr/local/Qt-&quot;$QT_VERSION&quot;/bin&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;ENV&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; LD_LIBRARY_PATH /usr/local/Qt-$QT_VERSION/lib&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;ENV&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; QT_QPA_PLATFORM_PLUGIN_PATH /usr/lib/x86_64-linux-gnu/qt5/plugins/platforms&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;ENV&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; QT_QPA_FONTDIR /usr/lib/x86_64-linux-gnu/qt5/lib/fonts&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;ENV&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; XDG_DATA_HOME /root/.local/share&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;ENV&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; PATH $QT_DEST/bin:$PATH&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;RUN &lt;/span&gt;apt-get update &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; apt-get &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-y&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\
+&lt;/span&gt;    build-essential &lt;span class=&quot;se&quot;&gt;\
+&lt;/span&gt;    mesa-common-dev &lt;span class=&quot;se&quot;&gt;\
+&lt;/span&gt;    cmake &lt;span class=&quot;se&quot;&gt;\
+&lt;/span&gt;    libpcre2-dev &lt;span class=&quot;se&quot;&gt;\
+&lt;/span&gt;    libglib2.0-0 &lt;span class=&quot;se&quot;&gt;\
+&lt;/span&gt;    libpng16-16 &lt;span class=&quot;se&quot;&gt;\
+&lt;/span&gt;    libharfbuzz-dev &lt;span class=&quot;se&quot;&gt;\
+&lt;/span&gt;    &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;rm&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-rf&lt;/span&gt; /var/lib/apt/lists/&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;RUN &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;mkdir&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$QT_DEST&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;COPY&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; --from=builder $QT_DEST $QT_DEST&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;I have skipped the Qt libraries I didn’t need, so make sure to modify the configure script args to fit your needs. After this, the image was pushed to &lt;a href=&quot;https://hub.docker.com/r/mbarzegary/qt-5.15.2-freefem-4.10&quot;&gt;Docker Hub&lt;/a&gt; to be used in a GitHub Action. In the next post, I will elaborate on making the GitHub Action such that it pull and use this built Docker image.&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Weak (variational) formulation of Navier-Stokes equation</title>

@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+
+  <head>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-126127657-1"></script>
+<script>
+  var host = window.location.hostname;
+  if (host != "127.0.0.1" && host != "localhost")
+  {
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-126127657-1');
+  }
+</script>
+
+
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta charset="UTF-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    
+      Build Qt inside a Docker container for GitHub Actions &middot; Mojtaba Barzegari
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/hyde.css">
+  <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface"> -->
+  <link rel="stylesheet" href="/public/css/font.css">
+  <link rel="stylesheet" href="/public/css/social.css">
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-144-precomposed.png">
+                                 <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
+  <!-- Mathjax Support -->
+  <script type="text/javascript" async
+    src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+</head>
+
+
+  <body class="theme-base-0d">
+
+    <div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <h1>Mojtaba Barzegari</h1>
+      <p class="lead"></p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+        <a href="/">Home</a>
+      </li>
+
+      
+
+      
+      
+        
+          
+        
+      
+        
+          
+            
+              <li class="sidebar-nav-item">
+                <a href="/about/">About</a>
+              </li>
+            
+          
+        
+      
+        
+      
+        
+          
+            
+              <li class="sidebar-nav-item">
+                <a href="/blog/">Blog</a>
+              </li>
+            
+          
+        
+      
+        
+          
+            
+              <li class="sidebar-nav-item">
+                <a href="/contact/">Contact</a>
+              </li>
+            
+          
+        
+      
+        
+          
+        
+      
+        
+          
+            
+          
+        
+      
+        
+          
+            
+              <li class="sidebar-nav-item">
+                <a href="/presentations/">Presentations & Posters</a>
+              </li>
+            
+          
+        
+      
+        
+          
+            
+              <li class="sidebar-nav-item">
+                <a href="/projects/">GitHub Projects</a>
+              </li>
+            
+          
+        
+      
+        
+          
+            
+              <li class="sidebar-nav-item">
+                <a href="/publications/">Publications</a>
+              </li>
+            
+          
+        
+      
+        
+          
+            
+              <li class="sidebar-nav-item">
+                <a href="/research/">Research Portfolio</a>
+              </li>
+            
+          
+        
+      
+        
+          
+            
+              <li class="sidebar-nav-item">
+                <a href="/usefulbooks/">Useful Books and Links</a>
+              </li>
+            
+          
+        
+      
+        
+          
+            
+              <li class="sidebar-nav-item">
+                <a href="/videos/">Videos</a>
+              </li>
+            
+          
+        
+      
+        
+          
+            
+              <li class="sidebar-nav-item">
+                <a href="/whatiuse/">What I Use</a>
+              </li>
+            
+          
+        
+      
+
+      <li class="sidebar-nav-item"><a href="https://mbarzegary.github.io/research-tech-radar/">Research Technology Radar</a></li>
+      <li class="sidebar-nav-item"><a href="http://nbviewer.jupyter.org/github/mbarzegary/MyCV-shortened/blob/main/main.pdf">CV</a></li>
+      
+      <ul style="margin-left: -15px" class="icon-effect icon-effect-1a">
+        <li><a target="_blank" href="https://github.com/mbarzegary" class="icon"><i class="fab fa-github"></i></a></li>
+        <li><a target="_blank" href="https://www.linkedin.com/in/mbarzegary/" class="icon"><i class="fab fa-linkedin-in"></i></a></li>
+        <li><a target="_blank" href="https://twitter.com/MojBarz" class="icon"><i class="fab fa-twitter"></i></a></li>
+        <!-- <li><a target="_blank" href="https://www.instagram.com/mbarzegary/" class="icon"><i class="fab fa-instagram"></i></a></li> -->
+        <li><a target="_blank" href="https://www.youtube.com/TuxRiders" class="icon"><i class="fab fa-youtube"></i></a></li>
+        <li><a target="_blank" href="https://www.facebook.com/mbarzegary" class="icon"><i class="fab fa-facebook-f"></i></a></li>
+      </ul>
+
+
+      <!-- <li class="sidebar-nav-item"><a href="https://github.com/mbarzegary/mbarzegary.github.io/archive/v.zip">Download</a></li>
+      <li class="sidebar-nav-item"><a href="https://github.com/mbarzegary/mbarzegary.github.io">GitHub project</a></li>
+      <li class="sidebar-nav-item">Currently v</li> -->
+    </ul>
+
+    <p>Copyleft 2022. No right reserved.</p>
+  </div>
+</div>
+
+
+    <div class="content container">
+      <div class="post">
+  <h1 class="post-title">Build Qt inside a Docker container for GitHub Actions</h1>
+  <span class="post-date">09 Dec 2022</span>
+  <p>Recently, I needed to setup a GitHub Action for a repository contatining a Qt-based program, in which I can check if the C++ code compiles correctly and tests pass successfully. The repository belongs to <a href="https://github.com/mbarzegary/BioDeg-UI">BioDeg</a>, a software <a href="https://joss.theoj.org/papers/10.21105/joss.04281">we have published</a> for biodegradation simulations.</p>
+
+<p>One of the best solutions for tackilng this issue was a Docker container with Qt SDK inside, which can be tricky to make due to the licensing things of Qt. In order to make such a container image, I used the following Dockerfile code, which downloads and builds the Qt SDK with an Ubuntu image as the base.</p>
+
+<div class="language-docker highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">FROM</span><span class="s"> ubuntu:20.04 AS builder</span>
+
+<span class="k">ENV</span><span class="s"> DEBIAN_FRONTEND noninteractive</span>
+<span class="k">ENV</span><span class="s"> QT_VERSION_MAJOR 5.15</span>
+<span class="k">ENV</span><span class="s"> QT_VERSION 5.15.2</span>
+<span class="k">ENV</span><span class="s"> QT_DEST /usr/local/Qt-"$QT_VERSION"</span>
+<span class="k">ENV</span><span class="s"> QT5BINDIR /usr/local/Qt-"$QT_VERSION"/bin</span>
+<span class="k">ENV</span><span class="s"> LD_LIBRARY_PATH /usr/local/Qt-$QT_VERSION/lib</span>
+<span class="k">ENV</span><span class="s"> QT_QPA_PLATFORM_PLUGIN_PATH /usr/lib/x86_64-linux-gnu/qt5/plugins/platforms</span>
+<span class="k">ENV</span><span class="s"> QT_QPA_FONTDIR /usr/lib/x86_64-linux-gnu/qt5/lib/fonts</span>
+<span class="k">ENV</span><span class="s"> XDG_DATA_HOME /root/.local/share</span>
+<span class="k">ENV</span><span class="s"> PATH $QT_DEST/bin:$PATH</span>
+
+<span class="k">RUN </span>apt-get update <span class="o">&amp;&amp;</span> apt autoremove <span class="nt">-y</span> <span class="o">&amp;&amp;</span> apt <span class="nb">install</span> <span class="nt">-y</span> wget xz-utils
+
+<span class="k">RUN </span>wget <span class="nt">-N</span> https://download.qt.io/official_releases/qt/<span class="nv">$QT_VERSION_MAJOR</span>/<span class="nv">$QT_VERSION</span>/single/qt-everywhere-src-<span class="nv">$QT_VERSION</span>.tar.xz <span class="nt">-P</span> /root/Downloads/qt <span class="se">\
+</span>    <span class="o">&amp;&amp;</span> <span class="nb">tar</span> <span class="nt">-xf</span> /root/Downloads/qt/qt-everywhere-src-<span class="nv">$QT_VERSION</span>.tar.xz <span class="nt">-C</span> /root/Downloads/qt
+
+<span class="k">RUN </span>apt <span class="nb">install</span> <span class="nt">-y</span>   libfontconfig1-dev libfreetype6-dev libx11-dev <span class="se">\
+</span>            libx11-xcb-dev libxext-dev libxfixes-dev libxi-dev <span class="se">\
+</span>            libxrender-dev libxcb1-dev libxcb-glx0-dev <span class="se">\
+</span>            libxcb-keysyms1-dev libxcb-image0-dev libxcb-shm0-dev <span class="se">\
+</span>            libxcb-icccm4-dev libxcb-sync0-dev libxcb-xfixes0-dev <span class="se">\
+</span>            libxcb-shape0-dev libxcb-randr0-dev <span class="se">\
+</span>            libxcb-render-util0-dev libxcb-xinerama0-dev <span class="se">\
+</span>            libxkbcommon-dev libxkbcommon-x11-dev libclang-dev <span class="se">\
+</span>            freeglut3-dev mesa-utils libdrm-dev libgles2-mesa-dev <span class="se">\
+</span>            binutils g++ cmake g++ mesa-common-dev build-essential <span class="se">\
+</span>            libglew-dev libglm-dev make gcc pkg-config <span class="se">\
+</span>            libgl1-mesa-dev libxcb1-dev libfontconfig1-dev <span class="se">\
+</span>            libxkbcommon-x11-dev python libgtk-3-dev build-essential <span class="se">\
+</span>            default-jre openjdk-8-jdk-headless android-sdk <span class="se">\
+</span>            android-sdk-platform-23 libc6-i386 libdrm-dev <span class="se">\
+</span>            libgles2-mesa-dev libzc-dev libxcb-sync-dev <span class="se">\
+</span>            libsmartcols-dev libicecc-dev libpthread-workqueue-dev <span class="se">\
+</span>	        libgstreamer1.0-dev libgcrypt20-dev libqt5gui5-gles <span class="se">\
+</span>            qca-qt5-2-utils xorg xorg-dev
+
+<span class="k">RUN </span><span class="nb">cd</span> /root/Downloads/qt/qt-everywhere-src-<span class="nv">$QT_VERSION</span>/ <span class="se">\
+</span>    <span class="o">&amp;&amp;</span> ./configure <span class="nt">-release</span> <span class="nt">-no-opengl</span> <span class="nt">-opensource</span> <span class="nt">-confirm-license</span> <span class="se">\
+</span>    <span class="nt">-make</span> libs <span class="nt">-nomake</span> tools <span class="nt">-nomake</span> examples <span class="nt">-nomake</span> tests <span class="se">\
+</span>    <span class="nt">-skip</span> qt3d <span class="nt">-skip</span> qtandroidextras <span class="nt">-skip</span> qtcanvas3d <span class="se">\
+</span>    <span class="nt">-skip</span> qtconnectivity <span class="nt">-skip</span> qtdatavis3d <span class="nt">-skip</span> qtdeclarative <span class="se">\
+</span>    <span class="nt">-skip</span> qtdoc <span class="nt">-skip</span> qtgamepad <span class="nt">-skip</span> qtgraphicaleffects <span class="se">\
+</span>    <span class="nt">-skip</span> qtimageformats <span class="nt">-skip</span> qtlocation <span class="nt">-skip</span> qtlottie <span class="se">\
+</span>    <span class="nt">-skip</span> qtmacextras <span class="nt">-skip</span> qtmultimedia <span class="nt">-skip</span> qtnetworkauth <span class="se">\
+</span>    <span class="nt">-skip</span> qtpurchasing <span class="nt">-skip</span> qtquick3d <span class="nt">-skip</span> qtquickcontrols <span class="se">\
+</span>    <span class="nt">-skip</span> qtquickcontrols2 <span class="nt">-skip</span> qtquicktimeline <span class="se">\
+</span>    <span class="nt">-skip</span> qtremoteobjects <span class="nt">-skip</span> qtscript <span class="nt">-skip</span> qtscxml <span class="se">\
+</span>    <span class="nt">-skip</span> qtsensors <span class="nt">-skip</span> qtserialbus <span class="nt">-skip</span> qtserialport <span class="se">\
+</span>    <span class="nt">-skip</span> qtspeech <span class="nt">-skip</span> qtsvg <span class="nt">-skip</span> qttools <span class="nt">-skip</span> qttranslations <span class="se">\
+</span>    <span class="nt">-skip</span> qtvirtualkeyboard <span class="nt">-skip</span> qtwebchannel <span class="nt">-skip</span> qtwebengine <span class="se">\
+</span>    <span class="nt">-skip</span> qtwebglplugin <span class="nt">-skip</span> qtwebsockets <span class="nt">-skip</span> qtwebview <span class="se">\
+</span>    <span class="nt">-skip</span> qtwinextras <span class="nt">-skip</span> qtxmlpatterns <span class="nt">-sysconfdir</span> /etc/xdg <span class="se">\
+</span>    <span class="nt">-system-harfbuzz</span> <span class="nt">-no-rpath</span> <span class="se">\
+</span>    <span class="o">&amp;&amp;</span> make <span class="nt">-j4</span> <span class="se">\
+</span>    <span class="o">&amp;&amp;</span> make <span class="nb">install</span>
+
+<span class="k">RUN </span><span class="nb">rm</span> /root/Downloads/qt/qt-everywhere-src-<span class="nv">$QT_VERSION</span>.tar.xz <span class="se">\
+</span>    <span class="o">&amp;&amp;</span> <span class="nb">rm</span> <span class="nt">-r</span> /root/Downloads/qt/qt-everywhere-src-<span class="nv">$QT_VERSION</span>
+
+<span class="k">FROM</span><span class="s"> ubuntu:20.04</span>
+
+<span class="k">ENV</span><span class="s"> QT_VERSION_MAJOR 5.15</span>
+<span class="k">ENV</span><span class="s"> QT_VERSION 5.15.2</span>
+<span class="k">ENV</span><span class="s"> QT_DEST /usr/local/Qt-"$QT_VERSION"</span>
+<span class="k">ENV</span><span class="s"> QT5BINDIR /usr/local/Qt-"$QT_VERSION"/bin</span>
+<span class="k">ENV</span><span class="s"> LD_LIBRARY_PATH /usr/local/Qt-$QT_VERSION/lib</span>
+<span class="k">ENV</span><span class="s"> QT_QPA_PLATFORM_PLUGIN_PATH /usr/lib/x86_64-linux-gnu/qt5/plugins/platforms</span>
+<span class="k">ENV</span><span class="s"> QT_QPA_FONTDIR /usr/lib/x86_64-linux-gnu/qt5/lib/fonts</span>
+<span class="k">ENV</span><span class="s"> XDG_DATA_HOME /root/.local/share</span>
+<span class="k">ENV</span><span class="s"> PATH $QT_DEST/bin:$PATH</span>
+
+<span class="k">RUN </span>apt-get update <span class="o">&amp;&amp;</span> apt-get <span class="nb">install</span> <span class="nt">-y</span> <span class="se">\
+</span>    build-essential <span class="se">\
+</span>    mesa-common-dev <span class="se">\
+</span>    cmake <span class="se">\
+</span>    libpcre2-dev <span class="se">\
+</span>    libglib2.0-0 <span class="se">\
+</span>    libpng16-16 <span class="se">\
+</span>    libharfbuzz-dev <span class="se">\
+</span>    <span class="o">&amp;&amp;</span> <span class="nb">rm</span> <span class="nt">-rf</span> /var/lib/apt/lists/<span class="k">*</span>
+
+<span class="k">RUN </span><span class="nb">mkdir</span> <span class="nv">$QT_DEST</span>
+<span class="k">COPY</span><span class="s"> --from=builder $QT_DEST $QT_DEST</span>
+</code></pre></div></div>
+
+<p>I have skipped the Qt libraries I didn’t need, so make sure to modify the configure script args to fit your needs. After this, the image was pushed to <a href="https://hub.docker.com/r/mbarzegary/qt-5.15.2-freefem-4.10">Docker Hub</a> to be used in a GitHub Action. In the next post, I will elaborate on making the GitHub Action such that it pull and use this built Docker image.</p>
+
+</div>
+
+<!-- <div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/2022/11/14/derive-weak-form-pde-navier-stokes/">
+            Weak (variational) formulation of Navier-Stokes equation
+            <small>14 Nov 2022</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2022/10/27/high-performance-computing-scaling-challenge/">
+            High-performance computing&#58; challenges of performance tuning and scaling of finite element models
+            <small>27 Oct 2022</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2022/06/27/surface-to-volume-mesh-using-gmsh/">
+            Generate volume mesh from a surface mesh using GMSH
+            <small>27 Jun 2022</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</div> -->
+
+    </div>
+
+  </body>
+</html>
