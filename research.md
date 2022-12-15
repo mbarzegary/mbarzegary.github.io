@@ -3,11 +3,17 @@ layout: page
 title: Research Portfolio
 ---
 
-More details of my PhD work can be found [in this page](phd).
+Details of my PhD work can be found [in this page](phd).
 
-<!-- [My Research Interests](#interests)
-[Research Projects I've Been Involved In](#projects)
-[My PhD Project](#phd_project) -->
+[My Research Interests](#interests) 
+
+[Research Projects I've Been Involved In](#projects) 
+* [Computational Tissue Engineering](#comp_tissue)
+* [Scientific Software Development](#sci_software)
+* [Computational Fluid Dynamics](#cfd)
+* [Computational Biomechanics](#comp_tissue)
+* [Computational Materials Science](#comp_mater)
+* [Machine Learning and Computational Intelligence](#ml)
 
 ## <a name="interests"></a> My Research Interests
 
@@ -19,7 +25,7 @@ More details of my PhD work can be found [in this page](phd).
 
 ## <a name="projects"></a> Research Projects I've Been Involved In
 
-#### Computational Tissue Engineering
+#### <a name="comp_tissue"></a> Computational Tissue Engineering
 
 * Mathematical modeling and numerical simulation of interface-coupled models of biodegradation behavior of metallic implants and medical devices\
 *KU Leuven*, 2018--2022\
@@ -42,7 +48,7 @@ More info will be available soon
 More info will be available soon
 <img src="/public/portfolio/mechanical-degradation.png" alt="color photo ftl" width="100%" height="auto" />
 
-#### Scientific Software Development
+#### <a name="sci_software"></a> Scientific Software Development
 
 * Development of open-source software BioDeg for massively-parallel simulation of biodegradation and corrosion of metallic biomaterials\
 *KU Leuven*, 2020--2022\
@@ -64,7 +70,7 @@ More info [here](https://doi.org/10.1101/2022.03.14.484345)
 More info [here](https://doi.org/10.1016/j.softx.2021.100723)
 <img src="/public/portfolio/tfmlab.jpg" alt="color photo ftl" width="100%" height="auto" />
 
-#### Computational Fluid Dynamics
+#### <a name="cfd"></a> Computational Fluid Dynamics
 
 * Numerical modeling of foam formation process using Lattice Boltzmann method and multiphase fluid simulation\
 *Amirkabir University of Technology*, 2013--2017\
@@ -78,7 +84,7 @@ More info [here](https://doi.org/10.1016/j.jmrt.2013.10.011)
 <img src="/public/portfolio/casting-simulation.png" alt="color photo ftl" width="100%" height="auto" />
 
 
-#### Computational Biomechanics
+#### <a name="comp_biomech"></a> Computational Biomechanics
 
 * Implementation of Fluid-Structure Interactions models to simulate fluid dynamics of human body fluids\
 *University of Tehran*, 2012--2014\
@@ -89,7 +95,7 @@ More info [here](https://doi.org/10.1007/s11517-020-02148-2)
 *University of Tehran*, 2013--2014 -->
 
 
-#### Computational Materials Science
+#### <a name="comp_mater"></a> Computational Materials Science
 
 * Development of dendrite and microstructure growth models to simulate the solidification process of metals\
 *Amirkabir University of Technology*, 2009--2011\
@@ -102,7 +108,7 @@ More info [here](https://doi.org/10.1016/j.jmrt.2013.10.011)
 <!-- Implementation of ANN models to investigate relations between porous media parameters and permeability\
 *Amirkabir University of Technology*, 2010--2011 -->
 
-#### Machine Learning and Computational Intelligence
+#### <a name="ml"></a> Machine Learning and Computational Intelligence
 
 * Development of coupled models of deep reinforcement learning and multiphysics parallel CFD for thermal shape optimization\
 *KU Leuven & University of Waterloo*, 2021--2022\
