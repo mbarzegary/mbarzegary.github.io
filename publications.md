@@ -29,15 +29,15 @@ In this page, I will try to maintain a list of my publications in a presentive i
 
 * **M. Barzegari**, B. Vahidi, M. R. Safarinejad, "[Computational Simulation of Stress Urinary Incontinence using Fluid-Structure Interaction Analysis](https://www.civilica.com/Paper-ISME25-ISME25_342=\%D8\%B4\%D8\%A8\%DB\%8C\%D9\%87-\%D8\%B3\%D8\%A7\%D8\%B2\%DB\%8C-\%D9\%85\%D8\%AD\%D8\%A7\%D8\%B3\%D8\%A8\%D8\%A7\%D8\%AA\%DB\%8C-\%D8\%A8\%DB\%8C-\%D8\%A7\%D8\%AE\%D8\%AA\%DB\%8C\%D8\%A7\%D8\%B1\%DB\%8C-\%D8\%A7\%D8\%B3\%D8\%AA\%D8\%B1\%D8\%B3\%DB\%8C-\%D8\%A7\%D8\%AF\%D8\%B1\%D8\%A7\%D8\%B1-\%D8\%A8\%D8\%A7-\%D8\%A7\%D8\%B3\%D8\%AA\%D9\%81\%D8\%A7\%D8\%AF\%D9\%87-\%D8\%A7\%D8\%B2-\%D8\%B1\%D9\%88\%D8\%B4-\%D8\%AA\%D8\%AD\%D9\%84\%DB\%8C\%D9\%84-\%D8\%A8\%D8\%B1\%D9\%87\%D9\%85\%DA\%A9\%D9\%86\%D8\%B4-\%D8\%B3\%DB\%8C\%D8\%A7\%D9\%84-\%D9\%88-\%D8\%AC\%D8\%A7\%D9\%85\%D8\%AF.html)", *25th International Conference on Mechanical Engineering*, Tehran, Iran, 2017 [Persian]
 
-### Finite Element Method, Traction Force Microscopy
-
-* J. Barrasa Fano, A. Shapeti, A. Jorge Peñas, **M. Barzegari**, J.A. Sanz-Herrera, H. Van Oosterwyck, "[TFMLAB: a MATLAB toolbox for 4D Traction Force Microscopy](https://doi.org/10.1016/j.softx.2021.100723)", *SoftwareX*, Vol. 15, pp. 100723, 2021 
-
 ### Software and Education
+
+* **M. Barzegari**, L. Geris, "[BioDeg: A finite element software for the simulation of the corrosion and biodegradation process in metallic biomaterials](https://doi.org/10.21105/joss.04281)", *Journal of Open Source Software*, Vol. 7, No. 74, 2022
 
 * **M. Barzegari**, L. Geris, "[An open source crash course on parameter estimation of computational models using a Bayesian optimization approach](https://doi.org/10.21105/jose.00089)", *Journal of Open Source Education*, Vol. 4, No. 40, 2021
 
-***
+* F. Perez Boerema, **M. Barzegari**, L. Geris, "[A flexible and easy-to-use open-source tool for designing functionally graded 3D porous structures](https://doi.org/10.1080/17452759.2022.2048956)", *Virtual And Physical Prototyping*, 2022
+
+* J. Barrasa Fano, A. Shapeti, A. Jorge Peñas, **M. Barzegari**, J.A. Sanz-Herrera, H. Van Oosterwyck, "[TFMLAB: a MATLAB toolbox for 4D Traction Force Microscopy](https://doi.org/10.1016/j.softx.2021.100723)", *SoftwareX*, Vol. 15, pp. 100723, 2021 
 
 ## Computational Fluid Dynamics
 
@@ -75,6 +75,10 @@ In this page, I will try to maintain a list of my publications in a presentive i
 * F. Firouzi, B. Farahani, E. Panahi, **M. Barzegari**, "[Task Offloading for Edge-Fog-Cloud Interplay in the Healthcare Internet of Things (IoT)](https://doi.org/10.1109/COINS51742.2021.9524098)", *Proceedings of the International Conference on Omni-Layer Intelligent Systems*, 2021
 
 * F. Firouzi, B. Farahani, **M. Barzegari**, M. Daneshmand, "[AI-Driven Data Monetization: The other Face of Data in IoT-based Smart and Connected Health](https://doi.org/10.1109/JIOT.2020.3027971)", *IEEE Internet of Things Journal*, 2020
+
+### Reinforcement Learning, Shape Optimization
+ 
+* H. Keramati, F. Hamdullahpur, **M. Barzegari**, "[Deep reinforcement learning for heat exchanger shape optimization](https://doi.org/10.1016/j.ijheatmasstransfer.2022.123112)", *International Journal Of Heat And Mass Transfer*, 2022
 
 ### Artificial Neural Networks, Support Vector Machines
 
