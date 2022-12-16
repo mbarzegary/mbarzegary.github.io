@@ -3,7 +3,7 @@ layout: page
 title: Publications
 ---
 
-In this page, I will try to maintain a list of my publications in a presentive index. The formal category-based list would be found in my [CV](http://nbviewer.jupyter.org/github/mbarzegary/MyCV/blob/master/main.pdf) (or even on [Google Scholar](https://scholar.google.co.uk/citations?user=UkgS0HMAAAAJ&hl=en)).
+In this page, I will try to maintain a list of my publications in a presentive index. The formal category-based list would be found in my [CV](https://nbviewer.org/github/mbarzegary/MyCV-shortened/blob/main/main.pdf) (or even on [Google Scholar](https://scholar.google.co.uk/citations?user=UkgS0HMAAAAJ&hl=en)).
 
 ## Computational Biomechanics and Tissue Engineering
 
