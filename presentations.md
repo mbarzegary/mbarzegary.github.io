@@ -5,7 +5,7 @@ title: Presentations & Posters
 
 Here, I keep a list of my presentations and posters, presented at various international conferences and symposia, alongside their associated content files:
 
-## As the presenter (main author)
+<!-- ## As the presenter (main author) -->
 
 * **Four years of scientific computing using FreeFEM in the field of computational biomedical engineering**, presented at the FreeFEM Days, 14th Edition, Paris, France, 2022 ([abstract](/public/files/freefem2022-abstract.pdf) \| [presentation](/public/files/freefem2022-presentation.pdf))
 
@@ -51,7 +51,7 @@ Here, I keep a list of my presentations and posters, presented at various intern
 
 * **Mathematical modeling of biodegradation of metal implants in orthopedics**, presented at the 11th Symposium on Biodegradable Metals, Alicante, Spain, 2019 ([abstract](/public/files/biometal2019-abstract.pdf) \| [poster](/public/files/biometal2019-poster.pdf) \| [presentation](/public/files/biometal2019-presetation.pdf) \| [video](https://www.youtube.com/watch?v=C9mPcr5sbbY))
 
-## As a co-author
+<!-- ## As a co-author
 
 * **The Optimal Cell Packing Density for Macroencapsulating Islet Delivery Devices**, presented at the The International Pancreas and Islet Transplantation Association (IPITA), 2021 ([abstract](https://doi.org/10.1097/01.tp.0000804560.86378.96))
 
@@ -61,4 +61,4 @@ Here, I keep a list of my presentations and posters, presented at various intern
 
 * **Quantifying cellular forces in a 3D in vitro vascular model**, presented at the 17th International Symposium on Computer Methods in Biomechanics and Biomedical Engineering (CMBBE), Bonn, Germany, 2021 
 
-* **Towards Collaborative Machine Learning Driven Healthcare Internet of Things**, presented at the International Conference on Omni-Layer Intelligent Systems, Crete, Greece, 2019 ([article in proceedings](https://dl.acm.org/citation.cfm?id=3312644))
+* **Towards Collaborative Machine Learning Driven Healthcare Internet of Things**, presented at the International Conference on Omni-Layer Intelligent Systems, Crete, Greece, 2019 ([article in proceedings](https://dl.acm.org/citation.cfm?id=3312644)) -->
