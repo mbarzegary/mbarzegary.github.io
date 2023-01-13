@@ -30,6 +30,13 @@ These are the recorded sessions of teaching activities I have had or the videos 
 
 I try to record my presentations in conferences that I'm allowed to do so. Then I combine the recorded audio with the presented slides and share the output here. For more details of this, you may have a look at [Presentations and Posters](/presentations).
 
+#### High-performance computer simulation of biodegradation of optimized personalized implants; a case study of a patient-specific porous acetabular implant
+
+Virtual Physiological Human (VPH) conference\
+Porto, Portugal, 2022
+
+[![presentation](http://img.youtube.com/vi/hLLUNYQHNjI/0.jpg){: style="max-width: 300px; height: auto;"}](https://www.youtube.com/watch?v=hLLUNYQHNjI)
+
 #### Mathematical investigation of corrosion behavior of bioabsorbable metals on the biodegradation interface
 
 8th European Congress on Computational Methods in Applied Sciences and Engineering (ECCOMAS)\
