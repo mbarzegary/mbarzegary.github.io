@@ -95,4 +95,4 @@ RUN mkdir $QT_DEST
 COPY --from=builder $QT_DEST $QT_DEST
 ```
 
-I have skipped the Qt libraries I didn't need, so make sure to modify the configure script args to fit your needs. After this, the image was pushed to [Docker Hub](https://hub.docker.com/r/mbarzegary/qt-5.15.2-freefem-4.10) to be used in a GitHub Action. In the next post, I will elaborate on making the GitHub Action such that it pull and use this built Docker image.
+I have skipped the Qt libraries I didn't need, so make sure to modify the configure script args to fit your needs. After this, the image was pushed to [Docker Hub](https://hub.docker.com/r/mbarzegary/qt-5.15.2-freefem-4.10) to be used in a GitHub Action. In the next post, I will elaborate on making the GitHub Action such that it would pull and use this built Docker image.
