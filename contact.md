@@ -3,9 +3,11 @@ layout: page
 title: Contact
 ---
 
-I highly welcome any contribution in Scientific Computing projects. You can reach me at *"mojtaba DOT barzegari (at) kuleuven DOT be"*
+I highly welcome any contribution in scientific computing projects. You can reach me at *"m DOT barzegari DOT shankil (at) tue DOT nl"*
 
 The complete contact details can be found in these links:
+
+[My TU/e personnel webpage](https://research.tue.nl/en/persons/mojtaba-barzegari-shankil)
 
 [My KU Leuven personnel webpage](https://www.kuleuven.be/wieiswie/en/person/00125548)
 
