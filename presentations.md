@@ -7,7 +7,7 @@ Here, I keep a list of my presentations and posters, presented at various intern
 
 <!-- ## As the presenter (main author) -->
 
-* **Four years of scientific computing using FreeFEM in the field of computational biomedical engineering**, presented at the FreeFEM Days, 14th Edition, Paris, France, 2022 ([abstract](/public/files/freefem2022-abstract.pdf) \| [presentation](/public/files/freefem2022-presentation.pdf))
+* **Four years of scientific computing using FreeFEM in the field of computational biomedical engineering**, presented at the FreeFEM Days, 14th Edition, Paris, France, 2022 ([abstract](/public/files/freefem2022-abstract.pdf) \| [presentation](/public/files/freefem2022-presentation.pdf) \| [video](https://www.youtube.com/watch?v=V5Alj9iNoU4))
 
 * **High-performance computer simulation of biodegradation of optimized personalized implants; a case study of a patient-specific porous acetabular implant**, presented at the Virtual Physiological Human (VPH) conference, Porto, Portugal, 2022 ([abstract](/public/files/vph2022-abstract.pdf) \| [presentation](/public/files/vph2022-presentation.pdf) \| [video](https://www.youtube.com/watch?v=hLLUNYQHNjI))
 
