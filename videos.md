@@ -9,6 +9,8 @@ title: Videos
 
 [Invited talks](#talks)
 
+[My PhD defense](#defense)
+
 ## <a name="educational"></a> Educational content
 
 These are the recorded sessions of teaching activities I have had or the videos I created for educational purposes. Moreover, I regularly record and publish videos in [TuxRiders](https://www.youtube.com/channel/UC7tFIxB0O2Uhf9afEi_DISw) on topics related to open-source scientific computing.
@@ -178,3 +180,9 @@ University of Amsterdam, the Netherlands, 2022
 1st SGABU Project Workshop, 2021
 
 [![presentation](http://img.youtube.com/vi/3nIExqK49n4/0.jpg){: style="max-width: 300px; height: auto;"}](https://www.youtube.com/watch?v=3nIExqK49n4)
+
+## <a name="defense"></a> My PhD defense
+
+This is a recorded version of my public PhD defense held on 15 June 2023. Please refer to the [PhD project page](/research/phd) for more information on this.
+
+[![presentation](http://img.youtube.com/vi/SORPl5E_K9k/0.jpg){: style="max-width: 300px; height: auto;"}](https://www.youtube.com/watch?v=SORPl5E_K9k)
