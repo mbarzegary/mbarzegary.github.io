@@ -222,6 +222,77 @@
   
   <div class="post">
     <h1 class="post-title">
+      <a href="/2023/07/30/unit-test-qt-program-in-github-actions/">
+        Perform unit testing of Qt programs in GitHub Actions using Docker
+      </a>
+    </h1>
+
+    <span class="post-date">30 Jul 2023</span>
+
+    <!-- <p>In the <a href="/2022/12/09/build-qt-in-docker-for-github-actions/">previous post</a>, we built a Docker container for Qt and pushed it to <a href="https://hub.docker.com/r/mbarzegary/qt-5.15.2-freefem-4.10">Docker Hub</a> (the pushed container includes FreeFEM too, but we don’t need to care about it for the purpose of this post). Now, it’s time to pull the image in a GitHub Action to test the build process and functionality of Qt programs.</p>
+
+<p>We use <a href="https://github.com/addnab/docker-run-action">this action</a> to pull the image and run the build procedure. First, we add a YAML file, called <code class="highlighter-rouge">main.yml</code>, to the directory <code class="highlighter-rouge">.github/workflows</code> in the GitHub repository (like <a href="https://github.com/mbarzegary/BioDeg-UI/blob/main/.github/workflows/main.yml">this example</a>) and add the following content to it:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># This is a basic workflow to help you get started with Actions</span>
+
+<span class="na">name</span><span class="pi">:</span> <span class="s">build</span>
+
+<span class="c1"># Controls when the workflow will run</span>
+<span class="na">on</span><span class="pi">:</span>
+  <span class="c1"># Triggers the workflow on push or pull request events but only </span>
+  <span class="c1"># for the main branch</span>
+  <span class="na">push</span><span class="pi">:</span>
+    <span class="na">branches</span><span class="pi">:</span> <span class="pi">[</span> <span class="nv">main</span> <span class="pi">]</span>
+  <span class="na">pull_request</span><span class="pi">:</span>
+    <span class="na">branches</span><span class="pi">:</span> <span class="pi">[</span> <span class="nv">main</span> <span class="pi">]</span>
+
+  <span class="c1"># Allows you to run this workflow manually from the Actions tab</span>
+  <span class="na">workflow_dispatch</span><span class="pi">:</span>
+
+<span class="c1"># A workflow run is made up of one or more jobs that can run</span>
+<span class="c1"># sequentially or in parallel</span>
+<span class="na">jobs</span><span class="pi">:</span>
+  <span class="c1"># This workflow contains a single job called "build"</span>
+  <span class="na">build</span><span class="pi">:</span>
+    <span class="c1"># The type of runner that the job will run on</span>
+    <span class="na">runs-on</span><span class="pi">:</span> <span class="s">ubuntu-latest</span>
+
+    <span class="c1"># Steps represent a sequence of tasks that will be executed </span>
+    <span class="c1"># as part of the job</span>
+    <span class="na">steps</span><span class="pi">:</span>
+      <span class="c1"># Checks-out your repository under $GITHUB_WORKSPACE, </span>
+      <span class="c1"># so your job can access it</span>
+      <span class="pi">-</span> <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/checkout@v2</span>
+
+      <span class="c1"># Pulls a Docker image and builds the software inside it</span>
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Build and test BioDeg</span>
+        <span class="na">uses</span><span class="pi">:</span> <span class="s">addnab/docker-run-action@v3</span>
+        <span class="na">with</span><span class="pi">:</span>
+          <span class="na">registry</span><span class="pi">:</span> <span class="s">docker.io</span>
+          <span class="na">image</span><span class="pi">:</span> <span class="s">mbarzegary/qt-5.15.2-freefem-4.10:latest</span>
+          <span class="na">options</span><span class="pi">:</span> <span class="s">-v $:/data</span> 
+          <span class="na">run</span><span class="pi">:</span> <span class="s">/data/buildWithDocker.sh</span>
+</code></pre></div></div>
+
+<p>This action gets triggered when any commit is pushed to the repository, resulting in the Docker image being pulled and the whole repository being mounted into a directory called <code class="highlighter-rouge">data</code>. Then, it executes the build script file (in this case, <code class="highlighter-rouge">buildWithDocker.sh</code> in the root of the repository) inside the container. The following is an example of the <code class="highlighter-rouge">buildWithDocker.sh</code> file:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
+<span class="c"># build the repo inside the docker container</span>
+<span class="c"># used for CI builds and tests</span>
+<span class="nb">cd</span> /data
+<span class="nb">mkdir </span>build
+<span class="nb">cd </span>build
+cmake ..
+make
+make <span class="nb">test</span>
+</code></pre></div></div>
+
+<p>The full running example can be explored in <a href="https://github.com/mbarzegary/BioDeg-UI">this repository</a>. The log of previous ran tests can be viewed <a href="https://github.com/mbarzegary/BioDeg-UI/actions/workflows/main.yml">here</a>.</p>
+ -->
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
       <a href="/2022/12/09/build-qt-in-docker-for-github-actions/">
         Build Qt inside a Docker container for GitHub Actions
       </a>

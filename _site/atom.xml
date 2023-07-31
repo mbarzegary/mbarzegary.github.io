@@ -4,13 +4,80 @@
  <title>Mojtaba Barzegari</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2023-07-30T23:28:36+02:00</updated>
+ <updated>2023-07-31T23:12:20+02:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name></name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>Perform unit testing of Qt programs in GitHub Actions using Docker</title>
+   <link href="http://localhost:4000/2023/07/30/unit-test-qt-program-in-github-actions/"/>
+   <updated>2023-07-30T00:00:00+02:00</updated>
+   <id>http://localhost:4000/2023/07/30/unit-test-qt-program-in-github-actions</id>
+   <content type="html">&lt;p&gt;In the &lt;a href=&quot;/2022/12/09/build-qt-in-docker-for-github-actions/&quot;&gt;previous post&lt;/a&gt;, we built a Docker container for Qt and pushed it to &lt;a href=&quot;https://hub.docker.com/r/mbarzegary/qt-5.15.2-freefem-4.10&quot;&gt;Docker Hub&lt;/a&gt; (the pushed container includes FreeFEM too, but we don’t need to care about it for the purpose of this post). Now, it’s time to pull the image in a GitHub Action to test the build process and functionality of Qt programs.&lt;/p&gt;
+
+&lt;p&gt;We use &lt;a href=&quot;https://github.com/addnab/docker-run-action&quot;&gt;this action&lt;/a&gt; to pull the image and run the build procedure. First, we add a YAML file, called &lt;code class=&quot;highlighter-rouge&quot;&gt;main.yml&lt;/code&gt;, to the directory &lt;code class=&quot;highlighter-rouge&quot;&gt;.github/workflows&lt;/code&gt; in the GitHub repository (like &lt;a href=&quot;https://github.com/mbarzegary/BioDeg-UI/blob/main/.github/workflows/main.yml&quot;&gt;this example&lt;/a&gt;) and add the following content to it:&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# This is a basic workflow to help you get started with Actions&lt;/span&gt;
+
+&lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;build&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# Controls when the workflow will run&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;on&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;# Triggers the workflow on push or pull request events but only &lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;# for the main branch&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;branches&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;main&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;]&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;pull_request&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;branches&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;main&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;]&lt;/span&gt;
+
+  &lt;span class=&quot;c1&quot;&gt;# Allows you to run this workflow manually from the Actions tab&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;workflow_dispatch&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# A workflow run is made up of one or more jobs that can run&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# sequentially or in parallel&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;jobs&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;# This workflow contains a single job called &quot;build&quot;&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;build&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;# The type of runner that the job will run on&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;runs-on&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;ubuntu-latest&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;# Steps represent a sequence of tasks that will be executed &lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;# as part of the job&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;steps&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;c1&quot;&gt;# Checks-out your repository under $GITHUB_WORKSPACE, &lt;/span&gt;
+      &lt;span class=&quot;c1&quot;&gt;# so your job can access it&lt;/span&gt;
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;uses&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;actions/checkout@v2&lt;/span&gt;
+
+      &lt;span class=&quot;c1&quot;&gt;# Pulls a Docker image and builds the software inside it&lt;/span&gt;
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Build and test BioDeg&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;uses&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;addnab/docker-run-action@v3&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;with&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;registry&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;docker.io&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;mbarzegary/qt-5.15.2-freefem-4.10:latest&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;-v $:/data&lt;/span&gt; 
+          &lt;span class=&quot;na&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;/data/buildWithDocker.sh&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This action gets triggered when any commit is pushed to the repository, resulting in the Docker image being pulled and the whole repository being mounted into a directory called &lt;code class=&quot;highlighter-rouge&quot;&gt;data&lt;/code&gt;. Then, it executes the build script file (in this case, &lt;code class=&quot;highlighter-rouge&quot;&gt;buildWithDocker.sh&lt;/code&gt; in the root of the repository) inside the container. The following is an example of the &lt;code class=&quot;highlighter-rouge&quot;&gt;buildWithDocker.sh&lt;/code&gt; file:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# build the repo inside the docker container&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# used for CI builds and tests&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; /data
+&lt;span class=&quot;nb&quot;&gt;mkdir &lt;/span&gt;build
+&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;build
+cmake ..
+make
+make &lt;span class=&quot;nb&quot;&gt;test&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The full running example can be explored in &lt;a href=&quot;https://github.com/mbarzegary/BioDeg-UI&quot;&gt;this repository&lt;/a&gt;. The log of previous ran tests can be viewed &lt;a href=&quot;https://github.com/mbarzegary/BioDeg-UI/actions/workflows/main.yml&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Build Qt inside a Docker container for GitHub Actions</title>
