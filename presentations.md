@@ -7,6 +7,9 @@ Here, I keep a list of my presentations and posters, presented at various intern
 
 <!-- ## As the presenter (main author) -->
 
+* **Multi-{physics, phase, scale} computational modeling of interface-coupled problems in redox flow battery design**, presented at the 244th meeting of the Electrochemical Society (ECS), Sweden, 2023 ([abstract](/public/files/ecs244-abstract.pdf) \| [presentation](/public/files/ecs244-poster.pdf))
+
+
 * **Four years of scientific computing using FreeFEM in the field of computational biomedical engineering**, presented at the FreeFEM Days, 14th Edition, Paris, France, 2022 ([abstract](/public/files/freefem2022-abstract.pdf) \| [presentation](/public/files/freefem2022-presentation.pdf) \| [video](https://www.youtube.com/watch?v=V5Alj9iNoU4))
 
 * **High-performance computer simulation of biodegradation of optimized personalized implants; a case study of a patient-specific porous acetabular implant**, presented at the Virtual Physiological Human (VPH) conference, Porto, Portugal, 2022 ([abstract](/public/files/vph2022-abstract.pdf) \| [presentation](/public/files/vph2022-presentation.pdf) \| [video](https://www.youtube.com/watch?v=hLLUNYQHNjI))
@@ -57,8 +60,8 @@ Here, I keep a list of my presentations and posters, presented at various intern
 
 * **Upscaling of a Next Generation Microwell-Based Beta Cell Replacement Device**, presented at the 6th TERMIS World Congress on Tissue Engineering and Regenerative Medicine (TERMIS), Maastricht, the Netherlands, 2021
 
-* **Creating your own TPMS-based functionally graded scaffolds for 3D-printing**, presented at the 17th International Symposium on Computer Methods in Biomechanics and Biomedical Engineering (CMBBE), Bonn, Germany, 2021 
+* **Creating your own TPMS-based functionally graded scaffolds for 3D-printing**, presented at the 17th International Symposium on Computer Methods in Biomechanics and Biomedical Engineering (CMBBE), Bonn, Germany, 2021
 
-* **Quantifying cellular forces in a 3D in vitro vascular model**, presented at the 17th International Symposium on Computer Methods in Biomechanics and Biomedical Engineering (CMBBE), Bonn, Germany, 2021 
+* **Quantifying cellular forces in a 3D in vitro vascular model**, presented at the 17th International Symposium on Computer Methods in Biomechanics and Biomedical Engineering (CMBBE), Bonn, Germany, 2021
 
 * **Towards Collaborative Machine Learning Driven Healthcare Internet of Things**, presented at the International Conference on Omni-Layer Intelligent Systems, Crete, Greece, 2019 ([article in proceedings](https://dl.acm.org/citation.cfm?id=3312644)) -->
