@@ -7,7 +7,9 @@ Here, I keep a list of my presentations and posters, presented at various intern
 
 <!-- ## As the presenter (main author) -->
 
-* **Multi-{physics, phase, scale} computational modeling of interface-coupled problems in redox flow battery design**, presented at the 244th meeting of the Electrochemical Society (ECS), Sweden, 2023 ([abstract](/public/files/ecs244-abstract.pdf) \| [poster](/public/files/ecs244-poster.pdf))
+* **Topology optimization of porous electrodes for redox flow batteries using the finite element method**, will be presented at the 20th Symposium on Modeling and Validation of Electrochemical Energy Technologies (ModVal), Baden, Switzerland, 2024 (abstract \| presentation)
+
+* **Multi-{physics, phase, scale} computational modeling of interface-coupled problems in redox flow battery design**, presented at the 244th meeting of the Electrochemical Society (ECS), Gothenburg, Sweden, 2023 ([abstract](/public/files/ecs244-abstract.pdf) \| [poster](/public/files/ecs244-poster.pdf))
 
 
 * **Four years of scientific computing using FreeFEM in the field of computational biomedical engineering**, presented at the FreeFEM Days, 14th Edition, Paris, France, 2022 ([abstract](/public/files/freefem2022-abstract.pdf) \| [presentation](/public/files/freefem2022-presentation.pdf) \| [video](https://www.youtube.com/watch?v=V5Alj9iNoU4))
