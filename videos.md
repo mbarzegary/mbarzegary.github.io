@@ -168,6 +168,12 @@ Alicante, Spain, August 2019
 
 These are the recorded sessions of my invited talks at scientific workshops or events.
 
+#### Finite element modeling in FreeFEM for computational biomedical engineering
+
+European Society of Biomechanics (ESB), 2023\
+
+[![presentation](http://img.youtube.com/vi/hCjS38lDocg/0.jpg){: style="max-width: 300px; height: auto;"}](https://www.youtube.com/watch?v=hCjS38lDocg)
+
 #### Computational modeling of biodegradation behavior of personalized printed implants
 
 Simulation-based Science (SbS) community\
