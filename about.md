@@ -3,7 +3,7 @@ layout: page
 title: About Me
 ---
 
-Greetings! I am Mojtaba Barzegari, a passionate PostDoc researcher in computational engineering. Whether it's scientific computing, high-performance computing, or computational chemical engineering, I'm all about using computers to solve real-world problems. I thrive on multi-disciplinary projects, relishing challenges in mathematics, physics, computer science, engineering, chemistry, medical and biological sciences, and materials science.
+Greetings! I am Mojtaba Barzegari, a passionate PostDoc researcher in computational engineering. Whether it's scientific computing, high-performance computing, or computational chemical/biomedical engineering, I'm all about using computers to solve real-world problems. I thrive on multi-disciplinary projects, relishing challenges in mathematics, physics, computer science, engineering, chemistry, medical and biological sciences, and materials science.
 
 Currently, I work with the Electrochemical Materials and Processes group at Eindhoven University of Technology (TU/e), where I model electrochemical processes of energy storage systems. But before that, I was a PhD researcher at KU Leuven, Belgium, where I worked on high-performance computational modeling of tissue engineering processes. I earned my BSc and MSc in materials science and biomedical engineering, respectively, both of which centered around the combination of numerical analysis and computational intelligence. And if that's not enough, I've also worked on Machine Learning and data analysis projects in the fields of medicine, biology, industrial automation, and IoT. For a comprehensive overview of my research experiences,  please refer to my [Research Portfolio](/research).
 
