@@ -3,7 +3,12 @@ layout: page
 title: Publications
 ---
 
-In this page, I will try to maintain a list of my publications in a presentive index. The formal category-based list would be found in my [CV](https://nbviewer.org/github/mbarzegary/MyCV-shortened/blob/main/main.pdf) (or even on [Google Scholar](https://scholar.google.co.uk/citations?user=UkgS0HMAAAAJ&hl=en)).
+In this page, I will try to maintain a up-to-date list of my publications in a presentive index. The formal category-based list would be found in my [CV](https://nbviewer.org/github/mbarzegary/MyCV-shortened/blob/main/main.pdf) (or even on [Google Scholar](https://scholar.google.co.uk/citations?user=UkgS0HMAAAAJ&hl=en)).
+
+<script src="https://bibbase.org/show?bib=https://bibbase.org/f/oJsJTXuaBDARX3dNS/papers.bib&noBootstrap=1&jsonp=1"></script> 
+<!-- <iframe src="https://bibbase.org/show?bib=https://bibbase.org/f/oJsJTXuaBDARX3dNS/papers.bib"></iframe> -->
+
+<!-- In this page, I will try to maintain a list of my publications in a presentive index. The formal category-based list would be found in my [CV](https://nbviewer.org/github/mbarzegary/MyCV-shortened/blob/main/main.pdf) (or even on [Google Scholar](https://scholar.google.co.uk/citations?user=UkgS0HMAAAAJ&hl=en)).
 
 ## Computational Biomechanics and Tissue Engineering
 
@@ -21,7 +26,7 @@ In this page, I will try to maintain a list of my publications in a presentive i
 
 ### Finite Element Method, Fluid-Structure Interaction
 
-* **M. Barzegari**, B. Vahidi, M. R. Safarinejad, M. Ebad, "[A computational analysis of the effect of supporting organs on predicted vesical pressure in stress urinary incontinence](https://doi.org/10.1007/s11517-020-02148-2)", *Medical & Biological Engineering & Computing*, Vol. 58, No. 5, pp. 1079-1089, 2020 
+* **M. Barzegari**, B. Vahidi, M. R. Safarinejad, M. Ebad, "[A computational analysis of the effect of supporting organs on predicted vesical pressure in stress urinary incontinence](https://doi.org/10.1007/s11517-020-02148-2)", *Medical & Biological Engineering & Computing*, Vol. 58, No. 5, pp. 1079-1089, 2020
 
 * **M. Barzegari**, B. Vahidi, M. R. Safarinejad, "[A Clinical and Finite Elements Study of Stress Urinary Incontinence in Women Using Fluid-Structure Interactions](https://arxiv.org/abs/1708.01601)", arXiv Preprint
 
@@ -37,7 +42,7 @@ In this page, I will try to maintain a list of my publications in a presentive i
 
 * F. Perez Boerema, **M. Barzegari**, L. Geris, "[A flexible and easy-to-use open-source tool for designing functionally graded 3D porous structures](https://doi.org/10.1080/17452759.2022.2048956)", *Virtual And Physical Prototyping*, 2022
 
-* J. Barrasa Fano, A. Shapeti, A. Jorge Peñas, **M. Barzegari**, J.A. Sanz-Herrera, H. Van Oosterwyck, "[TFMLAB: a MATLAB toolbox for 4D Traction Force Microscopy](https://doi.org/10.1016/j.softx.2021.100723)", *SoftwareX*, Vol. 15, pp. 100723, 2021 
+* J. Barrasa Fano, A. Shapeti, A. Jorge Peñas, **M. Barzegari**, J.A. Sanz-Herrera, H. Van Oosterwyck, "[TFMLAB: a MATLAB toolbox for 4D Traction Force Microscopy](https://doi.org/10.1016/j.softx.2021.100723)", *SoftwareX*, Vol. 15, pp. 100723, 2021
 
 ## Computational Fluid Dynamics
 
@@ -77,15 +82,15 @@ In this page, I will try to maintain a list of my publications in a presentive i
 * F. Firouzi, B. Farahani, **M. Barzegari**, M. Daneshmand, "[AI-Driven Data Monetization: The other Face of Data in IoT-based Smart and Connected Health](https://doi.org/10.1109/JIOT.2020.3027971)", *IEEE Internet of Things Journal*, 2020
 
 ### Reinforcement Learning, Shape Optimization
- 
+
 * H. Keramati, F. Hamdullahpur, **M. Barzegari**, "[Deep reinforcement learning for heat exchanger shape optimization](https://doi.org/10.1016/j.ijheatmasstransfer.2022.123112)", *International Journal Of Heat And Mass Transfer*, 2022
 
 ### Artificial Neural Networks, Support Vector Machines
 
 * B. Farahani, **M. Barzegari**, F. Shams, K. A. Shaik, "[Towards collaborative intelligent IoT eHealth: From device to fog, and cloud](https://www.sciencedirect.com/science/article/pii/S0141933119303928)", *Microprocessors and Microsystems*, vol. 72, 102938, 2020
-*, pp. 134-140, Crete, Greece, 2019 
+*, pp. 134-140, Crete, Greece, 2019
 
-* B. Farahani, **M. Barzegari**, F. Shams, "[Towards Collaborative Machine Learning Driven Healthcare Internet of Things](https://dl.acm.org/citation.cfm?id=3312644)", *Proceedings of the International Conference on Omni-Layer Intelligent Systems*, pp. 134-140, Crete, Greece, 2019 
+* B. Farahani, **M. Barzegari**, F. Shams, "[Towards Collaborative Machine Learning Driven Healthcare Internet of Things](https://dl.acm.org/citation.cfm?id=3312644)", *Proceedings of the International Conference on Omni-Layer Intelligent Systems*, pp. 134-140, Crete, Greece, 2019
 
 * **M. Barzegari**, B. Vahidi, M. R. Safarinejad, M. Hashemipour, "[Pathological Analysis of Stress Urinary Incontinence in Females using Artificial Neural Networks](https://arxiv.org/abs/1803.01843)", arXiv Preprint
 
@@ -93,7 +98,7 @@ In this page, I will try to maintain a list of my publications in a presentive i
 ### Image Processing, Raspberry Pi
 
 * S. Gholami, A. Danayi, A. Rezaee, **M. Barzegari**, "[Embedded Systems and the Challenge of Complex Computing in Internet of Things](https://civilica.com/doc/656407/)", *1st International Conference on Internet of Things, Applications and Infrastructure*, Isfahan, Iran, 2017 [Persian]
-
+ -->
 
 
 
