@@ -5,7 +5,7 @@ title: Publications
 
 In this page, I will try to maintain a up-to-date list of my publications in a presentive index. The formal category-based list would be found in my [CV](https://nbviewer.org/github/mbarzegary/MyCV-shortened/blob/main/main.pdf) (or even on [Google Scholar](https://scholar.google.co.uk/citations?user=UkgS0HMAAAAJ&hl=en)).
 
-<script src="https://bibbase.org/show?bib=https://bibbase.org/f/oJsJTXuaBDARX3dNS/papers.bib&noBootstrap=1&jsonp=1"></script> 
+<script src="https://bibbase.org/show?bib=https://bibbase.org/f/oJsJTXuaBDARX3dNS/papers.bib&noBootstrap=1&jsonp=1&showSearch=1"></script> 
 <!-- <iframe src="https://bibbase.org/show?bib=https://bibbase.org/f/oJsJTXuaBDARX3dNS/papers.bib"></iframe> -->
 
 <!-- In this page, I will try to maintain a list of my publications in a presentive index. The formal category-based list would be found in my [CV](https://nbviewer.org/github/mbarzegary/MyCV-shortened/blob/main/main.pdf) (or even on [Google Scholar](https://scholar.google.co.uk/citations?user=UkgS0HMAAAAJ&hl=en)).
