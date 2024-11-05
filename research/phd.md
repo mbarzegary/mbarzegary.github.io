@@ -22,7 +22,7 @@ The computational models and workflows developed as part of this PhD thesis were
 Taken together, this PhD work has developed a broad range of mathematical and computational tools in the field of degradable biomaterials, demonstrating the potential of integrating *in silico* technologies in the design of patient-specific implants. The research carried out in this PhD thesis lies at the interface of biomedical engineering, chemistry, mechanical engineering, materials science, mathematics, and computational science. The relevant elements of these disciplines were employed in a multidisciplinary manner to deliver a multiphysics model of the biodegradation process. Moreover, by openly sharing the developed computational tools and emphasizing open science principles, this work fosters collaboration and knowledge dissemination within the research community, thereby facilitating further advancements in the design and optimization of novel biomaterial-based implants in biomedical engineering and patient care. As the next step, the model is being further developed by a new PhD candidate in the group to include more variants of the biodegradation process as well as to integrate it into topology optimization routines of personalized implants and biodegradable scaffolds in tissue engineering.
 
 
-
+<!--
 * **Glimpse into the results**: The following visualization is a typical output of simulations that I perform using the model I have developed (it's an interactive ParaView Glance session, so you can explore it using your mouse buttons and modify it using the panel on the left).
 
 <script>
@@ -32,3 +32,5 @@ Taken together, this PhD work has developed a broad range of mathematical and co
 
     document.write("<iframe src='" + app + "?name=" + file + "&url=" +datadir + file + "' id='iframe' width='1100' height='900'></iframe>");
 </script>
+
+-->
