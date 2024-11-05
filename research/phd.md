@@ -6,6 +6,10 @@ tags: child
 
 * **Title**: Mathematical and computational modeling of metallic biomaterials biodegradation
 
+* **Thesis**:\\
+HTML version featuring search and easy navigation [here](https://mbarzegary.github.io/phd-thesis-website/).\\
+Full PDF version [here](https://nbviewer.org/github/mbarzegary/phd-thesis/blob/451aafe85bad4afc6109516cc5c28d28f6c301fd/thesis.pdf).
+
 * **Public defense**: The recorded version of the public PhD defense, held on 15 June 2023, Leuven, Belgium, can be found here:\\
 [![presentation](http://img.youtube.com/vi/SORPl5E_K9k/0.jpg){: style="max-width: 300px; height: auto;"}](https://www.youtube.com/watch?v=SORPl5E_K9k)
 
