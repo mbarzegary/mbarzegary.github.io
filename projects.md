@@ -4,16 +4,17 @@ title: GitHub Projects
 ---
 
 Here, you can find the list of most relevant projects I have in my GitHub account. For more details of the research projects I have contributed to, please take a look at [Research Portfolio](/research).
- 
-## Scientific Computing
 
+## Computational Modeling and Scientific Computing
+
+ * [RedOx-TO, a topology optimization framework for porous electrodes in electrochemical flow reactors](https://github.com/mbarzegary/RedOx-TO)
  * [BioDeg, a biodegradation and corrosion simulation code for metallic materials](https://github.com/mbarzegary/BioDeg)
  * [BioDeg-UI, graphical user interface for BioDeg corrosion simulation code](https://github.com/mbarzegary/BioDeg-UI)
  * [General Coupled Navier-Stokes-Diffusion Equations Solver using Finite Element Method](https://github.com/mbarzegary/navier-stokes-solver)
  * [Bayesian Optimization for Finite Element Parameter Estimation](https://github.com/mbarzegary/BayesianFEM)
  * [Skeletal Cell Atlas web app developed using Dash](https://github.com/mbarzegary/skeletal-cell-atlas)
 
-## Machine Learning 
+## Machine Learning
  * [ECG Classification with Federated-Learning and Differential-Privacy in Keras, Convolutional Neural Network Implementation](https://github.com/mbarzegary/ecg-classification-keras-cnn)
  * [ECG Classification with Federated-Learning in Keras, Shallow Implementation](https://github.com/mbarzegary/ecg-classification-keras-shallow)
  * [ECG Signals Classification using scikit-learn](https://github.com/mbarzegary/ecg-classification)
@@ -33,7 +34,7 @@ Here, you can find the list of most relevant projects I have in my GitHub accoun
  * [Shorter version of my CV](https://github.com/mbarzegary/MyCV-shortened)
  * [Auto-generated CV](https://github.com/mbarzegary/MyCV)
  * [Jekyll Template for a Personal Website](https://github.com/mbarzegary/mbarzegary.github.io)
- 
+
 ## Beamer Presentations
 
  * [High-performance numerical simulation of biodegradation process with moving boundaries](https://github.com/mbarzegary/presentation_freefem2019)
