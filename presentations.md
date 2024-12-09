@@ -7,7 +7,7 @@ Here, I keep a list of my presentations and posters, presented at various intern
 
 <!-- ## As the presenter (main author) -->
 
-* **TopeSmash - Topology Optimization of Porous Electrodes in Redox Flow Batteries using Scalable Modeling Approaches**, presented at Snellius Advanced Computing User Day 2024, Utrecht, the Netherlands, 2024 (abstract \| presentation)
+* **TopeSmash: Topology Optimization of Porous Electrodes in Redox Flow Batteries using Scalable Modeling Approaches**, presented at Snellius Advanced Computing User Day 2024, Utrecht, the Netherlands, 2024 ([abstract](/public/files/snellius-acud-2024-abstract.pdf) \| presentation)
 
 * **Inverse design of porous electrodes in redox flow batteries: a computational approach integrating topology optimization and multi-physics modeling**, presented at ECS PRiME 2024, the joint international meeting of Electrochemical Society, Honolulu, USA, 2024 ([abstract](/public/files/ecs-prime2024-abstract.pdf) \| [presentation](/public/files/ecs-prime2024-presentation.pdf))
 
