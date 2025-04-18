@@ -8,6 +8,7 @@ Details of my PhD work can be found [in this page](phd).
 [My Research Interests](#interests)
 
 [Research Projects I've Been Involved In](#projects)
+* [Computational Chemical Engineering](#comp_chem)
 * [Computational Tissue Engineering](#comp_tissue)
 * [Scientific Software Development](#sci_software)
 * [Computational Fluid Dynamics](#cfd)
@@ -24,6 +25,13 @@ Details of my PhD work can be found [in this page](phd).
 * Machine Learning and Computational Intelligence
 
 ## <a name="projects"></a> Research Projects I've Been Involved In
+
+#### <a name="comp_chem"></a> Computational Chemical Engineering
+
+* Topology optimization of porous electrodes in electrochemical flow systems and redox flow batteries using multi-scale computational modeling and high-performance computing \
+*TU/e*, 2023--2025\
+More info [here](https://doi.org/10.1016/j.cej.2025.161815)
+<img src="/public/portfolio/electrode-to.png" alt="color photo ftl" width="100%" height="auto" />
 
 #### <a name="comp_tissue"></a> Computational Tissue Engineering
 
