@@ -5,9 +5,9 @@ title: Research Portfolio
 
 Details of my PhD work can be found [in this page](phd).
 
-[My Research Interests](#interests) 
+[My Research Interests](#interests)
 
-[Research Projects I've Been Involved In](#projects) 
+[Research Projects I've Been Involved In](#projects)
 * [Computational Tissue Engineering](#comp_tissue)
 * [Scientific Software Development](#sci_software)
 * [Computational Fluid Dynamics](#cfd)
@@ -20,8 +20,8 @@ Details of my PhD work can be found [in this page](phd).
 * Scientific Computing and Computational Engineering
 * High-Performance Computing and Parallel Programming
 * Computational Materials Science and Computational Biomedical Engineering
+* Computational Chemical Engineering
 * Machine Learning and Computational Intelligence
-
 
 ## <a name="projects"></a> Research Projects I've Been Involved In
 
@@ -129,5 +129,3 @@ More info [here](https://doi.org/10.1109/JIOT.2020.3027971) and [here](https://d
 *KU Leuven & Imec*, 2018--2019\
 More info [here](https://www.sciencedirect.com/science/article/pii/S0141933119303928)
 <img src="/public/portfolio/ecg.jpg" alt="color photo ftl" width="100%" height="auto" />
-
-
