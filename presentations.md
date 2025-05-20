@@ -9,8 +9,6 @@ Here, I keep a list of my presentations and posters, presented at various intern
 
 * **Understanding the impact of the electrode fiber geometry on mass transfer rates with coupled finite element modeling**, will be presented at XI International Conference on Coupled Problems in Science and Engineering (COUPLED), Sardinia, Italy, 2025 (abstract \| presentation)
 
-* **Multi-scale computational design of porous electrodes in redox flow batteries**, will be presented at Dutch Eletrochemical National Symposium (ECNS), Utrecht, the Netherlands, 2025 (abstract \| presentation)
-
 * **TopeSmash: Topology Optimization of Porous Electrodes in Redox Flow Batteries using Scalable Modeling Approaches**, presented at Snellius Advanced Computing User Day 2024, Utrecht, the Netherlands, 2024 ([abstract](/public/files/snellius-acud-2024-abstract.pdf) \| presentation)
 
 * **Inverse design of porous electrodes in redox flow batteries: a computational approach integrating topology optimization and multi-physics modeling**, presented at ECS PRiME 2024, the joint international meeting of Electrochemical Society, Honolulu, USA, 2024 ([abstract](/public/files/ecs-prime2024-abstract.pdf) \| [presentation](/public/files/ecs-prime2024-presentation.pdf))
