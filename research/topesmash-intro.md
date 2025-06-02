@@ -14,5 +14,5 @@ In this page, I will put updates regarding the TopeSmash project, funded and sup
 
 **Research output (so far)**:
 * Journal paper: *Topology optimization of porous electrodes for electrochemical flow reactors using the finite element method and triply periodic minimal surfaces* \
-Available here [here](https://doi.org/10.1016/j.cej.2025.161815)
+Available [here](https://doi.org/10.1016/j.cej.2025.161815)
 <img src="/public/portfolio/electrode-to.png" alt="color photo ftl" width="100%" height="auto" />
