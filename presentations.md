@@ -7,6 +7,8 @@ Here, I keep a list of my presentations and posters, presented at various intern
 
 <!-- ## As the presenter (main author) -->
 
+* **Multi-scale computational design and optimization of porous electrodes in electrochemical flow cells and redox flow batteries**, presented at 15th European Congress of Chemical Engineering (ECCE) & 8th European Congress of Applied Biotechnology (ECAB), Portugal, 2025 (abstract \| poster)
+
 * **Massively Parallel Computational Modeling of Porous Electrode Formation and Performance via Non-Solvent Induced Phase Separation for Redox Flow Batteries**, presented at 25th International Conference on Computational Science (ICCS), Singapore, 2025 (abstract \| presentation)
 
 * **Understanding the impact of the electrode fiber geometry on mass transfer rates in redox flow batteries with coupled finite element modeling**, presented at XI International Conference on Coupled Problems in Science and Engineering (COUPLED), Sardinia, Italy, 2025 (abstract \| presentation)
