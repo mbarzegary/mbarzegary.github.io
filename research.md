@@ -7,16 +7,7 @@ Details of my PhD work can be found [in this page](phd).
 
 Details of my Postdoc work can be found [in this page](topesmash-intro).
 
-[My Research Interests](#interests)
-
-[Research Projects I've Been Involved In](#projects)
-* [Computational Chemical Engineering](#comp_chem)
-* [Computational Tissue Engineering](#comp_tissue)
-* [Scientific Software Development](#sci_software)
-* [Computational Fluid Dynamics](#cfd)
-* [Computational Biomechanics](#comp_tissue)
-* [Computational Materials Science](#comp_mater)
-* [Machine Learning and Computational Intelligence](#ml)
+<!-- [My Research Interests](#interests) -->
 
 ## <a name="interests"></a> My Research Interests
 
@@ -27,6 +18,15 @@ Details of my Postdoc work can be found [in this page](topesmash-intro).
 * Machine Learning and Computational Intelligence
 
 ## <a name="projects"></a> Research Projects I've Been Involved In
+
+<!-- [Research Projects I've Been Involved In](#projects) -->
+* [Computational Chemical Engineering](#comp_chem)
+* [Computational Tissue Engineering](#comp_tissue)
+* [Scientific Software Development](#sci_software)
+* [Computational Fluid Dynamics](#cfd)
+* [Computational Biomechanics](#comp_tissue)
+* [Computational Materials Science](#comp_mater)
+* [Machine Learning and Computational Intelligence](#ml)
 
 #### <a name="comp_chem"></a> Computational Chemical Engineering
 
