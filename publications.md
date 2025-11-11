@@ -3,7 +3,9 @@ layout: page
 title: Publications
 ---
 
-In this page, I will try to maintain a up-to-date list of my publications in a presentive index. The formal category-based list would be found in my [CV](https://mbarzegary.github.io/MyCV-shortened/main.pdf) (or even on [Google Scholar](https://scholar.google.co.uk/citations?user=UkgS0HMAAAAJ&hl=en)).
+In this page, I will try to maintain a up-to-date list of my publications. The formal category-based list would be found in my [CV](https://mbarzegary.github.io/MyCV-shortened/main.pdf) (or even on [Google Scholar](https://scholar.google.co.uk/citations?user=UkgS0HMAAAAJ&hl=en)).
+
+This list is generated using [BibBase](https://bibbase.org/) and includes conference proceedings and abstracts too. To view only the papers, select `Type` from the `Group by` menu.
 
 <script src="https://bibbase.org/show?bib=https://bibbase.org/f/oJsJTXuaBDARX3dNS/papers.bib&noBootstrap=1&jsonp=1&showSearch=1"></script>
 <!-- <iframe src="https://bibbase.org/show?bib=https://bibbase.org/f/oJsJTXuaBDARX3dNS/papers.bib"></iframe> -->
