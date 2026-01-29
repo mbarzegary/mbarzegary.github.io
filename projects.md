@@ -1,6 +1,6 @@
 ---
 layout: page
-title: GitHub Projects
+title: Code & Software
 ---
 
 Here, you can find the list of most relevant projects I have in my GitHub account. For more details of the research projects I have contributed to, please take a look at [Research Portfolio](/research).
@@ -8,6 +8,7 @@ Here, you can find the list of most relevant projects I have in my GitHub accoun
 ## Computational Modeling and Scientific Computing
 
  * [RedOx-TO, a topology optimization framework for porous electrodes in electrochemical flow reactors](https://github.com/mbarzegary/RedOx-TO)
+ * [RfbFoam, OpenFOAM solver for porous electrode modeling in redox flow batteries](https://github.com/mbarzegary/RfbFoam)
  * [BioDeg, a biodegradation and corrosion simulation code for metallic materials](https://github.com/mbarzegary/BioDeg)
  * [BioDeg-UI, graphical user interface for BioDeg corrosion simulation code](https://github.com/mbarzegary/BioDeg-UI)
  * [General Coupled Navier-Stokes-Diffusion Equations Solver using Finite Element Method](https://github.com/mbarzegary/navier-stokes-solver)
