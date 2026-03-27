@@ -5,6 +5,10 @@ title: Useful Books and Links
 
 A plethora of useful books, videos, and online resources are freely available all over the internet, and I list here the ones I found very awesome and essential-to-know for everyone interested in Scientific Computing. I will try to keep this list up-to-date with the materials I face every day, most of which published by open source and open knowledge community.
 
+## Programming Languages
+
+* [List of Free Learning Resources In Many Languages](https://github.com/EbookFoundation/free-programming-books): A GitHub repo listing many freely available programming books and resources in a wide range of languages and topics (including scientific computing).
+
 ## Numerical Methods
 
 * [Introduction to Numerical Methods for Variational Problems](https://hplgit.github.io/fem-book/doc/web/index.html): If you think you know Finite Element, have a look at this book to know that you don't. A step-by-step guide to understand the mathematical underlying of Finite Element.
@@ -27,9 +31,9 @@ A plethora of useful books, videos, and online resources are freely available al
 
 * [Introduction to Computational Science and Engineering](https://www.youtube.com/playlist?list=PLF706B428FB7BD52C): A comprehensive course to obtain a deep insight into Computational Engineering. Although it is relatively long and time-consuming to watch, but you might be interested in some specific topics ([lecture list](https://ocw.mit.edu/courses/mathematics/18-085-computational-science-and-engineering-i-fall-2008/video-lectures/)).
 
-## Programming Languages
+## Scientific Programming
 
-* [A Very Basic Intro to Scientific Python](http://hplgit.github.io/bumpy/doc/web/index.html): Includes two short booklets on the overview of Python 2 syntax and a physics example implemented in Python. 
+* [A Very Basic Intro to Scientific Python](http://hplgit.github.io/bumpy/doc/web/index.html): Includes two short booklets on the overview of Python 2 syntax and a physics example implemented in Python.
 
 * [How to Think Like a Computer Scientist, Learning with Python 3](http://openbookproject.net/thinkcs/python/english3e): A great book to learn every aspect of Python programming language.
 
@@ -46,4 +50,3 @@ A plethora of useful books, videos, and online resources are freely available al
 * [Mastering Machine Learning with Python in Six Steps](https://github.com/mbarzegary/mastering-ml-w-python-in-six-steps): A collection of Jupyter notebooks to jump-start learning the basics of Machine Learning.
 
 * [Introduction to Linear Algebra for Applied Machine Learning with Python](https://pabloinsente.github.io/intro-linear-algebra): The best  applied introduction to the basics of linear algebra in Python I've ever seen.
-
