@@ -7,6 +7,8 @@ Here, I keep a list of my presentations and posters, presented at various intern
 
 <!-- ## As the presenter (main author) -->
 
+* **Topology optimization for pattern-making on porous electrodes for redox flow batteries**, will be presented at the SIAM Conference on Optimization (OP26), UK, 2026 (abstract \| presentation)
+
 * **Computational modeling for design optimization of porous electrodes in redox flow batteries**, presented at Dutch Computational Science Day (DUCOMS), the Netherlands, 2025 (abstract \| poster)
 
 * **Multi-scale computational design and optimization of porous electrodes in electrochemical flow cells and redox flow batteries**, presented at 15th European Congress of Chemical Engineering (ECCE) & 8th European Congress of Applied Biotechnology (ECAB), Portugal, 2025 (abstract \| poster)
